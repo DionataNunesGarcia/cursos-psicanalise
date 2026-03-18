@@ -1,0 +1,11 @@
+uuid: badec618-d728-4d38-a109-098ad7db6340
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.token
+label: Token
+description: null
+targetEntityType: node
+cache: true
