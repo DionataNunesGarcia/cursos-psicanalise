@@ -1,0 +1,9 @@
+uuid: 335f8f77-3e2f-490f-966e-ae98fea46529
+langcode: pt-br
+status: true
+dependencies: {  }
+name: 'Cargo de Equipe'
+vid: team_ocupation
+description: null
+weight: 0
+new_revision: false

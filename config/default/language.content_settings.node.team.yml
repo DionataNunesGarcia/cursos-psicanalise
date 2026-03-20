@@ -1,0 +1,11 @@
+uuid: 361ddb3b-b20f-4f71-b874-852b464039a8
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - node.type.team
+id: node.team
+target_entity_type_id: node
+target_bundle: team
+default_langcode: site_default
+language_alterable: false
