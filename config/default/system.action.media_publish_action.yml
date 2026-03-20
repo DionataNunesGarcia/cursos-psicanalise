@@ -1,5 +1,5 @@
 uuid: 9b9eedfe-9aa7-4dac-9c74-a6ef134eed80
-langcode: en
+langcode: pt-br
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: nh83qNNrmWE-CDdHz2MdFOAk60T9mzv3R-MaKfZR2jw
 id: media_publish_action
-label: 'Publish media'
+label: 'Publicar mídia'
 type: media
 plugin: 'entity:publish_action:media'
 configuration: {  }

@@ -1,11 +1,11 @@
 uuid: 4eb8aa06-fc59-4dc5-b2ef-636d331123f5
-langcode: en
+langcode: pt-br
 status: true
 dependencies: {  }
 _core:
   default_config_hash: QgF3JDg2h0tf2gaqzc4mNvlHttNkUpmxk1LZefP82hE
 id: document
-label: Document
+label: Documento
 description: 'A locally hosted document, such as a PDF file.'
 source: file
 queue_thumbnail_downloads: false

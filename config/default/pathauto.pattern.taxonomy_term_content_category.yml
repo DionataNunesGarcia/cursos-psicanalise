@@ -1,0 +1,34 @@
+uuid: faca6bab-26ee-41c0-a451-c2d5017a8fe4
+langcode: pt-br
+status: true
+dependencies:
+  module:
+    - language
+    - taxonomy
+id: taxonomy_term_content_category
+label: 'Termo de taxonomia para categoria de conteúdos'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/[term:name]'
+selection_criteria:
+  a30c9321-8eb7-458e-8dd7-9127789bac7d:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: a30c9321-8eb7-458e-8dd7-9127789bac7d
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      content_category: content_category
+  ffd5b2c4-5a3d-4210-91ee-e17997524a42:
+    id: language
+    negate: false
+    uuid: ffd5b2c4-5a3d-4210-91ee-e17997524a42
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    langcodes:
+      en: en
+      pt-br: pt-br
+selection_logic: and
+weight: -10
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Idioma

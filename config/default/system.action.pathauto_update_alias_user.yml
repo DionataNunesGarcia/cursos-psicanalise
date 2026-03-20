@@ -1,5 +1,5 @@
 uuid: e1690a63-1aeb-4dc0-9254-f6b150b66d73
-langcode: en
+langcode: pt-br
 status: true
 dependencies:
   module:
@@ -10,7 +10,7 @@ dependencies:
 _core:
   default_config_hash: 6eiNWATGTd3lUEKuxNPNyDRDVMsUlM0HS90_R6JJLUI
 id: pathauto_update_alias_user
-label: 'Update URL alias'
+label: 'Atualizar Apelido'
 type: user
 plugin: pathauto_update_alias
 configuration: {  }

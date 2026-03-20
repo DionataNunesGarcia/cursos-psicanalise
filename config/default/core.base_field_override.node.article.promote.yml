@@ -1,5 +1,5 @@
 uuid: 0fbc0a86-c91c-46f5-8868-3e5810397098
-langcode: en
+langcode: pt-br
 status: true
 dependencies:
   config:
@@ -10,7 +10,7 @@ id: node.article.promote
 field_name: promote
 entity_type: node
 bundle: article
-label: 'Promoted to front page'
+label: 'Promovido para a página inicial'
 description: ''
 required: false
 translatable: false
@@ -19,6 +19,6 @@ default_value:
     value: 1
 default_value_callback: ''
 settings:
-  on_label: 'On'
-  off_label: 'Off'
+  on_label: Habilitado
+  off_label: Desligado
 field_type: boolean

@@ -1,11 +1,11 @@
 uuid: 280e8977-3157-4268-b6a6-568eca206727
-langcode: en
+langcode: pt-br
 status: true
 dependencies: {  }
 _core:
   default_config_hash: 1noCXlegCr5HFehQRF1ViXy1jhU1jZ_sNN99a8Sj5jo
 id: front
-label: 'Front page'
+label: 'Página inicial'
 tags:
   canonical_url: '[site:url]'
   shortlink: '[site:url]'

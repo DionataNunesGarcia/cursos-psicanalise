@@ -1,0 +1,32 @@
+<?php
+
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_menu_links_discovered_alter().
+ */
+function categories_menu_menu_links_discovered_alter(array &$links) {
+
+  // ⚠️ Substitua pelo UUID do link "Conteúdos"
+  $parent = 'menu_link_content:ba3b7a6e-402d-4a39-8ab7-44377d5e2145';
+
+  // Machine name do vocabulário
+  $vocabulary = 'content_category';
+
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term')
+    ->loadTree($vocabulary);
+
+  foreach ($terms as $term) {
+    $links['categories_menu.term.' . $term->tid] = [
+      'title' => $term->name,
+      'route_name' => 'entity.taxonomy_term.canonical',
+      'route_parameters' => [
+        'taxonomy_term' => $term->tid,
+      ],
+      'menu_name' => 'main',
+      'parent' => $parent,
+      'weight' => 0,
+    ];
+  }
+}

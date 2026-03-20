@@ -1,5 +1,5 @@
 uuid: 72cfe9bb-97b1-47cd-8ae3-5a78a23f2f8e
-langcode: en
+langcode: pt-br
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ base_field: uid
 display:
   default:
     id: default
-    display_title: Default
+    display_title: Padrão
     display_plugin: default
     position: 0
     display_options:
@@ -64,13 +64,13 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Aplicar
           reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
+          reset_button_label: Redefinir
+          exposed_sorts_label: 'Ordenar por'
           expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
+          sort_asc_label: Ascendente
+          sort_desc_label: Decrescente
       access:
         type: perm
         options:
@@ -187,7 +187,7 @@ display:
       display_description: 'A list of new users'
       display_extenders: {  }
       block_description: "Who's new"
-      block_category: User
+      block_category: Usuário
     cache_metadata:
       max-age: -1
       contexts:
