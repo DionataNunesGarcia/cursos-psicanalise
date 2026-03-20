@@ -1,0 +1,48 @@
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+
+  <hr class="my-6"/>
+
+  <h3 class="text-2xl font-semibold mb-6">
+    {{ 'Galeria' }}
+  </h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+    {% for item in paragraph.field_images %}
+
+      {% set media = item.entity %}
+      {% if media.field_media_image.entity %}
+        {% set image = media.field_media_image.entity %}
+        {% set uri = image.fileuri %}
+
+        <a href="{{ file_url(uri) }}" class="block group">
+
+          <div class="overflow-hidden rounded-lg shadow-md">
+
+            <img
+              src="{{ file_url(uri) }}"
+              alt="{{ image.filename.value }}"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            >
+
+          </div>
+
+        </a>
+
+      {% endif %}
+
+    {% endfor %}
+
+  </div>
+
+</div>

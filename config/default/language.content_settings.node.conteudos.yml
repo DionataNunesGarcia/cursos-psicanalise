@@ -1,0 +1,11 @@
+uuid: bc378eda-f3c3-44c9-b105-7305f96c1935
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - node.type.conteudos
+id: node.conteudos
+target_entity_type_id: node
+target_bundle: conteudos
+default_langcode: site_default
+language_alterable: false
