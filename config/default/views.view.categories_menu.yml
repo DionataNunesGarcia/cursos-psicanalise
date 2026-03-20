@@ -1,37 +1,38 @@
-uuid: 72cfe9bb-97b1-47cd-8ae3-5a78a23f2f8e
+uuid: 8c53118a-c0da-4433-a5a5-ef37ad16444c
 langcode: pt-br
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.content_category
   module:
+    - taxonomy
     - user
-_core:
-  default_config_hash: zji0_13MyVGK7Bn1lUMDeZyyOIZedWvqpYUeM_SioPI
-id: who_s_new
-label: "Who's new"
-module: user
-description: 'Shows a list of the newest user accounts on the site.'
-tag: default
-base_table: users_field_data
-base_field: uid
+id: categories_menu
+label: 'Menu categorias'
+module: views
+description: ''
+tag: ''
+base_table: taxonomy_term_field_data
+base_field: tid
 display:
   default:
     id: default
-    display_title: Padrão
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
-      title: "Who's new"
+      title: 'Menu categorias'
       fields:
         name:
           id: name
-          table: users_field_data
+          table: taxonomy_term_field_data
           field: name
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: user
+          entity_type: taxonomy_term
           entity_field: name
-          plugin_id: field
+          plugin_id: term_name
           label: ''
           exclude: false
           alter:
@@ -47,7 +48,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -55,12 +56,25 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          type: user_name
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
       pager:
-        type: some
+        type: none
         options:
           offset: 0
-          items_per_page: 5
       exposed_form:
         type: basic
         options:
@@ -80,83 +94,45 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        created:
-          id: created
-          table: users_field_data
-          field: created
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: user
-          entity_field: created
-          plugin_id: date
-          order: DESC
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: standard
+          order: ASC
           expose:
             label: ''
-            field_identifier: created
+            field_identifier: ''
           exposed: false
-          granularity: second
       arguments: {  }
       filters:
         status:
           id: status
-          table: users_field_data
+          table: taxonomy_term_field_data
           field: status
-          entity_type: user
+          entity_type: taxonomy_term
           entity_field: status
           plugin_id: boolean
           value: '1'
           group: 1
           expose:
-            operator: '0'
-            operator_limit_selection: false
-            operator_list: {  }
-        access:
-          id: access
-          table: users_field_data
-          field: access
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: user
-          entity_field: access
-          plugin_id: date
-          operator: '>'
-          value:
-            min: ''
-            max: ''
-            value: '1970-01-01'
-            type: date
-          group: 1
-          exposed: false
-          expose:
-            operator_id: '0'
-            label: ''
-            description: ''
-            use_operator: false
             operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
+        vid:
+          id: vid
+          table: taxonomy_term_field_data
+          field: vid
+          entity_type: taxonomy_term
+          entity_field: vid
+          plugin_id: bundle
+          value:
+            content_category: content_category
       style:
-        type: html_list
+        type: default
       row:
         type: fields
       query:
@@ -178,16 +154,13 @@ display:
         - 'languages:language_interface'
         - user.permissions
       tags: {  }
-  block_1:
-    id: block_1
-    display_title: "Who's new"
+  block_categories_menu:
+    id: block_categories_menu
+    display_title: Block
     display_plugin: block
     position: 1
     display_options:
-      display_description: 'A list of new users'
       display_extenders: {  }
-      block_description: "Who's new"
-      block_category: Usuário
     cache_metadata:
       max-age: -1
       contexts:

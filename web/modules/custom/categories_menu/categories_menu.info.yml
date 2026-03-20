@@ -1,0 +1,8 @@
+name: "Categories Menu"
+type: module
+description: "Adiciona termos de taxonomia como filhos no menu principal."
+core_version_requirement: ^9 || ^10 || ^11
+package: Custom
+dependencies:
+  - drupal:taxonomy
+  - drupal:system

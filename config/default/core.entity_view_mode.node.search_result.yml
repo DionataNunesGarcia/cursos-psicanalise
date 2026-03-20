@@ -1,5 +1,5 @@
 uuid: eb8c0ed8-4220-4246-a210-257febc960c5
-langcode: en
+langcode: pt-br
 status: false
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: d8wBEm7XvJ6H3S0IneDD9PfTBklPIH7GMpxElVemPf8
 id: node.search_result
-label: 'Search result highlighting input'
+label: 'Resultado da pesquisa destacando a entrada'
 description: ''
 targetEntityType: node
 cache: true

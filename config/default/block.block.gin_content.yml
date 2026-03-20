@@ -1,5 +1,5 @@
 uuid: ceabcb0e-be99-4643-93fa-5e6300f49612
-langcode: en
+langcode: pt-br
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: system_main_block
 settings:
   id: system_main_block
-  label: 'Main page content'
+  label: 'Conteúdo da página principal'
   label_display: '0'
   provider: system
 visibility: {  }

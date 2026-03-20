@@ -1,5 +1,5 @@
 uuid: cbcfee25-8930-4d8c-95a9-b5200349b934
-langcode: en
+langcode: pt-br
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: help_block
 settings:
   id: help_block
-  label: Help
+  label: Ajuda
   label_display: '0'
   provider: help
 visibility: {  }
