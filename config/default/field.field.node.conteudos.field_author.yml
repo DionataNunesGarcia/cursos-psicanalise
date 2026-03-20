@@ -1,0 +1,29 @@
+uuid: d1111cbb-a44a-40e8-90d0-333753f7f072
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_author
+    - node.type.conteudos
+    - node.type.team
+id: node.conteudos.field_author
+field_name: field_author
+entity_type: node
+bundle: conteudos
+label: Autor
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      team: team
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

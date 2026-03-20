@@ -1,0 +1,22 @@
+uuid: b5905236-b6e2-46f2-9839-b8eff8fd599d
+langcode: pt-br
+status: true
+dependencies:
+  module:
+    - node
+id: content_pattern
+label: 'Pattern Conteúdos'
+type: 'canonical_entities:node'
+pattern: '/[node:field_category:entity:name]/[node:title]'
+selection_criteria:
+  d8833ba8-8e75-4d69-8540-9f9713a0cc68:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: d8833ba8-8e75-4d69-8540-9f9713a0cc68
+    context_mapping:
+      node: node
+    bundles:
+      conteudos: conteudos
+selection_logic: and
+weight: -5
+relationships: {  }
