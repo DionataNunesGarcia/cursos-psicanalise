@@ -1,0 +1,26 @@
+uuid: f9ef70b4-2ed7-419f-9120-b14b303cb873
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bio
+    - filter.format.full_html
+    - node.type.team
+  module:
+    - text
+id: node.team.field_bio
+field_name: field_bio
+entity_type: node
+bundle: team
+label: Biografia
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: true
+  allowed_formats:
+    - full_html
+field_type: text_with_summary
