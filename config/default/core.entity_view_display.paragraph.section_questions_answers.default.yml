@@ -1,0 +1,63 @@
+uuid: 489dc858-7672-4782-860d-b9da67c3e196
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.section_questions_answers.field_image
+    - field.field.paragraph.section_questions_answers.field_questions_answers
+    - field.field.paragraph.section_questions_answers.field_section_title
+    - field.field.paragraph.section_questions_answers.field_show_on_page
+    - field.field.paragraph.section_questions_answers.field_side_of_the_image
+    - paragraphs.paragraphs_type.section_questions_answers
+  module:
+    - entity_reference_revisions
+    - options
+id: paragraph.section_questions_answers.default
+targetEntityType: paragraph
+bundle: section_questions_answers
+mode: default
+content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_questions_answers:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_section_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_show_on_page:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_side_of_the_image:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

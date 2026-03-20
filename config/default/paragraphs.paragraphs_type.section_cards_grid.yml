@@ -1,9 +1,9 @@
-uuid: c51640b3-4bfe-4bbc-a595-b56b616ed44a
+uuid: 989337cf-f18b-45de-9abd-7820917219ef
 langcode: pt-br
 status: true
 dependencies: {  }
-id: gallery
-label: 'Seção - Galeria'
+id: section_cards_grid
+label: 'Seção - Grid de Cards'
 icon_uuid: null
 icon_default: null
 description: ''

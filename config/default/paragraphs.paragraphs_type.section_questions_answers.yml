@@ -1,9 +1,9 @@
-uuid: c51640b3-4bfe-4bbc-a595-b56b616ed44a
+uuid: 90176d7d-2a0a-4725-93dd-f4a13974feee
 langcode: pt-br
 status: true
 dependencies: {  }
-id: gallery
-label: 'Seção - Galeria'
+id: section_questions_answers
+label: 'Seção - Perguntas e Respostas'
 icon_uuid: null
 icon_default: null
 description: ''

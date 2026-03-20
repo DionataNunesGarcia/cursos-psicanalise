@@ -1,9 +1,9 @@
-uuid: c51640b3-4bfe-4bbc-a595-b56b616ed44a
+uuid: 3d134fc1-8db9-4224-95f4-fbcccd7a0758
 langcode: pt-br
 status: true
 dependencies: {  }
-id: gallery
-label: 'Seção - Galeria'
+id: testimonials
+label: Testemunhos
 icon_uuid: null
 icon_default: null
 description: ''

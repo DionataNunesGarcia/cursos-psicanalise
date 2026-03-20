@@ -1,9 +1,9 @@
-uuid: c51640b3-4bfe-4bbc-a595-b56b616ed44a
+uuid: cf6593f9-e40b-4dda-bf38-8e776617a975
 langcode: pt-br
 status: true
 dependencies: {  }
-id: gallery
-label: 'Seção - Galeria'
+id: section_banner
+label: 'Seção - Banner'
 icon_uuid: null
 icon_default: null
 description: ''

@@ -1,0 +1,34 @@
+uuid: dab471af-cc80-4ebb-a8f6-ef89be6c07ec
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.question_answer.field_answer
+    - field.field.paragraph.question_answer.field_question
+    - paragraphs.paragraphs_type.question_answer
+  module:
+    - text
+id: paragraph.question_answer.default
+targetEntityType: paragraph
+bundle: question_answer
+mode: default
+content:
+  field_answer:
+    type: text_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_question:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

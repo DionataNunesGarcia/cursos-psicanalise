@@ -1,0 +1,19 @@
+uuid: 2dad7a1e-90a5-4073-b071-4449679807cd
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subtitle
+    - paragraphs.paragraphs_type.card
+id: paragraph.card.field_subtitle
+field_name: field_subtitle
+entity_type: paragraph
+bundle: card
+label: Subtítulo
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

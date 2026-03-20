@@ -1,0 +1,76 @@
+uuid: a38d04e0-a2ed-4af4-938a-0dbe43c0c99b
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.section_banner.field_cta_primary
+    - field.field.paragraph.section_banner.field_cta_secondary
+    - field.field.paragraph.section_banner.field_image
+    - field.field.paragraph.section_banner.field_section_title
+    - field.field.paragraph.section_banner.field_subtitle
+    - field.field.paragraph.section_banner.field_text
+    - paragraphs.paragraphs_type.section_banner
+  module:
+    - link
+id: paragraph.section_banner.default
+targetEntityType: paragraph
+bundle: section_banner
+mode: default
+content:
+  field_cta_primary:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_cta_secondary:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_section_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_subtitle:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden: {  }

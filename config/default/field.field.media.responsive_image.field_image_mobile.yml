@@ -1,0 +1,29 @@
+uuid: 72deac48-0da1-42c1-9d72-fa78879f3399
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_image_mobile
+    - media.type.image
+    - media.type.responsive_image
+id: media.responsive_image.field_image_mobile
+field_name: field_image_mobile
+entity_type: media
+bundle: responsive_image
+label: 'Imagem Mobile'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
