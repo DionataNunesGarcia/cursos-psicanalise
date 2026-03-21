@@ -1,0 +1,45 @@
+uuid: f3ca28fe-6554-46ce-8eae-4341bf679f52
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.courses.body
+    - field.field.node.courses.field_course_category
+    - field.field.node.courses.field_course_featured_image
+    - field.field.node.courses.field_course_type
+    - field.field.node.courses.field_final_date
+    - field.field.node.courses.field_initial_date
+    - field.field.node.courses.field_price
+    - field.field.node.courses.field_professors
+    - node.type.courses
+  module:
+    - text
+    - user
+id: node.courses.teaser
+targetEntityType: node
+bundle: courses
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_course_category: true
+  field_course_featured_image: true
+  field_course_type: true
+  field_final_date: true
+  field_initial_date: true
+  field_price: true
+  field_professors: true
+  langcode: true

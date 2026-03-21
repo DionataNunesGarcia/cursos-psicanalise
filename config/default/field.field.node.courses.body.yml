@@ -1,0 +1,26 @@
+uuid: a83d1079-eaea-4e12-85eb-41d1bc15e96f
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - filter.format.full_html
+    - node.type.courses
+  module:
+    - text
+id: node.courses.body
+field_name: body
+entity_type: node
+bundle: courses
+label: Corpo
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats:
+    - full_html
+field_type: text_with_summary
