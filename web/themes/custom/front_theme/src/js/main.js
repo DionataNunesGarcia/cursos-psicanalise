@@ -1,1 +1,1 @@
-console.log("Portfolio theme loaded");
+console.log("Principal tema caregado");
