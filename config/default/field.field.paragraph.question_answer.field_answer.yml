@@ -1,0 +1,24 @@
+uuid: ac734e29-64a7-4602-94b6-dc2fe21c4586
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_answer
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.question_answer
+  module:
+    - text
+id: paragraph.question_answer.field_answer
+field_name: field_answer
+entity_type: paragraph
+bundle: question_answer
+label: Resposta
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text

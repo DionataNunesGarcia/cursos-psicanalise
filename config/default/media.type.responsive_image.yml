@@ -1,0 +1,13 @@
+uuid: b4916054-8e70-4b23-a400-171a06b04309
+langcode: pt-br
+status: true
+dependencies: {  }
+id: responsive_image
+label: 'Imagem Responsiva'
+description: ''
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map: {  }

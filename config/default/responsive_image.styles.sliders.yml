@@ -1,0 +1,36 @@
+uuid: e7b95058-2beb-42c1-b58e-951f66c967d5
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - image.style.slider_desktop
+    - image.style.slider_desktop_large
+    - image.style.slider_mobile
+    - image.style.slider_tablet
+  theme:
+    - front_theme
+id: sliders
+label: Sliders
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: slider_desktop_large
+    breakpoint_id: front_theme.xl
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: slider_desktop
+    breakpoint_id: front_theme.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: slider_tablet
+    breakpoint_id: front_theme.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: slider_mobile
+    breakpoint_id: front_theme.sm
+    multiplier: 1x
+breakpoint_group: front_theme
+fallback_image_style: slider_desktop_large

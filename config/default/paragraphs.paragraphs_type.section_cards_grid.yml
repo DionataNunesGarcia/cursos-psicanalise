@@ -1,0 +1,10 @@
+uuid: 989337cf-f18b-45de-9abd-7820917219ef
+langcode: pt-br
+status: true
+dependencies: {  }
+id: section_cards_grid
+label: 'Seção - Grid de Cards'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

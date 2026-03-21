@@ -1,0 +1,21 @@
+uuid: e40bd65e-d649-4fb2-bd0f-75f64936b36e
+langcode: pt-br
+status: true
+dependencies: {  }
+name: slider_tablet
+label: 'Slider - Tablet'
+effects:
+  31509f5d-30ab-408d-9a9a-4b0cd8e28523:
+    uuid: 31509f5d-30ab-408d-9a9a-4b0cd8e28523
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1024
+      height: 500
+      anchor: center-center
+  71fb91b1-a61f-4dec-ab45-34c568e66afa:
+    uuid: 71fb91b1-a61f-4dec-ab45-34c568e66afa
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

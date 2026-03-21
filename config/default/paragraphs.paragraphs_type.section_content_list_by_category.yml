@@ -1,0 +1,10 @@
+uuid: ded38480-a520-4665-afa2-6c6ad55e00d3
+langcode: pt-br
+status: true
+dependencies: {  }
+id: section_content_list_by_category
+label: 'Seção - Lista de Conteúdos por Categorias'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
