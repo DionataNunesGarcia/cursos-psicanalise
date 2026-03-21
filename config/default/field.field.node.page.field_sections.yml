@@ -9,9 +9,12 @@ dependencies:
     - paragraphs.paragraphs_type.section_banner
     - paragraphs.paragraphs_type.section_cards_carousel
     - paragraphs.paragraphs_type.section_cards_grid
+    - paragraphs.paragraphs_type.section_content_list_by_category
+    - paragraphs.paragraphs_type.section_fluid_title_and_text
     - paragraphs.paragraphs_type.section_image_and_sidebar_text
     - paragraphs.paragraphs_type.section_questions_answers
     - paragraphs.paragraphs_type.section_sliders
+    - paragraphs.paragraphs_type.section_team_carousel
     - paragraphs.paragraphs_type.section_testimonials
     - paragraphs.paragraphs_type.texto_full_html
   module:
@@ -32,52 +35,64 @@ settings:
     target_bundles:
       section_banner: section_banner
       section_cards_carousel: section_cards_carousel
+      section_team_carousel: section_team_carousel
       gallery: gallery
       section_cards_grid: section_cards_grid
       section_image_and_sidebar_text: section_image_and_sidebar_text
+      section_content_list_by_category: section_content_list_by_category
       section_questions_answers: section_questions_answers
       section_sliders: section_sliders
       section_testimonials: section_testimonials
       texto_full_html: texto_full_html
+      section_fluid_title_and_text: section_fluid_title_and_text
     negate: 0
     target_bundles_drag_drop:
       card:
-        weight: -18
+        weight: -21
         enabled: false
       gallery:
-        weight: -25
+        weight: -30
         enabled: true
       question_answer:
-        weight: -17
+        weight: -20
         enabled: false
       section_banner:
-        weight: -27
+        weight: -33
         enabled: true
       section_cards_carousel:
-        weight: -26
+        weight: -32
         enabled: true
       section_cards_grid:
-        weight: -24
+        weight: -29
         enabled: true
-      section_image_and_sidebar_text:
-        weight: -23
+      section_content_list_by_category:
+        weight: -27
         enabled: true
-      section_questions_answers:
+      section_fluid_title_and_text:
         weight: -22
         enabled: true
+      section_image_and_sidebar_text:
+        weight: -28
+        enabled: true
+      section_questions_answers:
+        weight: -26
+        enabled: true
       section_sliders:
-        weight: -21
+        weight: -25
+        enabled: true
+      section_team_carousel:
+        weight: -31
         enabled: true
       section_testimonials:
-        weight: -20
+        weight: -24
         enabled: true
       slider:
-        weight: -16
+        weight: -19
         enabled: false
       testimonials:
-        weight: -15
+        weight: -18
         enabled: false
       texto_full_html:
-        weight: -19
+        weight: -23
         enabled: true
 field_type: entity_reference_revisions
