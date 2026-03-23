@@ -17,6 +17,12 @@ function front_theme_preprocess_page(&$variables) {
   }
 
   $variables['site_name'] = \Drupal::config('system.site')->get('name');
+
+
+  $menu_service = \Drupal::service('custom_menu.menu_service');
+
+  $variables['menu_main'] = $menu_service->getMenuTree('main');
+  $variables['menu_cta'] = $menu_service->getMenuTree('menus-cta');
 }
 
 function front_theme_library_info_alter(&$libraries, $extension) {

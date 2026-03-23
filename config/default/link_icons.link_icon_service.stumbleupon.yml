@@ -1,0 +1,16 @@
+uuid: cea06fdd-2418-4201-ae3b-9ef7c926f939
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: acUaphPKoV-0s3tS9x6i6jK2HdmjqAEZMnAcTEbHfbs
+id: stumbleupon
+label: StumbleUpon
+hostnames:
+  - stumbleupon.com
+class: null
+icon: stumbleupon
+icon_style: brand
+icon_square: null
+icon_circle: stumbleupon-circle
+color: '#EA4B24'

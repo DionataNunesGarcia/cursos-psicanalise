@@ -1,0 +1,17 @@
+uuid: 7c26df9b-c8c5-4617-b0f6-86944ba5dbe1
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: i6xJSf-fmG_iIb2IZTf5jf5kaUst6_LrS-l4zNwqaJc
+id: unity
+label: Unity
+hostnames:
+  - unity.com
+  - unity3d.com
+class: null
+icon: unity
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: black

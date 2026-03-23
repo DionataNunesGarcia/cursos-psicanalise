@@ -13,6 +13,18 @@
           }
         }
       }
+      &.dropdown {
+        li {
+          width: 100%;
+          &:hover,
+          &:focus {
+            background-color: transparent;
+            a {
+              color: hsl(var(--color-primary-dark));
+            }
+          }
+        }
+      }
     }
   }
 }

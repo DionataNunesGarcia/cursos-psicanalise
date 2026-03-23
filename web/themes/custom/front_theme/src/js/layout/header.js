@@ -30,6 +30,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+  const spans = hamburger.querySelectorAll("span");
+
+  hamburger.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+
+    // animação do X
+    spans[0].classList.toggle("rotate-45");
+    spans[0].classList.toggle("translate-y-1.5");
+    spans[1].classList.toggle("opacity-0");
+    spans[2].classList.toggle("-rotate-45");
+    spans[2].classList.toggle("-translate-y-1.5");
+  });
+
   const menuItems = document.querySelectorAll("nav li");
 
   menuItems.forEach((item) => {

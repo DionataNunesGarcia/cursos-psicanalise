@@ -39,3 +39,4 @@ cloneable_entities:
   - entity_form_mode
   - date_format
   - base_field_override
+  - link_icon_service

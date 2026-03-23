@@ -1,0 +1,16 @@
+uuid: 0fe49764-fa94-4035-a762-a8f3b158c403
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: _RNclaH3PQ67fs49aeYKu4hDeSoum0Ht6Vv2yvACktw
+id: tumblr
+label: Tumblr
+hostnames:
+  - tumblr.com
+class: null
+icon: tumblr
+icon_style: brand
+icon_square: tumblr-square
+icon_circle: null
+color: '#2C4762'

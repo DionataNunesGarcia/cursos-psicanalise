@@ -1,0 +1,16 @@
+uuid: 18115b6a-a421-4fd2-9b59-91c36c94fb52
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: cfNIpGFuPvYCpOjqmymTJT-iay6tf3s7JYU3l79gTnM
+id: twitch
+label: Twitch
+hostnames:
+  - twitch.tv
+class: null
+icon: twitch
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: '#4B367C'

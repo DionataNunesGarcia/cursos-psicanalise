@@ -1,0 +1,16 @@
+uuid: 85d060b9-142f-4fab-8a92-3901220b12e4
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: poNqampnwxKqVa15qyV9meu8FvLF6ch_vQdR2GhqctM
+id: dailymotion
+label: Dailymotion
+hostnames:
+  - dailymotion.com
+class: null
+icon: dailymotion
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: '#56C7FF'

@@ -1,0 +1,16 @@
+uuid: 4f4b837a-6e99-4cb3-b64c-3a106bab11a4
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: p7nlAmEC9dH3qC7LKEYsMBe7zVlhHWUi-v-4CU-1sGM
+id: nextupcomedy
+label: 'NextUp Comedy'
+hostnames:
+  - nextupcomedy.com
+class: nextup-comedy
+icon: play
+icon_style: solid
+icon_square: film
+icon_circle: play-circle
+color: '#13B2A9'
