@@ -1,1 +1,2 @@
-console.log("Principal tema caregado");
+// layout
+import "./layout/header";

@@ -1,12 +1,25 @@
+// Base
+@use "base/fonts";
+@use "base/variables";
+@use "base/reset";
+@use "base/typography";
+
+// Components
+@use "components/buttons";
+@use "components/cards";
+
+// Utilities
+@use "utilities/colors";
+
+// Layout
+@use "layout/header";
+@use "layout/main-menu";
+@use "layout/layout";
+@use "layout/footer";
+
+// Paragraphs
+@use "paragraphs/sliders";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Layout */
-@import "layout/header";
-@import "layout/main-menu";
-@import "layout/layout";
-@import "layout/footer";
-
-/* Paragraphs */
-@import "paragraphs/sliders";

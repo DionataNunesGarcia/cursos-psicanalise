@@ -1,17 +1,20 @@
-<header class="header-main bg-black border-b border-gray-800 sticky top-0 z-50">
+<header class="header-main bg-white border-b  border-gray-800 sticky top-0 z-50">
 
-  <div class="container mx-auto px-6 py-4 flex items-center justify-center">
+  <div class="container mx-auto px-6 py-4 flex items-center justify-start gap-12">
 
     <div class="text-xl font-bold">
       <a href="{{ path('<front>') }}" class="text-white hover:text-gray-300">
-        {{ site_name }}
+        <img src="{{ site_logo }}" alt="{{ site_name }} logo" class="h-8 inline-block ml-2">
       </a>
     </div>
 
-    <nav class="flex gap-8 text-sm uppercase tracking-wide mx-auto">
+    <div class="flex gap-2 text-sm tracking-wide">
       {{ page.primary_menu }}
-    </nav>
+    </div>
 
+    <div class="flex gap-2 text-sm tracking-wide">
+      {{ page.secondary_menu }}
+    </div>
   </div>
 
 </header>

@@ -1,4 +1,7 @@
-{% include '@front_theme/components/header.html.twig' %}
+{% include '@front_theme/components/header.html.twig' with {
+  'site_name': site_name,
+  'site_logo': site_logo,
+} %}
 
 <main id="main-content" class="bg-white text-black min-h-screen">
 

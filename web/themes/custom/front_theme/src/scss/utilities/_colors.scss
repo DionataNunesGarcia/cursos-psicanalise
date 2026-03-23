@@ -1,0 +1,11 @@
+/* ============================================
+   Color Utilities
+   ============================================ */
+
+.bg-primary {
+  background: hsl(var(--color-primary));
+}
+
+.text-primary {
+  color: hsl(var(--color-primary));
+}
