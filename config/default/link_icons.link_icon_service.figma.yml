@@ -1,0 +1,16 @@
+uuid: 1bf99413-8c44-4abe-a56c-0df9fc9dafaa
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: v2GWLvzhHTUyOGAPFf-Wkuk0KJeg1jDI_bMtVpxhTCM
+id: figma
+label: Figma
+hostnames:
+  - figma.com
+class: null
+icon: figma
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: black

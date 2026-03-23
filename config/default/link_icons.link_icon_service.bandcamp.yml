@@ -1,0 +1,16 @@
+uuid: f44e20ca-cd1c-4ac0-9984-c10b0f8af63f
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 6pCVX02FOiuMS584kWsAXrqP-_PGvCIVZ9-rZ6fVh3I
+id: bandcamp
+label: Bandcamp
+hostnames:
+  - bandcamp.com
+class: null
+icon: bandcamp
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: '#639AA9'

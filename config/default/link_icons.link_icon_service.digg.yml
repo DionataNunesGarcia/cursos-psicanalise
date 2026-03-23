@@ -1,0 +1,16 @@
+uuid: bc07e209-8727-4287-9874-d1285080ce45
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: MAs_JMW7auC-myFD83DGrgJDeosrZoz60oDh0spkrMs
+id: digg
+label: Digg
+hostnames:
+  - digg.com
+class: null
+icon: digg
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: black

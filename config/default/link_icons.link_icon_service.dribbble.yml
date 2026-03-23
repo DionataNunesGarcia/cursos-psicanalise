@@ -1,0 +1,16 @@
+uuid: 9116e503-83cd-4035-9db5-83dd9df5ce33
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: c3GyTdiWhLZqY6jWmWHbgc2DwihfVkrak8GuY5nwifQ
+id: dribbble
+label: Dribbble
+hostnames:
+  - dribbble.com
+class: null
+icon: dribbble
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: '#CA2A68'

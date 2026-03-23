@@ -1,0 +1,16 @@
+uuid: 3b2f52dd-4cc1-4958-8222-f98e579d9125
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: zo4Jo282PnsXVYAnYZ6Vs1XZS6y2PYydAyAWipi2kC0
+id: vimeo
+label: Vimeo
+hostnames:
+  - vimeo.com
+class: null
+icon: vimeo-v
+icon_style: brand
+icon_square: vimeo-square
+icon_circle: null
+color: '#1AB7EA'

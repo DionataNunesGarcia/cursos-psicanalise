@@ -1,0 +1,16 @@
+uuid: 5588199b-e560-4143-a97f-ea9f41825ec0
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 341Cd9vZHFonrq1MP911xnZJfBQG7M65uklnn59CPGE
+id: britishcomedyguide
+label: 'British Comedy Guide'
+hostnames:
+  - comedy.co.uk
+class: british-comedy-guide
+icon: crown
+icon_style: solid
+icon_square: null
+icon_circle: null
+color: '#FDDA29'

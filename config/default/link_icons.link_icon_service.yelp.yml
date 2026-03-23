@@ -1,0 +1,17 @@
+uuid: 1c0229ad-0931-4dbf-93b6-5d4121a402fc
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: v9TuFKwERxqqQlihmqnObrUMQ50HKwGm7vDM4aIa8dg
+id: yelp
+label: Yelp
+hostnames:
+  - yelp.com
+  - yelp.co.uk
+class: null
+icon: yelp
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: '#D32323'

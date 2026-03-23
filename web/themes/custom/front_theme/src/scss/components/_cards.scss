@@ -1,0 +1,14 @@
+/* ============================================
+   Cards
+   ============================================ */
+
+.card {
+  background: hsl(var(--color-white));
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}

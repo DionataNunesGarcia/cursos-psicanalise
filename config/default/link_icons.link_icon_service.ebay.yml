@@ -1,0 +1,53 @@
+uuid: 08967b67-20b5-48ba-8361-eeccbee3300e
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: c5AzviJYtrPzGpTx63--rx93BlxjR4jzYJDM_1bSu2I
+id: ebay
+label: eBay
+hostnames:
+  - ebay.com
+  - ebay.co.uk
+  - ebay.de
+  - ebay.com.au
+  - ebay.at
+  - ebay.be
+  - ebay.ca
+  - ebay.com.cn
+  - ebay.cz
+  - ebay.dk
+  - ebay.fi
+  - ebay.fr
+  - ebay.gr
+  - ebay.com.hk
+  - ebay.hu
+  - ebay.ie
+  - ebay.in
+  - ebay.it
+  - ebay.com.my
+  - ebay.mx
+  - ebay.nl
+  - ebay.no
+  - ebay.ph
+  - ebay.pl
+  - ebay.pt
+  - ebay.ru
+  - ebay.com.sg
+  - ebay.es
+  - ebay.ch
+  - ebay.co.th
+  - ebay.vn
+  - auction.co.kr
+  - mercadolibre.com.ar
+  - mercadolivre.com.br
+  - ruten.com.tw
+  - tradera.com
+  - gittigidiyor.com
+  - ebayinc.com
+class: null
+icon: ebay
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: '#DE3036'

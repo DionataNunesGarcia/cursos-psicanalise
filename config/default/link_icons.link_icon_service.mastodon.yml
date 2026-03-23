@@ -1,0 +1,24 @@
+uuid: e6e93bdd-05fe-436e-b7da-3f1704eff4b1
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: N5ERpldrkt7q36gu0kiHrlsxQ1gsGtnetaTFHoAb7Cc
+id: mastodon
+label: Mastodon
+hostnames:
+  - joinmastodon.org
+  - mastodon.social
+  - mstdn.social
+  - mastodon.world
+  - mas.to
+  - mstdn.party
+  - mstdn.games
+  - mastodon.green
+  - mastodon.energy
+class: null
+icon: mastodon
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: '#5C4FE6'

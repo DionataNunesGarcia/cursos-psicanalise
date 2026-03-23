@@ -1,6 +1,6 @@
 uuid: 08d2efcc-e3a2-4d5d-951a-5382a0d3d671
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - system.menu.account
@@ -13,7 +13,7 @@ _core:
 id: front_theme_account_menu
 theme: front_theme
 region: secondary_menu
-weight: -4
+weight: -5
 provider: null
 plugin: 'system_menu_block:account'
 settings:

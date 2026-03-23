@@ -1,0 +1,17 @@
+{
+    "_hash": "2f1f2ed257f48ad224a56308d67daafc8a29cc01460bddc4b0c2b1d04fb3ad9d",
+    "patches": {
+        "drupal/core": [
+            {
+                "package": "drupal/core",
+                "description": "Menu update.",
+                "url": "https://www.drupal.org/files/issues/2020-07-16/3132426-52.patch",
+                "sha256": "e576d6723c3f73abdc9f001f37b61ccaf7d8f51ede61bb1515a87d0f3b4ca67a",
+                "depth": 2,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,17 @@
+uuid: bfcfba61-fabf-4022-a54e-da5322472b3a
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: lbuH5HAQdc7_81HXLwnTW2P-Ll7uoK6aG9gi2MtHEWM
+id: threads
+label: Threads
+hostnames:
+  - threads.com
+  - threads.net
+class: null
+icon: threads
+icon_style: brand
+icon_square: square-threads
+icon_circle: null
+color: black

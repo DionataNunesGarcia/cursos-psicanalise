@@ -1,0 +1,16 @@
+uuid: b902e0e2-bee4-4273-8d2f-748dedc2ad95
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: CXOm4MNVVEYBPt9u4orRSrDaS7pSjbS0Ehm78a0PJp0
+id: ko_fi
+label: Ko-fi
+hostnames:
+  - ko-fi.com
+class: null
+icon: mug
+icon_style: light
+icon_square: null
+icon_circle: null
+color: '#202020'

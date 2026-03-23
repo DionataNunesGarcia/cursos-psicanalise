@@ -5,9 +5,9 @@
   "main": "postcss.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tailwindcss -i ./src/scss/style.scss -o ./dist/css/style.css && esbuild src/js/main.js --bundle --outfile=dist/js/main.js",
-    "watch": "tailwindcss -i ./src/scss/style.scss -o ./dist/css/style.css --watch",
-    "build": "tailwindcss -i ./src/scss/style.scss -o ./dist/css/style.css --minify && esbuild src/js/main.js --bundle --minify --outfile=dist/js/main.js"
+    "dev": "sass --no-source-map src/scss/style.scss dist/css/style.pre.css && tailwindcss -i dist/css/style.pre.css -o dist/css/style.css && esbuild src/js/main.js --bundle --outfile=dist/js/main.js",
+    "watch": "sass --no-source-map src/scss/style.scss dist/css/style.pre.css && concurrently \"sass --no-source-map src/scss/style.scss dist/css/style.pre.css --watch\" \"tailwindcss -i dist/css/style.pre.css -o dist/css/style.css --watch\" \"esbuild src/js/main.js --bundle --outfile=dist/js/main.js --watch\"",
+    "build": "sass --no-source-map src/scss/style.scss dist/css/style.pre.css && NODE_ENV=production tailwindcss -i dist/css/style.pre.css -o dist/css/style.css --minify && esbuild src/js/main.js --bundle --minify --outfile=dist/js/main.js"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +29,7 @@
     "arg": "^5.0.2",
     "baseline-browser-mapping": "^2.10.0",
     "binary-extensions": "^2.3.0",
+    "bootstrap-icons": "^1.13.1",
     "braces": "^3.0.3",
     "browserslist": "^4.28.1",
     "camelcase": "^5.3.1",

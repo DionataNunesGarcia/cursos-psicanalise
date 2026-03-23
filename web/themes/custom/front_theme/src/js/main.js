@@ -1,1 +1,2 @@
-console.log("Portfolio theme loaded");
+// layout
+import "./layout/header";

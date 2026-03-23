@@ -1,0 +1,16 @@
+uuid: d9c85f6b-5594-413c-8348-9273f0290f13
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: IOXcP4vidmWsYbGHIadxfRjBkIjhzSU4EFFVu29qPZ0
+id: airbnb
+label: Airbnb
+hostnames:
+  - airbnb.com
+class: null
+icon: airbnb
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: '#FF385C'

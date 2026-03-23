@@ -1,0 +1,17 @@
+uuid: 12225c2f-27a7-4eec-a741-3347793b6219
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: nuFGWlAep3-ZheSv-O1OejHxGDegXvQC1kAGvuh0SHg
+id: tripadvisor
+label: Tripadvisor
+hostnames:
+  - tripadvisor.com
+  - tripadvisor.co.uk
+class: null
+icon: binoculars
+icon_style: solid
+icon_square: null
+icon_circle: null
+color: '#34E0A1'

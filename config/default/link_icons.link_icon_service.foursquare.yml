@@ -1,0 +1,16 @@
+uuid: 3ee86ef5-2d6d-450a-b120-40a54222036d
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 6nXy6Bne0GAn0Twfuf_J1DfwXJRvsgKYbJDgN_1YfYA
+id: foursquare
+label: Foursquare
+hostnames:
+  - foursquare.com
+class: null
+icon: foursquare
+icon_style: brand
+icon_square: null
+icon_circle: null
+color: '#38AAE1'

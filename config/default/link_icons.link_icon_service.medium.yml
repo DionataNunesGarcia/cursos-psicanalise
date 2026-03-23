@@ -1,0 +1,16 @@
+uuid: e8850310-7ee9-42ea-bb94-6bd2a64292d0
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: M1Cy53PKUWNYd2aCaJcR1AlsR6hvGGrx9Yq-7mlNbWU
+id: medium
+label: Médio
+hostnames:
+  - medium.com
+class: null
+icon: medium-m
+icon_style: brand
+icon_square: medium
+icon_circle: null
+color: '#00AB6B'
