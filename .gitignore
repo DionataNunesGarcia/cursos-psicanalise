@@ -49,6 +49,9 @@ docroot/themes/custom/*/public/**
 /web/sites/default/
 node_modules
 
+# Arquivo intermediário gerado pelo build SCSS → Tailwind
+/web/themes/custom/front_theme/dist/css/style.pre.css
+
 # Tests results and cache
 test-results/
 playwright-report/
