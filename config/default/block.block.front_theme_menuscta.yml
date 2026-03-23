@@ -1,0 +1,25 @@
+uuid: 604d78e9-8f67-4c2e-88a2-2b16c793c251
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - system.menu.menus-cta
+  module:
+    - system
+  theme:
+    - front_theme
+id: front_theme_menuscta
+theme: front_theme
+region: secondary_menu
+weight: -6
+provider: null
+plugin: 'system_menu_block:menus-cta'
+settings:
+  id: 'system_menu_block:menus-cta'
+  label: 'Menus CTA'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: false
+visibility: {  }

@@ -1,19 +1,19 @@
-uuid: 08d2efcc-e3a2-4d5d-951a-5382a0d3d671
+uuid: b1b8b5bb-62ec-4de5-98d2-99448be65eb0
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - system.menu.account
   module:
     - system
   theme:
-    - front_theme
+    - tailwindcss
 _core:
   default_config_hash: gmxYWWHmgbe0Pnv8y48ZLSLH5mEHejOjAP6RLxUfdzU
-id: front_theme_account_menu
-theme: front_theme
+id: tailwindcss_account_menu
+theme: tailwindcss
 region: secondary_menu
-weight: -5
+weight: -4
 provider: null
 plugin: 'system_menu_block:account'
 settings:

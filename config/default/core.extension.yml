@@ -67,4 +67,6 @@ theme:
   claro: 0
   front_theme: 0
   gin: 0
+  stable9: 0
+  tailwindcss: 0
 profile: standard

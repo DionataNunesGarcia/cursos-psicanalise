@@ -1,17 +1,17 @@
-uuid: bd9537fe-80a7-4055-8a0b-912a0fa6d748
+uuid: 1177cfe3-7422-47fd-8197-22c6236f10a1
 langcode: en
 status: false
 dependencies:
   module:
     - search
   theme:
-    - front_theme
+    - tailwindcss
 _core:
   default_config_hash: _nZjxxdypO6xrOAJkCYD81v0L7wh2zbCAVO7_C-UKIc
-id: front_theme_search_form_narrow
-theme: front_theme
+id: tailwindcss_search_form_narrow
+theme: tailwindcss
 region: primary_menu
-weight: -7
+weight: -4
 provider: null
 plugin: search_form_block
 settings:
