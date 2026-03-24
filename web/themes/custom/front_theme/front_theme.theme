@@ -80,3 +80,25 @@ function front_theme_preprocess_menu__primary_menu(&$variables) {
     }
   }
 }
+
+function front_theme_preprocess_node(&$variables) {
+  $node = $variables['node'];
+
+  // Só para conteúdo tipo "conteudos" e view mode card
+  if ($node->bundle() === 'conteudos' && $variables['view_mode'] === 'card') {
+
+    $body = $node->get('body')->value;
+
+    if ($body) {
+      $word_count = str_word_count(strip_tags($body));
+
+      // média: 200 palavras por minuto
+      $reading_time = ceil($word_count / 200);
+
+      $variables['reading_time'] = max(1, $reading_time);
+    }
+    else {
+      $variables['reading_time'] = 1;
+    }
+  }
+}

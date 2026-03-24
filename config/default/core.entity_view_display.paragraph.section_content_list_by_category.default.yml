@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.section_content_list_by_category.field_content_category
     - field.field.paragraph.section_content_list_by_category.field_section_title
+    - field.field.paragraph.section_content_list_by_category.field_text
     - paragraphs.paragraphs_type.section_content_list_by_category
 id: paragraph.section_content_list_by_category.default
 targetEntityType: paragraph
@@ -13,7 +14,7 @@ mode: default
 content:
   field_content_category:
     type: entity_reference_label
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
@@ -26,5 +27,12 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
 hidden: {  }
