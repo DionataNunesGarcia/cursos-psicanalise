@@ -54,10 +54,10 @@
       <div class="container mx-auto content-text px-4 py-12">
         {% set title = content.field_section_title[0]['#context']['value'] %}
         {% set words = title|split(' ') %}
-        <h2>
+        <h3>
           <span class="text-primary">{{ words[0] }}</span>
           {{ words|slice(1)|join(' ') }}
-        </h2>
+        </h3>
         <h3>{{ content.field_subtitle[0]['#context']['value'] }}</h3>
         <p>{{ content.field_text[0]['#context']['value'] }}</p>
         <div class="mt-6 ctas flex flex-col md:flex-row gap-4 justify-center">
