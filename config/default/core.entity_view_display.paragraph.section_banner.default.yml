@@ -3,6 +3,7 @@ langcode: pt-br
 status: true
 dependencies:
   config:
+    - field.field.paragraph.section_banner.field_banner_type
     - field.field.paragraph.section_banner.field_cta_primary
     - field.field.paragraph.section_banner.field_cta_secondary
     - field.field.paragraph.section_banner.field_image
@@ -12,11 +13,19 @@ dependencies:
     - paragraphs.paragraphs_type.section_banner
   module:
     - link
+    - options
 id: paragraph.section_banner.default
 targetEntityType: paragraph
 bundle: section_banner
 mode: default
 content:
+  field_banner_type:
+    type: list_key
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_cta_primary:
     type: link
     label: above

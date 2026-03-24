@@ -1,0 +1,37 @@
+.paragraph--type--section-banner {
+  padding: 100px 0;
+  &.banner-type-default {
+    .content-text {
+      max-width: 800px;
+      margin: 0 auto;
+      h2 {
+        font-weight: 500;
+        margin-bottom: 24px;
+        font-size: 48px;
+        &.text-primary {
+          color: hsl(var(--color-primary));
+        }
+        &::before {
+          content: "";
+          display: block;
+          width: 50px;
+          height: 40px;
+          background-image: url(/themes/custom/front_theme/src/images/ideia.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          margin: 0 auto;
+        }
+      }
+      h3 {
+        font-weight: 400;
+        margin-bottom: 24px;
+        font-size: 32px;
+      }
+      p {
+        font-size: 18px;
+        margin-bottom: 72px;
+      }
+    }
+  }
+}
