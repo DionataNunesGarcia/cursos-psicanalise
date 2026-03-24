@@ -2,13 +2,55 @@
    Cards
    ============================================ */
 
-.card {
-  background: hsl(var(--color-white));
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  box-shadow: var(--shadow-sm);
+.paragraph--type--card {
+  // big numbers variation
+  &.card-type-big_numbers {
+    background: hsl(var(--color-white));
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
 
-  &:hover {
-    box-shadow: var(--shadow-md);
+    &:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    h3 {
+      text-align: right;
+      font-size: 80px;
+      margin-bottom: 48px;
+    }
+
+    h4 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 18px;
+      color: hsl(var(--color-gray-600));
+    }
+
+    .card-link {
+      width: 100%;
+      text-align: right;
+      padding: 0 16px;
+      margin-top: 70px;
+      margin-bottom: 24px;
+      a {
+        color: hsl(var(--color-primary));
+        content: "";
+        display: inline-block;
+        font-size: 0;
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 17px;
+          height: 17px;
+          background-image: url("/themes/custom/front_theme/src/images/link-go.png");
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
   }
 }

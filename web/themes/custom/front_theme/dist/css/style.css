@@ -232,15 +232,56 @@
    Cards
    ============================================ */
 
-.card {
+.paragraph--type--card.card-type-big_numbers {
   background: hsl(var(--color-white));
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   box-shadow: var(--shadow-sm);
 }
 
-.card:hover {
+.paragraph--type--card.card-type-big_numbers:hover {
   box-shadow: var(--shadow-md);
+}
+
+.paragraph--type--card.card-type-big_numbers h3 {
+  text-align: right;
+  font-size: 80px;
+  margin-bottom: 48px;
+}
+
+.paragraph--type--card.card-type-big_numbers h4 {
+  font-size: 24px;
+}
+
+.paragraph--type--card.card-type-big_numbers p {
+  font-size: 18px;
+  color: hsl(var(--color-gray-600));
+}
+
+.paragraph--type--card.card-type-big_numbers .card-link {
+  width: 100%;
+  text-align: right;
+  padding: 0 16px;
+  margin-top: 70px;
+  margin-bottom: 24px;
+}
+
+.paragraph--type--card.card-type-big_numbers .card-link a {
+  color: hsl(var(--color-primary));
+  content: "";
+  display: inline-block;
+  font-size: 0;
+}
+
+.paragraph--type--card.card-type-big_numbers .card-link a::after {
+  content: "";
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  background-image: url("/themes/custom/front_theme/src/images/link-go.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* ============================================
@@ -1020,6 +1061,10 @@ a:hover {
   margin-left: auto;
 }
 
+.mt-10{
+  margin-top: 2.5rem;
+}
+
 .mt-2{
   margin-top: 0.5rem;
 }
@@ -1042,6 +1087,10 @@ a:hover {
 
 .inline-block{
   display: inline-block;
+}
+
+.inline{
+  display: inline;
 }
 
 .flex{
@@ -1088,6 +1137,10 @@ a:hover {
   min-width: 200px;
 }
 
+.max-w-\[1177px\]{
+  max-width: 1177px;
+}
+
 .max-w-none{
   max-width: none;
 }
@@ -1119,10 +1172,6 @@ a:hover {
 
 .grid-cols-1{
   grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-.flex-row{
-  flex-direction: row;
 }
 
 .flex-col{
@@ -1387,6 +1436,10 @@ a:hover {
     width: auto;
   }
 
+  .md\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .md\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1413,7 +1466,7 @@ a:hover {
 }
 
 @media (min-width: 1024px){
-  .lg\:flex-row{
-    flex-direction: row;
+  .lg\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
