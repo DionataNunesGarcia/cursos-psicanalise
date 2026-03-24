@@ -1,0 +1,19 @@
+uuid: 9a77dc4b-fd79-48ee-8d44-289f9b435dd9
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.section_testimonials
+id: paragraph.section_testimonials.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: section_testimonials
+label: Texto
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

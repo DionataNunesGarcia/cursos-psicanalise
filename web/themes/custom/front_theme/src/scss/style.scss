@@ -5,8 +5,10 @@
 @use "base/typography";
 
 // Components
+@use "components/badges";
 @use "components/buttons";
 @use "components/cards";
+@use "components/carousel";
 
 // Utilities
 @use "utilities/colors";

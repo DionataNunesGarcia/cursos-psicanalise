@@ -113,6 +113,7 @@
     "sucrase": "^3.35.1",
     "supports-color": "^8.1.1",
     "supports-preserve-symlinks-flag": "^1.0.0",
+    "swiper": "^12.1.2",
     "thenify": "^3.3.1",
     "thenify-all": "^1.6.0",
     "tinyglobby": "^0.2.15",
