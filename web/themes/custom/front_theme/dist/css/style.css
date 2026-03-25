@@ -1460,6 +1460,10 @@ a:hover {
   gap: 2rem;
 }
 
+.gap-10{
+  gap: 2.5rem;
+}
+
 .overflow-hidden{
   overflow: hidden;
 }
@@ -1591,6 +1595,11 @@ a:hover {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-bold{
@@ -1738,6 +1747,14 @@ a:hover {
     position: relative;
   }
 
+  .md\:order-1{
+    order: 1;
+  }
+
+  .md\:order-2{
+    order: 2;
+  }
+
   .md\:col-span-2{
     grid-column: span 2 / span 2;
   }
@@ -1756,6 +1773,10 @@ a:hover {
 
   .md\:w-auto{
     width: auto;
+  }
+
+  .md\:w-1\/2{
+    width: 50%;
   }
 
   .md\:grid-cols-2{
