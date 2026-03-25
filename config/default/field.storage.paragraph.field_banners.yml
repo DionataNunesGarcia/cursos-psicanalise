@@ -1,12 +1,12 @@
-uuid: d2d3c84b-8d42-4aed-97ef-c6858357895d
+uuid: 898420dd-4569-438d-bb68-e8e2755549ea
 langcode: pt-br
 status: true
 dependencies:
   module:
     - entity_reference_revisions
     - paragraphs
-id: paragraph.field_sliders
-field_name: field_sliders
+id: paragraph.field_banners
+field_name: field_banners
 entity_type: paragraph
 type: entity_reference_revisions
 settings:

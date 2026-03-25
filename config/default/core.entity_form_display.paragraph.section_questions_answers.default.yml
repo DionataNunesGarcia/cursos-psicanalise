@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.section_questions_answers.field_image
+    - field.field.paragraph.section_questions_answers.field_link
     - field.field.paragraph.section_questions_answers.field_questions_answers
     - field.field.paragraph.section_questions_answers.field_section_title
     - field.field.paragraph.section_questions_answers.field_show_on_page
@@ -11,6 +12,7 @@ dependencies:
     - field.field.paragraph.section_questions_answers.field_text
     - paragraphs.paragraphs_type.section_questions_answers
   module:
+    - link
     - media_library
     - paragraphs
 id: paragraph.section_questions_answers.default
@@ -24,6 +26,14 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_questions_answers:
     type: paragraphs

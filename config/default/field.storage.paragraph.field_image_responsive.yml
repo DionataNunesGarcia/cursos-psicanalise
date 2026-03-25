@@ -1,16 +1,17 @@
-uuid: efcde5ed-400d-435e-9e9e-5f8eacfad528
+uuid: 4647f7ab-2100-4f56-976d-a6f2f9f934e2
 langcode: pt-br
 status: true
 dependencies:
   module:
+    - media
     - paragraphs
-    - text
-id: paragraph.field_answer
-field_name: field_answer
+id: paragraph.field_image_responsive
+field_name: field_image_responsive
 entity_type: paragraph
-type: text_long
-settings: {  }
-module: text
+type: entity_reference
+settings:
+  target_type: media
+module: core
 locked: false
 cardinality: 1
 translatable: true

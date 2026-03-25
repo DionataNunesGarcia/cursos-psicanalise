@@ -1,4 +1,4 @@
-uuid: ac734e29-64a7-4602-94b6-dc2fe21c4586
+uuid: d5ea81c7-932b-4195-85db-a09bcfc4c3db
 langcode: pt-br
 status: true
 dependencies:
@@ -23,4 +23,4 @@ settings:
   allowed_formats:
     - basic_html
     - full_html
-field_type: text
+field_type: text_long

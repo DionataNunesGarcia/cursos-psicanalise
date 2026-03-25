@@ -13,8 +13,6 @@
     ]
   %}
   {% block paragraph %}
-    {{dump(background)}}
-    {{dump(content)}}
     <div{{ attributes.addClass(classes) }}>
       <div class="flex flex-col md:flex-row items-center gap-10">
         {# IMAGEM #}
@@ -30,7 +28,7 @@
           w-full md:w-1/2
           {{ side == 'right' ? 'md:order-1' : 'md:order-2' }}
         ">
-          <h3 class="text-2xl font-semibold mb-4">
+          <h3 class="font-semibold mb-4">
             {{ content.field_section_title[0]['#context']['value'] }}
           </h3>
 
@@ -42,7 +40,9 @@
 
           {% if content.field_link[0] is defined %}
             <div class="mt-4">
-              {{ content.field_link }}
+              <a class="btn btn-primary" href="{{ content.field_link[0]['#url'].toString() }}">
+                {{ content.field_link[0]['#title'] }}
+              </a>
             </div>
           {% endif %}
         </div>

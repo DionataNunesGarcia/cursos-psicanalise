@@ -106,3 +106,33 @@
     text-align: center;
   }
 }
+
+.banner-slider {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  max-height: 800px;
+
+  .swiper-wrapper {
+    display: flex;
+  }
+
+  .swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #fff;
+  }
+
+  .swiper-pagination-bullet {
+    background: #fff;
+    opacity: 0.6;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+}

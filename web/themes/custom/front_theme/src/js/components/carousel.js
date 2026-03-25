@@ -74,4 +74,39 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   }
+
+  // =========================
+  // BANNER SLIDER
+  // =========================
+  const bannerEl = document.querySelector(".banner-slider");
+
+  if (bannerEl) {
+    const slides = bannerEl.querySelectorAll(".swiper-slide");
+
+    new Swiper(bannerEl, {
+      modules: [Navigation, Pagination, Autoplay],
+
+      slidesPerView: 1,
+      spaceBetween: 0,
+
+      loop: slides.length > 1,
+
+      autoplay: 0
+        ? {
+            delay: 5000,
+            disableOnInteraction: false,
+          }
+        : false,
+
+      pagination: {
+        el: bannerEl.querySelector(".swiper-pagination"),
+        clickable: true,
+      },
+
+      navigation: {
+        nextEl: bannerEl.querySelector(".swiper-button-next"),
+        prevEl: bannerEl.querySelector(".swiper-button-prev"),
+      },
+    });
+  }
 });

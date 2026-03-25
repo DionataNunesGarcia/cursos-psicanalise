@@ -1101,6 +1101,22 @@
     });
   });
 
+  // src/js/components/accordions.js
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".accordion-trigger").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector(".accordion-icon");
+        content.classList.toggle("hidden");
+        if (content.classList.contains("hidden")) {
+          icon.textContent = "+";
+        } else {
+          icon.textContent = "\u2212";
+        }
+      });
+    });
+  });
+
   // node_modules/swiper/shared/ssr-window.esm.mjs
   function isObject(obj) {
     return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
@@ -6208,6 +6224,28 @@
           768: { slidesPerView: 2 },
           1200: { slidesPerView: 3 },
           1440: { slidesPerView: 4 }
+        }
+      });
+    }
+    const bannerEl = document.querySelector(".banner-slider");
+    if (bannerEl) {
+      const slides = bannerEl.querySelectorAll(".swiper-slide");
+      new Swiper(bannerEl, {
+        modules: [Navigation, Pagination, Autoplay],
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: slides.length > 1,
+        autoplay: 0 ? {
+          delay: 5e3,
+          disableOnInteraction: false
+        } : false,
+        pagination: {
+          el: bannerEl.querySelector(".swiper-pagination"),
+          clickable: true
+        },
+        navigation: {
+          nextEl: bannerEl.querySelector(".swiper-button-next"),
+          prevEl: bannerEl.querySelector(".swiper-button-prev")
         }
       });
     }

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.section_questions_answers.field_image
+    - field.field.paragraph.section_questions_answers.field_link
     - field.field.paragraph.section_questions_answers.field_questions_answers
     - field.field.paragraph.section_questions_answers.field_section_title
     - field.field.paragraph.section_questions_answers.field_show_on_page
@@ -12,6 +13,7 @@ dependencies:
     - paragraphs.paragraphs_type.section_questions_answers
   module:
     - entity_reference_revisions
+    - link
     - options
 id: paragraph.section_questions_answers.default
 targetEntityType: paragraph
@@ -26,6 +28,18 @@ content:
       link: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
     region: content
   field_questions_answers:
     type: entity_reference_revisions_entity_view
@@ -55,7 +69,7 @@ content:
     weight: 1
     region: content
   field_side_of_the_image:
-    type: list_default
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }

@@ -43,7 +43,7 @@
 
         {% if content.field_link is not empty %}
           <div class="card-link">
-            <a class="link" href="{{ content.field_link[0]['#url'].uri }}">
+            <a class="link" href="{{ content.field_link[0]['#url'].toString() }}">
               {{ content.field_link[0]['#title'] }}
             </a>
           </div>

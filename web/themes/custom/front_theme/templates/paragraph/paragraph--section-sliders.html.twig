@@ -43,36 +43,13 @@
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    not paragraph.isPublished() ? 'paragraph--unpublished',
-    'banner-type-' ~ content.field_banner_type[0]['#markup']
+    not paragraph.isPublished() ? 'paragraph--unpublished'
   ]
 %}
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
-      {% if content.field_image_responsive is not empty %}
-        <div class="banner-image">
-          {{ content.field_image_responsive }}
-        </div>
-      {% endif %}
-      <div class="container mx-auto content-text px-4 py-12">
-        {% set title = content.field_section_title[0]['#context']['value'] %}
-        {% set words = title|split(' ') %}
-        <h2>
-          <span class="text-primary">{{ words[0] }}</span>
-          {{ words|slice(1)|join(' ') }}
-        </h2>
-        <h3>{{ content.field_subtitle[0]['#context']['value'] }}</h3>
-        <p>{{ content.field_text[0]['#context']['value'] }}</p>
-        <div class="mt-6 ctas flex flex-col md:flex-row gap-4">
-          <a href="{{ '' }}" class="px-6 py-3 btn btn-primary inline-block">
-            {{ content.field_cta_primary[0]['#title'] }}
-          </a>
-          <a href="{{ '' }}" class="px-6 py-3 btn btn-default inline-block">
-            {{ content.field_cta_secondary[0]['#title'] }}
-          </a>
-        </div>
-      </div>
+      {{ content }}
     {% endblock %}
   </div>
 {% endblock paragraph %}

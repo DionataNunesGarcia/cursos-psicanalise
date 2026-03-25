@@ -3,7 +3,7 @@ langcode: pt-br
 status: true
 dependencies:
   config:
-    - field.field.paragraph.section_sliders.field_sliders
+    - field.field.paragraph.section_sliders.field_banners
     - paragraphs.paragraphs_type.section_sliders
   module:
     - entity_reference_revisions
@@ -12,13 +12,13 @@ targetEntityType: paragraph
 bundle: section_sliders
 mode: default
 content:
-  field_sliders:
+  field_banners:
     type: entity_reference_revisions_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
 hidden: {  }
