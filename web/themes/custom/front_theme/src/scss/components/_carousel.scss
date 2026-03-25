@@ -66,3 +66,43 @@
     }
   }
 }
+
+.team-swiper {
+  overflow: hidden;
+  position: relative;
+
+  .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .swiper-slide {
+    display: flex;
+    height: auto;
+  }
+
+  /* card ocupa todo o slide */
+  .swiper-slide > * {
+    width: 100%;
+  }
+
+  /* card interno */
+  .swiper-slide article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 350px;
+  }
+
+  /* iguala altura */
+  .swiper-slide article > div:first-child {
+    flex-grow: 1;
+  }
+
+  /* paginação */
+  .team-pagination {
+    margin-top: 24px;
+    text-align: center;
+  }
+}

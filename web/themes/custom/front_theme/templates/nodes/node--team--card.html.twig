@@ -1,0 +1,45 @@
+<article class="bg-white p-6 shadow-xl text-center h-full flex flex-col justify-between">
+
+  <div class="flex flex-col items-center">
+
+    {# Imagem #}
+    {% if content.field_team_image %}
+      <div class="w-40 h-40 mb-3 rounded-full overflow-hidden">
+        {{ content.field_team_image }}
+      </div>
+    {% endif %}
+
+    {# Nome #}
+    <h3 class="font-semibold">
+      {{ label[0]['#context']['value'] }}
+    </h3>
+
+    {# Cargo #}
+    {% if content.field_team_role %}
+      <div class="text-xs text-gray-500 flex gap-1 justify-center mt-6">
+        {% for item in content.field_team_role['#items'] %}
+          <span>{{ item.entity.label }}</span>
+          {% if not loop.last %}
+            <span>|</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {# Bio #}
+    {% if content.field_bio %}
+      <div class="text-gray-600 text-sm italic mb-6 line-clamp-3 mt-6 ">
+        {{ content.field_bio }}
+      </div>
+    {% endif %}
+
+  </div>
+
+  {# LINK FINAL #}
+  <div class="mt-4">
+    <a href="{{ url }}" class="text-primary font-semibold hover:underline">
+      Veja mais →
+    </a>
+  </div>
+
+</article>

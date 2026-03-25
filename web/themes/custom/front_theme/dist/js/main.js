@@ -5151,29 +5151,50 @@
 
   // src/js/components/carousel.js
   document.addEventListener("DOMContentLoaded", () => {
-    const swiperEl = document.querySelector(".testimonials-swiper");
-    if (!swiperEl) return;
-    const slides = swiperEl.querySelectorAll(".swiper-slide");
-    new Swiper(swiperEl, {
-      modules: [Navigation, Pagination, Autoplay],
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: slides.length > 3,
-      autoplay: slides.length > 1 ? {
-        delay: 4e3
-      } : false,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-      breakpoints: {
-        768: { slidesPerView: 2 },
-        1200: { slidesPerView: 3 }
-      }
-    });
+    const testimonialEl = document.querySelector(".testimonials-swiper");
+    if (testimonialEl) {
+      const slides = testimonialEl.querySelectorAll(".swiper-slide");
+      new Swiper(testimonialEl, {
+        modules: [Navigation, Pagination, Autoplay],
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: slides.length > 3,
+        autoplay: slides.length > 1 ? { delay: 4e3 } : false,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        breakpoints: {
+          768: { slidesPerView: 2 },
+          1200: { slidesPerView: 3 }
+        }
+      });
+    }
+    const teamEl = document.querySelector(".team-swiper");
+    if (teamEl) {
+      const slides = teamEl.querySelectorAll(".swiper-slide");
+      new Swiper(teamEl, {
+        modules: [Navigation, Pagination, Autoplay],
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: false,
+        observer: false,
+        observeParents: false,
+        autoplay: false,
+        pagination: {
+          el: teamEl.querySelector(".team-pagination"),
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2 },
+          1200: { slidesPerView: 3 },
+          1440: { slidesPerView: 4 }
+        }
+      });
+    }
   });
 })();
