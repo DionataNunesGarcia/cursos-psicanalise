@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.gallery.field_images
+    - field.field.paragraph.gallery.field_section_title
+    - field.field.paragraph.gallery.field_text
     - paragraphs.paragraphs_type.gallery
 id: paragraph.gallery.default
 targetEntityType: paragraph
@@ -18,5 +20,20 @@ content:
       link: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_section_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
 hidden: {  }

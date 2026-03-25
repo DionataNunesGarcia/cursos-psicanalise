@@ -3,3 +3,4 @@ import "./layout/header";
 
 // components
 import "./components/carousel";
+import "./components/glightbox";

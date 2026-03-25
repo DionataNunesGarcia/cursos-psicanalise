@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.section_questions_answers.field_section_title
     - field.field.paragraph.section_questions_answers.field_show_on_page
     - field.field.paragraph.section_questions_answers.field_side_of_the_image
+    - field.field.paragraph.section_questions_answers.field_text
     - paragraphs.paragraphs_type.section_questions_answers
   module:
     - media_library
@@ -19,14 +20,14 @@ mode: default
 content:
   field_image:
     type: media_library_widget
-    weight: 1
+    weight: 3
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_questions_answers:
     type: paragraphs
-    weight: 2
+    weight: 5
     region: content
     settings:
       title: Parágrafo
@@ -52,7 +53,7 @@ content:
     third_party_settings: {  }
   field_show_on_page:
     type: boolean_checkbox
-    weight: 3
+    weight: 2
     region: content
     settings:
       display_label: true
@@ -62,6 +63,14 @@ content:
     weight: 4
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_text:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true

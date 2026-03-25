@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.section_questions_answers.field_section_title
     - field.field.paragraph.section_questions_answers.field_show_on_page
     - field.field.paragraph.section_questions_answers.field_side_of_the_image
+    - field.field.paragraph.section_questions_answers.field_text
     - paragraphs.paragraphs_type.section_questions_answers
   module:
     - entity_reference_revisions
@@ -59,5 +60,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
 hidden: {  }
