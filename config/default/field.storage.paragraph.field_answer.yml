@@ -1,4 +1,4 @@
-uuid: cc4b2af8-98c3-4550-a8e8-ce29d47c8193
+uuid: efcde5ed-400d-435e-9e9e-5f8eacfad528
 langcode: pt-br
 status: true
 dependencies:
@@ -8,9 +8,8 @@ dependencies:
 id: paragraph.field_answer
 field_name: field_answer
 entity_type: paragraph
-type: text
-settings:
-  max_length: 255
+type: text_long
+settings: {  }
 module: text
 locked: false
 cardinality: 1

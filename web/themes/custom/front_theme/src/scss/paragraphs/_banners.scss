@@ -1,0 +1,108 @@
+.paragraph--type--section-banner {
+  padding: 100px 0;
+  &.banner-type-default {
+    text-align: center;
+    .content-text {
+      h2 {
+        font-weight: 500;
+        margin-bottom: 24px;
+        font-size: 48px;
+        &.text-primary {
+          color: hsl(var(--color-primary));
+        }
+        &::before {
+          content: "";
+          display: block;
+          width: 50px;
+          height: 40px;
+          background-image: url(/themes/custom/front_theme/src/images/ideia.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          margin: 0 auto;
+        }
+      }
+      h3 {
+        font-weight: 400;
+        margin-bottom: 24px;
+        font-size: 32px;
+      }
+      p {
+        font-size: 18px;
+        margin-bottom: 72px;
+      }
+    }
+    .ctas {
+      justify-content: center;
+    }
+  }
+
+  &.banner-type-slider {
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+
+    .banner-image {
+      position: relative;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+
+      // 🧪 película escura (overlay)
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5); // ajuste aqui (0.4–0.7)
+        z-index: 1;
+      }
+    }
+
+    .content-text {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #fff;
+      max-height: 800px;
+
+      h2,
+      h3,
+      p {
+        color: #fff;
+        max-width: 800px;
+      }
+
+      // opcional: sombra no texto (melhora MUITO a leitura)
+      h2,
+      h3 {
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      }
+
+      p {
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .banner-image {
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .content-text {
+        height: 100%;
+      }
+    }
+  }
+}

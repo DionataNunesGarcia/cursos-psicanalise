@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.conteudos.field_category
     - field.field.node.conteudos.field_featured_image
     - field.field.node.conteudos.field_gallery
+    - field.field.node.conteudos.field_tags
     - field.field.node.conteudos.field_thumbnail_image
     - node.type.conteudos
   module:
@@ -37,5 +38,6 @@ hidden:
   field_category: true
   field_featured_image: true
   field_gallery: true
+  field_tags: true
   field_thumbnail_image: true
   langcode: true

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.section_testimonials.field_section_title
     - field.field.paragraph.section_testimonials.field_testimonials
+    - field.field.paragraph.section_testimonials.field_text
     - paragraphs.paragraphs_type.section_testimonials
   module:
     - entity_reference_revisions
@@ -29,5 +30,12 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
 hidden: {  }

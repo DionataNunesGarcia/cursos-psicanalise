@@ -1,0 +1,10 @@
+uuid: 2efe8047-82aa-41f5-a145-4a7a7d5db914
+langcode: pt-br
+status: true
+dependencies: {  }
+id: section_columns
+label: 'Seção - Colunas'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

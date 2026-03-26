@@ -1,0 +1,54 @@
+{%
+  set card_type = content.field_card_type[0]['#markup'] ?? ''
+%}
+
+{%
+  set classes = [
+    'container mx-auto px-4 py-12',
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    card_type ? 'card-type-' ~ card_type
+  ]
+%}
+
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+
+      {% if content.field_image is not empty %}
+        {{ content.field_image }}
+      {% endif %}
+
+      <div class="content-text">
+
+        {% if content.field_title[0]['#context']['value'] is defined %}
+          <h3>
+            {{ content.field_title[0]['#context']['value'] }}
+          </h3>
+        {% endif %}
+
+        {% if content.field_subtitle[0]['#context']['value'] is defined %}
+          <h4>
+            {{ content.field_subtitle[0]['#context']['value'] }}
+          </h4>
+        {% endif %}
+
+        {% if content.field_text[0]['#context']['value'] is defined %}
+          <p>
+            {{ content.field_text[0]['#context']['value'] }}
+          </p>
+        {% endif %}
+
+        {% if content.field_link is not empty %}
+          <div class="card-link">
+            <a class="link" href="{{ content.field_link[0]['#url'].toString() }}">
+              {{ content.field_link[0]['#title'] }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

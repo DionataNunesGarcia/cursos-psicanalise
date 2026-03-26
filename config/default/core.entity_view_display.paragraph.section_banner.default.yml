@@ -3,23 +3,32 @@ langcode: pt-br
 status: true
 dependencies:
   config:
+    - field.field.paragraph.section_banner.field_banner_type
     - field.field.paragraph.section_banner.field_cta_primary
     - field.field.paragraph.section_banner.field_cta_secondary
-    - field.field.paragraph.section_banner.field_image
+    - field.field.paragraph.section_banner.field_image_responsive
     - field.field.paragraph.section_banner.field_section_title
     - field.field.paragraph.section_banner.field_subtitle
     - field.field.paragraph.section_banner.field_text
     - paragraphs.paragraphs_type.section_banner
   module:
     - link
+    - options
 id: paragraph.section_banner.default
 targetEntityType: paragraph
 bundle: section_banner
 mode: default
 content:
+  field_banner_type:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_cta_primary:
     type: link
-    label: above
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -31,7 +40,7 @@ content:
     region: content
   field_cta_secondary:
     type: link
-    label: above
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -41,14 +50,14 @@ content:
     third_party_settings: {  }
     weight: 6
     region: content
-  field_image:
+  field_image_responsive:
     type: entity_reference_entity_view
     label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 0
+    weight: 8
     region: content
   field_section_title:
     type: string

@@ -1,9 +1,10 @@
-uuid: ac734e29-64a7-4602-94b6-dc2fe21c4586
+uuid: d5ea81c7-932b-4195-85db-a09bcfc4c3db
 langcode: pt-br
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_answer
+    - filter.format.basic_html
     - filter.format.full_html
     - paragraphs.paragraphs_type.question_answer
   module:
@@ -20,5 +21,6 @@ default_value: {  }
 default_value_callback: ''
 settings:
   allowed_formats:
+    - basic_html
     - full_html
-field_type: text
+field_type: text_long

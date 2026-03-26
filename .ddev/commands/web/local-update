@@ -44,6 +44,14 @@ drush cim -y
 log "Rebuilding Drupal cache"
 drush cr
 
+log "Building frontend for confirmation"
+cd web/themes/custom/front_theme
+npm run build
+cd ../../../../
+
+log "Rebuilding Drupal cache"
+drush cr
+
 log "Create login link for confirmation"
 drush uli
 

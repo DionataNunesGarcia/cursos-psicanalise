@@ -1,16 +1,16 @@
-uuid: f041b6f3-e0b6-49ff-8b31-9e4cb29081ca
+uuid: 4fbeafcc-9569-4e7a-bf2c-16b1824b4ed4
 langcode: pt-br
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_image
-    - media.type.image
+    - field.storage.paragraph.field_image_responsive
+    - media.type.responsive_image
     - paragraphs.paragraphs_type.section_banner
-id: paragraph.section_banner.field_image
-field_name: field_image
+id: paragraph.section_banner.field_image_responsive
+field_name: field_image_responsive
 entity_type: paragraph
 bundle: section_banner
-label: Imagem
+label: 'Imagem Responsiva'
 description: ''
 required: false
 translatable: false
@@ -20,7 +20,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
+      responsive_image: responsive_image
     sort:
       field: _none
       direction: ASC

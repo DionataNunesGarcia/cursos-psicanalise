@@ -1,0 +1,15 @@
+<div class="border rounded-lg overflow-hidden mb-4">
+
+  <button
+    class="w-full text-left px-4 py-6 font-medium flex justify-between items-center accordion-trigger"
+  >
+    <h4>
+      {{ content.field_question[0]["#context"]['value'] }}
+    </h4>
+    <span class="accordion-icon">+</span>
+  </button>
+
+  <div class="accordion-content text-content-editor hidden px-4 pt-4 pb-8">
+    {{ content.field_answer[0]['#text']|raw }}
+  </div>
+</div>

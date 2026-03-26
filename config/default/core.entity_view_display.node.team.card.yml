@@ -10,12 +10,21 @@ dependencies:
     - field.field.node.team.field_user
     - node.type.team
   module:
+    - text
     - user
 id: node.team.card
 targetEntityType: node
 bundle: team
 mode: card
 content:
+  field_bio:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 2
+    region: content
   field_team_image:
     type: entity_reference_entity_view
     label: hidden
@@ -34,7 +43,6 @@ content:
     weight: 0
     region: content
 hidden:
-  field_bio: true
   field_user: true
   langcode: true
   links: true

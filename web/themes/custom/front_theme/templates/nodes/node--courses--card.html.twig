@@ -1,0 +1,74 @@
+{#
+/**
+ * Node Card - Courses
+ */
+#}
+
+<article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 flex flex-col h-full">
+
+  {# Imagem #}
+  {% if node.field_course_featured_image.entity %}
+    {% set media = node.field_course_featured_image.entity %}
+    {% set image = media.field_media_image.entity %}
+
+    <img
+      src="{{ file_url(image.uri.value) }}"
+      alt="{{ image.alt }}"
+      class="w-full h-full object-cover"
+    >
+  {% endif %}
+
+  <div class="p-6 flex flex-col flex-1">
+
+    {# Categoria #}
+    {% if content.field_course_category %}
+      <div class="text-sm text-gray-500 mb-2">
+        {{ content.field_course_category }}
+      </div>
+    {% endif %}
+
+    {# Título #}
+    <h3 class="text-xl font-semibold mb-3">
+      <a href="{{ url }}" class="hover:underline">
+        {{ label }}
+      </a>
+    </h3>
+
+    {# Descrição #}
+    {# {% if content.body %}
+      <div class="text-gray-600 text-sm mb-4 line-clamp-3">
+        {{ content.body }}
+      </div>
+    {% endif %} #}
+
+    <div class="mt-auto">
+
+      {# Datas #}
+      {% set data_inicio = node.field_initial_date.value %}
+      {% set data_fim = node.field_final_date.value %}
+
+      <div class="text-sm text-gray-500 mb-2">
+        {% if data_inicio %}
+          {{ 'Início' }}: {{ data_inicio|date("D, d M Y \\à\\s H:i") }} hs
+        {% endif %}
+      </div>
+
+      {# Tipo + preço #}
+      <div class="flex justify-between items-center">
+
+        {% set price = node.field_price.value|default(0) %}
+
+        <span class="font-semibold text-primary">
+          {% if price <= 0 %}
+            Gratuito
+          {% else %}
+            R$ {{ price|number_format(2, ',', '.') }}
+          {% endif %}
+        </span>
+
+      </div>
+
+    </div>
+  </div>
+
+</article>
