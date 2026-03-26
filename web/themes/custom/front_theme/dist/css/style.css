@@ -60,6 +60,150 @@
    Typography
    ============================================ */
 
+.messages {
+  border-left: 5px solid;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 16px auto;
+  max-width: 1536px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.messages__icon {
+  flex-shrink: 0;
+}
+
+.messages__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.messages__container {
+  display: flex;
+  gap: 24px;
+}
+
+.messages__content {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.messages__content a {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.messages__button {
+  margin-left: auto;
+}
+
+.messages__button button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+.messages__button button:hover {
+  opacity: 1;
+}
+
+.messages--status {
+  background-color: #e6f9f0;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.messages--status a {
+  color: rgb(30.1449275362, 125.8550724638, 52);
+}
+
+.messages--error {
+  background-color: #fdecea;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+.messages--error a {
+  color: rgb(189.2151898734, 32.7848101266, 47.7721518987);
+}
+
+.messages--warning {
+  background-color: #fff4e5;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+.messages--warning a {
+  color: #a07800;
+}
+
+.messages-top {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  z-index: 9999;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.messages__button {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+}
+
+.messages__close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.messages__close::before, .messages__close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  background-color: currentColor;
+}
+
+.messages__close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.messages__close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.messages__close:hover {
+  opacity: 0.7;
+}
+
 /* ============================================
    Badges
    ============================================ */
@@ -849,6 +993,82 @@
   height: 100%;
 }
 
+.columns-wrapper {
+  display: grid;
+}
+
+.columns-wrapper[data-columns="2"] {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.columns-wrapper[data-columns="3"] {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.columns-wrapper[data-columns="4"] {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.columns-wrapper[data-columns="5"] {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.columns-wrapper[data-columns="6"] {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.columns-wrapper .column {
+  text-align: center;
+  color: #555;
+  border-right: 1px solid #ccc;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.columns-wrapper .column h4 {
+  font-weight: bold;
+  margin: 0 0 1.5rem 0;
+  font-style: italic;
+  font-size: 32px;
+}
+
+.columns-wrapper .column p {
+  font-size: 18px;
+  margin: 0;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.columns-wrapper[data-columns="2"] .column:nth-child(2n) {
+  border-right: none;
+}
+
+.columns-wrapper[data-columns="3"] .column:nth-child(3n) {
+  border-right: none;
+}
+
+.columns-wrapper[data-columns="4"] .column:nth-child(4n) {
+  border-right: none;
+}
+
+.columns-wrapper[data-columns="5"] .column:nth-child(3n) {
+  border-right: none;
+}
+
+.columns-wrapper[data-columns="6"] .column:nth-child(3n) {
+  border-right: none;
+}
+
+.columns-wrapper[data-columns="5"] .column:nth-child(4) {
+  grid-column: 2;
+  border-right: 1px solid #ccc;
+}
+
+.columns-wrapper[data-columns="5"] .column:nth-child(5) {
+  grid-column: 3;
+  border-right: none;
+}
+
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -1483,6 +1703,10 @@ a:hover {
 
 .collapse{
   visibility: collapse;
+}
+
+.fixed{
+  position: fixed;
 }
 
 .absolute{
