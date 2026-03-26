@@ -9,7 +9,7 @@ _core:
 id: front_theme_secondary_local_tasks
 theme: front_theme
 region: highlighted
-weight: -2
+weight: -6
 provider: null
 plugin: local_tasks_block
 settings:
