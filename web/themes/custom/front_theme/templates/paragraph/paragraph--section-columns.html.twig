@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Theme implementation for the "section-columns" paragraph type.
+ */
+#}
+
+{%
+  set classes = [
+    'container mx-auto px-4 py-12',
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {# Filtrar apenas colunas com conteúdo #}
+  {% set columns_list = [] %}
+  {% for item in paragraph.field_columns %}
+    {% if item.entity.field_section_title.value or item.entity.field_text.value %}
+      {% set columns_list = columns_list|merge([item.entity]) %}
+    {% endif %}
+  {% endfor %}
+
+  {% set columns_count = columns_list|length %}
+  <div class="field__items columns-wrapper" data-columns="{{ columns_count }}">
+    {% for column in columns_list %}
+      <div class="field__item column">
+        {% if column.field_section_title.value %}
+          <h4 class="column-title">{{ column.field_section_title.value }}</h4>
+        {% endif %}
+        {% if column.field_text.value %}
+          <p>{{ column.field_text.value }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

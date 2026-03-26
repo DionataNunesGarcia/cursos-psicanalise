@@ -3,6 +3,7 @@
 @use "base/variables";
 @use "base/reset";
 @use "base/typography";
+@use "base/messages";
 
 // Components
 @use "components/badges";
@@ -22,6 +23,7 @@
 
 // Paragraphs
 @use "paragraphs/banners";
+@use "paragraphs/columns";
 @use "paragraphs/sliders";
 
 @tailwind base;
