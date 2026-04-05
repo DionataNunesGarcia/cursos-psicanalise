@@ -918,6 +918,10 @@
   color: hsl(var(--color-primary));
 }
 
+header img.logo {
+  height: 60px;
+}
+
 .header-main #block-front-theme-main-menu ul li {
   padding: 14px 24px;
   border-radius: 4px;
