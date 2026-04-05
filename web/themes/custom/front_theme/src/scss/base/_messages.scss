@@ -85,7 +85,7 @@ $color-shadow: rgba(0, 0, 0, 0.08);
   color: $color-success-text;
 
   a {
-    color: darken($color-success-border, 10%);
+    color: $color-success-border;
   }
 }
 
@@ -96,7 +96,7 @@ $color-shadow: rgba(0, 0, 0, 0.08);
   color: $color-error-text;
 
   a {
-    color: darken($color-error-border, 10%);
+    color: $color-error-border;
   }
 }
 
@@ -107,7 +107,7 @@ $color-shadow: rgba(0, 0, 0, 0.08);
   color: $color-warning-text;
 
   a {
-    color: darken($color-warning-border, 20%);
+    color: $color-warning-border;
   }
 }
 
