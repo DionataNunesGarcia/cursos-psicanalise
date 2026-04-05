@@ -8,7 +8,7 @@ dependencies:
     - field.field.node.conteudos.field_author
     - field.field.node.conteudos.field_category
     - field.field.node.conteudos.field_featured_image
-    - field.field.node.conteudos.field_gallery
+    - field.field.node.conteudos.field_sections
     - field.field.node.conteudos.field_tags
     - field.field.node.conteudos.field_thumbnail_image
     - node.type.conteudos
@@ -55,6 +55,6 @@ content:
 hidden:
   field_category: true
   field_featured_image: true
-  field_gallery: true
+  field_sections: true
   langcode: true
   links: true

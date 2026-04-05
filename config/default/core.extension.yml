@@ -68,7 +68,7 @@ module:
   content_translation: 10
   views: 10
   paragraphs: 11
-  standard: 1000
+  minimal: 1000
 theme:
   olivero: 0
   claro: 0
@@ -76,4 +76,4 @@ theme:
   gin: 0
   stable9: 0
   tailwindcss: 0
-profile: standard
+profile: minimal
