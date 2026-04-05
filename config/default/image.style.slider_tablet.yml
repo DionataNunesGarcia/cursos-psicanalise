@@ -3,7 +3,7 @@ langcode: pt-br
 status: true
 dependencies: {  }
 name: slider_tablet
-label: 'Slider - Tablet'
+label: 'Slider - Tablet - 1024×500'
 effects:
   31509f5d-30ab-408d-9a9a-4b0cd8e28523:
     uuid: 31509f5d-30ab-408d-9a9a-4b0cd8e28523

@@ -3,7 +3,7 @@ langcode: pt-br
 status: true
 dependencies: {  }
 name: slider_desktop_large
-label: 'Slider - Desktop Large'
+label: 'Slider - Desktop Large - 1920×800'
 effects:
   978497ca-5ffa-458a-9594-0fcbac93c770:
     uuid: 978497ca-5ffa-458a-9594-0fcbac93c770

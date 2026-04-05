@@ -52,13 +52,13 @@
           <div class="mt-6 ctas flex flex-col md:flex-row gap-4">
             
             {% if content.field_cta_primary|render %}
-              <a href="{{ content.field_cta_primary[0]['#url'] }}" class="px-6 py-3 btn btn-primary inline-block">
+              <a href="{{ content.field_cta_primary[0]['#url'] }}" class="btn btn-primary max-w-[250px]">
                 {{ content.field_cta_primary[0]['#title'] }}
               </a>
             {% endif %}
 
             {% if content.field_cta_secondary|render %}
-              <a href="{{ content.field_cta_secondary[0]['#url'] }}" class="px-6 py-3 btn btn-default inline-block">
+              <a href="{{ content.field_cta_secondary[0]['#url'] }}" class="btn btn-default max-w-[250px]">
                 {{ content.field_cta_secondary[0]['#title'] }}
               </a>
             {% endif %}

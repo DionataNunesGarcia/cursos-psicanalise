@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       loop: slides.length > 3,
 
-      autoplay: slides.length > 1 ? { delay: 4000 } : false,
+      autoplay: slides.length > 1 ? { delay: 14000 } : false,
 
       pagination: {
         el: ".swiper-pagination",

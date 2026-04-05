@@ -6207,7 +6207,7 @@
         slidesPerView: 1,
         spaceBetween: 30,
         loop: slides.length > 3,
-        autoplay: slides.length > 1 ? { delay: 4e3 } : false,
+        autoplay: slides.length > 1 ? { delay: 14e3 } : false,
         pagination: {
           el: ".swiper-pagination",
           clickable: true

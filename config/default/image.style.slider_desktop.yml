@@ -3,7 +3,7 @@ langcode: pt-br
 status: true
 dependencies: {  }
 name: slider_desktop
-label: 'Slider - Desktop'
+label: 'Slider - Desktop - 1440×600'
 effects:
   fb9a0d21-1196-4202-9553-e1acbb477ed0:
     uuid: fb9a0d21-1196-4202-9553-e1acbb477ed0

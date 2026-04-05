@@ -75,6 +75,41 @@
     font-size: 14px;
     line-height: 1.6;
     color: #555;
+    p {
+      position: relative;
+      font-style: italic;
+      color: hsl(var(--color-gray-700));
+      line-height: 1.8;
+      padding: 0 30px; // Espaço para as aspas não sobreporem o texto
+      text-align: center;
+      font-size: 1.125rem;
+
+      // Aspas de Abertura
+      &::before {
+        content: "“";
+        position: absolute;
+        left: 0;
+        top: -10px;
+        font-family: Georgia, serif; // Fonte clássica para aspas bonitas
+        font-size: 4rem;
+        color: hsl(var(--color-primary));
+        opacity: 0.3;
+        line-height: 1;
+      }
+
+      // Aspas de Fechamento
+      &::after {
+        content: "”";
+        position: absolute;
+        right: 0;
+        bottom: -40px; // Ajuste conforme a altura da linha
+        font-family: Georgia, serif;
+        font-size: 4rem;
+        color: hsl(var(--color-primary));
+        opacity: 0.3;
+        line-height: 1;
+      }
+    }
   }
 
   // área do autor
@@ -90,14 +125,16 @@
     align-items: center;
     gap: 12px;
     margin-top: 16px;
-  }
-
-  // imagem
-  .field--name-field-image img {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      @media (min-width: 1440px) {
+        width: 108px;
+        height: 108px;
+      }
+    }
   }
 
   // nome
