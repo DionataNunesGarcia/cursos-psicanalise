@@ -674,6 +674,20 @@
   opacity: 1;
 }
 
+.media--type-responsive-image picture {
+  display: block;
+  width: 100%;
+}
+
+.media--type-responsive-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* Garante que o banner preencha o espaço sem deformar */
+}
+
 .text-content-editor {
   font-size: 0.938rem;
   line-height: 1.6;
@@ -1958,24 +1972,16 @@ nav ul, nav ol {
   min-width: 200px;
 }
 
-.max-w-\[100px\]{
-  max-width: 100px;
-}
-
 .max-w-\[1177px\]{
   max-width: 1177px;
 }
 
-.max-w-none{
-  max-width: none;
-}
-
-.max-w-\[300px\]{
-  max-width: 300px;
-}
-
 .max-w-\[350px\]{
   max-width: 350px;
+}
+
+.max-w-none{
+  max-width: none;
 }
 
 .flex-1{

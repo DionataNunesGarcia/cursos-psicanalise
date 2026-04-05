@@ -1,16 +1,27 @@
-uuid: c3af4360-513e-4766-8035-98687c7db4b5
+uuid: 8fa767c8-078a-4d09-a6ff-bec5cf5f99e8
 langcode: pt-br
 status: true
 dependencies:
   module:
+    - file
+    - image
     - media
 id: media.field_image_tablet
 field_name: field_image_tablet
 entity_type: media
-type: entity_reference
+type: image
 settings:
-  target_type: media
-module: core
+  target_type: file
+  display_field: false
+  display_default: true
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+module: image
 locked: false
 cardinality: 1
 translatable: true

@@ -1,0 +1,29 @@
+uuid: 088bff78-16cd-49b0-a2d4-56917853924c
+langcode: pt-br
+status: true
+dependencies:
+  module:
+    - entity_browser_entity_form
+name: upload_responsive_images
+label: 'Upload de Imagens Responsivas'
+display: modal
+display_configuration:
+  width: '900'
+  height: '700'
+  link_text: 'Adicionar Imagens Responsivas'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: single
+widget_selector_configuration: {  }
+widgets:
+  9ba73c1f-1c11-4076-895d-e1d32d29e932:
+    id: entity_form
+    uuid: 9ba73c1f-1c11-4076-895d-e1d32d29e932
+    label: 'Criar Nova Imagem Responsiva'
+    weight: 1
+    settings:
+      submit_text: 'Salvar e Selecionar Imagem'
+      entity_type: media
+      bundle: responsive_image
+      form_mode: default

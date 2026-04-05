@@ -17,31 +17,37 @@ bundle: responsive_image
 mode: default
 content:
   field_image_desktop_large:
-    type: entity_reference_entity_view
+    type: image
     label: above
     settings:
-      view_mode: default
-      link: false
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 1
     region: content
   field_image_mobile:
-    type: entity_reference_entity_view
+    type: image
     label: above
     settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 3
-    region: content
-  field_image_tablet:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_image_tablet:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_media_image:
     type: image
