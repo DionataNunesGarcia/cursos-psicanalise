@@ -12,20 +12,19 @@
 @use "components/carousel";
 @use "components/media";
 @use "components/text-content";
+@use "components/banners";
+@use "components/columns";
+@use "components/sliders";
 
 // Utilities
 @use "utilities/colors";
+@use "utilities/search";
 
 // Layout
 @use "layout/header";
 @use "layout/main-menu";
 @use "layout/layout";
 @use "layout/footer";
-
-// Paragraphs
-@use "paragraphs/banners";
-@use "paragraphs/columns";
-@use "paragraphs/sliders";
 
 @tailwind base;
 @tailwind components;

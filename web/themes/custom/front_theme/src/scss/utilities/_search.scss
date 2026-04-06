@@ -1,0 +1,22 @@
+.btn-search {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  border-radius: 50%; // Deixa o botão redondo
+  transition: all 0.3s ease;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+  }
+
+  &:hover {
+    background-color: hsl(var(--color-primary));
+    color: #fff;
+    transform: scale(1.1);
+  }
+}

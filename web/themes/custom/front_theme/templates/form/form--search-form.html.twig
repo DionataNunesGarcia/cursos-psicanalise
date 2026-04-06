@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Template corrigido para o formulário de busca no Drupal 11.
+ */
+#}
+<form{{ attributes.addClass('bg-white p-6 rounded-lg shadow-xl max-w-2xl mx-auto') }}>
+  <div class="flex flex-col gap-4">
+    
+    {# 1. Campo de Busca e Botão (Basic) #}
+    <div class="flex items-center gap-2">
+      <div class="relative flex-grow">
+        {{ element.basic.keys }}
+      </div>
+      <div class="shrink-0">
+        {{ element.basic.submit }}
+      </div>
+    </div>
+
+    {# 2. Link de Ajuda #}
+    {% if element.help_link %}
+      <div class="text-sm text-gray-500 hover:text-blue-600 transition-colors">
+        {{ element.help_link }}
+      </div>
+    {% endif %}
+
+    {# 3. Busca Avançada #}
+    {% if element.advanced %}
+      <div class="mt-4 border-t pt-4">
+        {{ element.advanced }}
+      </div>
+    {% endif %}
+
+    {# 
+       4. Renderiza o restante (hidden fields, tokens) de forma segura.
+       Usamos o filtro |without de uma forma que o Drupal 11 aceita melhor.
+    #}
+    {{ element|without('basic', 'advanced', 'help_link', 'attributes') }}
+  </div>
+</form>

@@ -243,3 +243,20 @@ composer.json
 - Modular
 - Automatizado
 - IA-ready
+
+
+# Botões
+Variações de Botões (Variants)
+Classe	Uso
+.btn-default	Botão primário (principal)
+.btn-destructive	Botão de perigo/exclusão
+.btn-outline	Botão com borda
+.btn-secondary	Botão secundário
+.btn-ghost	Botão transparente com hover
+.btn-link	Botão estilo link
+Tamanhos (Sizes)
+Classe	Dimensão
+.btn-sm	Small - h-8
+.btn-default-size	Default - h-9
+.btn-lg	Large - h-10
+.btn-icon	Icon only - size-9
