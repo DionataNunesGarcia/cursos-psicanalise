@@ -7,7 +7,7 @@
 
 {%
   set classes = [
-    'container mx-auto px-4 py-12',
+    'container-fluid mx-auto py-20 lg:py-32 bg-emerald-800 text-white',
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
@@ -29,34 +29,36 @@
 {# Só renderiza se houver colunas válidas #}
 {% if columns_count > 0 %}
   <div{{ attributes.addClass(classes) }}>
+    <div class="container mx-auto px-6 xl:px-0 max-w-[1400px]">
     
-    {# 
-       CONFIGURAÇÃO RESPONSIVA:
-       - grid-cols-1: Uma coluna no mobile (empilhado)
-       - md:grid-cols-{{ columns_count }}: Divide igualmente no desktop
-       - gap-8: Espaçamento entre as colunas
-    #}
-    <div class="grid grid-cols-1 lg:grid-cols-{{ columns_count }} gap-0 columns-wrapper" data-columns="{{ columns_count }}">
-      
-      {% for column in columns_list %}
-        <div class="column flex flex-col">
-          
-          {% if column.field_section_title.value %}
-            <h4 class="text-xl font-bold mb-4 column-title">
-              {{ column.field_section_title.value }}
-            </h4>
-          {% endif %}
-          
-          {% if column.field_text.value %}
-            <div class="text-base leading-relaxed column-body">
-              {# Usando o valor bruto ou processado conforme o tipo de campo #}
-              {{ column.field_text.value|nl2br }}
-            </div>
-          {% endif %}
-          
-        </div>
-      {% endfor %}
-      
+      {# 
+        CONFIGURAÇÃO RESPONSIVA:
+        - grid-cols-1: Uma coluna no mobile (empilhado)
+        - md:grid-cols-{{ columns_count }}: Divide igualmente no desktop
+        - gap-8: Espaçamento entre as colunas
+      #}
+      <div class="grid grid-cols-1 lg:grid-cols-{{ columns_count }} gap-0 columns-wrapper" data-columns="{{ columns_count }}">
+        
+        {% for column in columns_list %}
+          <div class="column flex flex-col">
+            
+            {% if column.field_section_title.value %}
+              <h4 class="text-xl font-bold mb-4 column-title text-white">
+                {{ column.field_section_title.value }}
+              </h4>
+            {% endif %}
+            
+            {% if column.field_text.value %}
+              <div class="text-base leading-relaxed column-body text-white">
+                {# Usando o valor bruto ou processado conforme o tipo de campo #}
+                {{ column.field_text.value|nl2br }}
+              </div>
+            {% endif %}
+            
+          </div>
+        {% endfor %}
+        
+      </div>
     </div>
   </div>
 {% endif %}

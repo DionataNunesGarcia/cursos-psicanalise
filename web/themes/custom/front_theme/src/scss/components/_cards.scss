@@ -63,22 +63,16 @@
   width: 100%;
   height: 100%;
 
-  padding: 24px;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-
-  gap: 16px;
+  // gap: 16px;
 
   // texto
   .field--name-field-body {
     font-size: 14px;
     line-height: 1.6;
-    color: #555;
     p {
       position: relative;
       font-style: italic;
-      color: hsl(var(--color-gray-700));
+      color: #fff !important;
       line-height: 1.8;
       padding: 0 30px; // Espaço para as aspas não sobreporem o texto
       text-align: center;
@@ -141,13 +135,11 @@
   .field--name-field-name {
     font-weight: 600;
     font-size: 14px;
-    color: #111;
   }
 
   // profissão
   .field--name-field-profession {
     font-size: 12px;
-    color: #888;
   }
 }
 

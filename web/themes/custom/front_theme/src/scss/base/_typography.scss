@@ -3,10 +3,18 @@
    ============================================ */
 
 @layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 500;
+  }
   h1 {
     /* De ~32px no mobile para 48px no desktop */
     font-size: clamp(2rem, 5vw, 3rem); 
-    font-weight: var(--font-weight-medium);
+    font-weight: 500;
     line-height: 1.1;
     color: hsl(var(--color-gray-900));
     margin-bottom: 1.5rem;
@@ -79,5 +87,11 @@
       padding: 0;
       margin: 0 !important;
     }
+  }
+  .font-bold {
+    font-weight: 700 !important;
+  }
+  .font-semibold {
+    font-weight: 500 !important;
   }
 }

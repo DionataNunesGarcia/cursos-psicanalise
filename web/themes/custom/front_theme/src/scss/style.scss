@@ -1,4 +1,8 @@
-// Base
+// Utilities 
+@use "utilities/colors";
+@use "utilities/search";
+
+// ⚠️ Primeiro, todos os @use
 @use "base/fonts";
 @use "base/variables";
 @use "base/reset";
@@ -15,10 +19,6 @@
 @use "components/banners";
 @use "components/columns";
 @use "components/sliders";
-
-// Utilities
-@use "utilities/colors";
-@use "utilities/search";
 
 // Layout
 @use "layout/header";

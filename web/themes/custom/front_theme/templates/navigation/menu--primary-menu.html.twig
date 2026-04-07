@@ -1,7 +1,7 @@
-<ul class="flex flex-col md:flex-row md:gap-2 items-start md:items-center w-full">
+<ul class="flex flex-col md:flex-row md:gap-6 items-start md:items-center md:justify-end">
   {% for item in items %}
     <li class="relative group {% if item.below %}has-dropdown{% endif %}">
-      <a href="{{ item.url }}" class="text-sm font-medium {{ item.in_active_trail ? 'text-gray-900' : 'text-gray-600' }}">
+      <a href="{{ item.url }}" class="text-sm tracking-wide hover:text-neutral-600 transition-colors {{ item.in_active_trail ? 'text-gray-900' : 'text-gray-600' }}">
         {{ item.title }}
       </a>
 
