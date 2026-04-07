@@ -3,7 +3,6 @@ langcode: pt-br
 status: true
 dependencies:
   config:
-    - field.field.paragraph.section_questions_answers.field_image
     - field.field.paragraph.section_questions_answers.field_link
     - field.field.paragraph.section_questions_answers.field_questions_answers
     - field.field.paragraph.section_questions_answers.field_section_title
@@ -13,20 +12,12 @@ dependencies:
     - paragraphs.paragraphs_type.section_questions_answers
   module:
     - link
-    - media_library
     - paragraphs
 id: paragraph.section_questions_answers.default
 targetEntityType: paragraph
 bundle: section_questions_answers
 mode: default
 content:
-  field_image:
-    type: media_library_widget
-    weight: 3
-    region: content
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
   field_link:
     type: link_default
     weight: 5

@@ -29,12 +29,11 @@ content:
     weight: 0
     region: content
   field_class_background:
-    type: string
+    type: list_key
     label: hidden
-    settings:
-      link_to_entity: false
+    settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 4
     region: content
   field_image:
     type: entity_reference_entity_view
@@ -83,7 +82,7 @@ content:
     weight: 3
     region: content
   field_text_color:
-    type: list_default
+    type: list_key
     label: hidden
     settings: {  }
     third_party_settings: {  }
