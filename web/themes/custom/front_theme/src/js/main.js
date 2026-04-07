@@ -6,3 +6,4 @@ import "./layout/messages";
 import "./components/accordions";
 import "./components/carousel";
 import "./components/glightbox";
+import "./components/search";

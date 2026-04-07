@@ -1,18 +1,33 @@
-uuid: 29ba3409-8146-4067-9c9b-24e499f5deb7
+uuid: 3571f701-1eb4-4f50-8ac4-add55dfd9cad
 langcode: pt-br
 status: true
 dependencies:
   module:
+    - options
     - paragraphs
 id: paragraph.field_class_background
 field_name: field_class_background
 entity_type: paragraph
-type: string
+type: list_string
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
-module: core
+  allowed_values:
+    -
+      value: bg-emerald-700
+      label: 'Verde Esmeralda'
+    -
+      value: bg-amber-500
+      label: Laranja
+    -
+      value: bg-slate-500
+      label: 'Textura Cinzenta'
+    -
+      value: bg-neutral-800
+      label: 'Cinza Neutro'
+    -
+      value: bg-red-950
+      label: Vermelho
+  allowed_values_function: ''
+module: options
 locked: false
 cardinality: 1
 translatable: true

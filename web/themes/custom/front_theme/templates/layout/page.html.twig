@@ -24,4 +24,9 @@
 
 </main>
 
+{# Container escondido que o JS vai transformar em Modal #}
+<div id="modal-search-wrapper" style="display:none;">
+  {{ drupal_entity('block', 'front_theme_search_form_narrow') }}
+</div>
+
 {% include '@front_theme/components/footer.html.twig' %}
