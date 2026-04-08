@@ -4,16 +4,31 @@ status: true
 dependencies:
   config:
     - field.field.node.courses.body
+    - field.field.node.courses.field_certificate
     - field.field.node.courses.field_course_category
     - field.field.node.courses.field_course_featured_image
+    - field.field.node.courses.field_course_format
+    - field.field.node.courses.field_course_includes
+    - field.field.node.courses.field_course_level
     - field.field.node.courses.field_course_type
     - field.field.node.courses.field_final_date
+    - field.field.node.courses.field_highlights
     - field.field.node.courses.field_initial_date
+    - field.field.node.courses.field_intro_video
+    - field.field.node.courses.field_learning_objectives
+    - field.field.node.courses.field_location
     - field.field.node.courses.field_price
     - field.field.node.courses.field_professors
+    - field.field.node.courses.field_requirements
+    - field.field.node.courses.field_sections
+    - field.field.node.courses.field_syllabus
+    - field.field.node.courses.field_target_audience
+    - field.field.node.courses.field_week_duration
+    - field.field.node.courses.field_workload
     - node.type.courses
   module:
     - datetime
+    - entity_reference_revisions
     - options
     - text
     - user
@@ -27,7 +42,17 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 1
+    region: content
+  field_certificate:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 16
     region: content
   field_course_category:
     type: entity_reference_label
@@ -35,7 +60,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 106
+    weight: 7
     region: content
   field_course_featured_image:
     type: entity_reference_entity_view
@@ -44,14 +69,36 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 105
+    weight: 18
+    region: content
+  field_course_format:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_course_includes:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_course_level:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
     region: content
   field_course_type:
     type: list_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 104
+    weight: 6
     region: content
   field_final_date:
     type: datetime_default
@@ -60,7 +107,16 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 102
+    weight: 4
+    region: content
+  field_highlights:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 21
     region: content
   field_initial_date:
     type: datetime_default
@@ -69,7 +125,31 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 101
+    weight: 3
+    region: content
+  field_intro_video:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_learning_objectives:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_location:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 12
     region: content
   field_price:
     type: number_decimal
@@ -80,20 +160,71 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 103
+    weight: 5
     region: content
   field_professors:
-    type: entity_reference_label
+    type: entity_reference_entity_view
     label: hidden
     settings:
+      view_mode: default
       link: true
     third_party_settings: {  }
-    weight: 107
+    weight: 8
+    region: content
+  field_requirements:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  field_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_syllabus:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_target_audience:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_week_duration:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 15
+    region: content
+  field_workload:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 9
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 2
     region: content
 hidden:
   langcode: true

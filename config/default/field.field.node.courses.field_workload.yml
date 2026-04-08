@@ -1,0 +1,23 @@
+uuid: f08e0d89-485b-40a3-a0c1-2a54acbc1cb9
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_workload
+    - node.type.courses
+id: node.courses.field_workload
+field_name: field_workload
+entity_type: node
+bundle: courses
+label: 'Carga horária (em horas)'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,24 @@
+uuid: b8cc4d55-5cb9-4fdd-aae0-9725c4e5db60
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_requirements
+    - filter.format.full_html
+    - node.type.courses
+  module:
+    - text
+id: node.courses.field_requirements
+field_name: field_requirements
+entity_type: node
+bundle: courses
+label: Pré-requisitos
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text_long

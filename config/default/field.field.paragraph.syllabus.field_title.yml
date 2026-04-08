@@ -1,0 +1,19 @@
+uuid: dcef1e44-2943-4fc9-8190-9e48a1b54892
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.syllabus
+id: paragraph.syllabus.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: syllabus
+label: Título
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

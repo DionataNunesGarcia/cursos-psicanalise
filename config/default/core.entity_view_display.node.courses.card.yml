@@ -5,13 +5,27 @@ dependencies:
   config:
     - core.entity_view_mode.node.card
     - field.field.node.courses.body
+    - field.field.node.courses.field_certificate
     - field.field.node.courses.field_course_category
     - field.field.node.courses.field_course_featured_image
+    - field.field.node.courses.field_course_format
+    - field.field.node.courses.field_course_includes
+    - field.field.node.courses.field_course_level
     - field.field.node.courses.field_course_type
     - field.field.node.courses.field_final_date
+    - field.field.node.courses.field_highlights
     - field.field.node.courses.field_initial_date
+    - field.field.node.courses.field_intro_video
+    - field.field.node.courses.field_learning_objectives
+    - field.field.node.courses.field_location
     - field.field.node.courses.field_price
     - field.field.node.courses.field_professors
+    - field.field.node.courses.field_requirements
+    - field.field.node.courses.field_sections
+    - field.field.node.courses.field_syllabus
+    - field.field.node.courses.field_target_audience
+    - field.field.node.courses.field_week_duration
+    - field.field.node.courses.field_workload
     - node.type.courses
   module:
     - datetime
@@ -88,5 +102,19 @@ content:
     weight: 1
     region: content
 hidden:
+  field_certificate: true
+  field_course_format: true
+  field_course_includes: true
+  field_course_level: true
+  field_highlights: true
+  field_intro_video: true
+  field_learning_objectives: true
+  field_location: true
   field_professors: true
+  field_requirements: true
+  field_sections: true
+  field_syllabus: true
+  field_target_audience: true
+  field_week_duration: true
+  field_workload: true
   langcode: true

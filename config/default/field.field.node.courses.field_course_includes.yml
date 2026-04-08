@@ -1,0 +1,19 @@
+uuid: 31bd2a65-e1c3-400d-8cbf-2b9039ff9abc
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_includes
+    - node.type.courses
+id: node.courses.field_course_includes
+field_name: field_course_includes
+entity_type: node
+bundle: courses
+label: 'Incluso no Curso'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

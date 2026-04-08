@@ -1,0 +1,10 @@
+uuid: 83b854b2-12c9-4b2a-b524-fb20c4faebcb
+langcode: pt-br
+status: true
+dependencies: {  }
+id: syllabus
+label: 'Cursos - Estrutura do curso'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

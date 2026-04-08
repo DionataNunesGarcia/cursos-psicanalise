@@ -43,7 +43,7 @@
               </div>
             {% endif %}
 
-            {% if content.field_link is not empty %}
+            {% if content.field_link[0] %}
               <div class="mt-10">
                 <a class="px-8 py-4 border-2 border-emerald-800 text-emerald-800 tracking-wide hover:bg-emerald-800 hover:text-white transition-colors" href="{{ content.field_link[0]['#url'].toString() }}">
                   {{ content.field_link[0]['#title'] }}

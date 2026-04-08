@@ -1,0 +1,10 @@
+uuid: 009ed3da-ab0e-4be3-bef0-5a0e96f7b7ff
+langcode: pt-br
+status: true
+dependencies: {  }
+id: highlights_courses
+label: 'Cursos - Destaques / diferenciais'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.card
     - field.field.node.team.field_bio
+    - field.field.node.team.field_prefix
     - field.field.node.team.field_team_image
     - field.field.node.team.field_team_role
     - field.field.node.team.field_user
@@ -43,6 +44,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_prefix: true
   field_user: true
   langcode: true
   links: true
