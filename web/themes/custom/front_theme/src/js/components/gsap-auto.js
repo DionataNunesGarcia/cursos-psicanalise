@@ -17,7 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
   };
 
   // ===============================
-  // AUTO APLICAR (APENAS ELEMENTOS PRINCIPAIS)
+  // AUTO APLICAR (ELEMENTOS PRINCIPAIS)
   // ===============================
   function autoApplyAttributes() {
     const containers = document.querySelectorAll(".auto-animate");
@@ -28,20 +28,17 @@ gsap.registerPlugin(ScrollTrigger);
       );
 
       elements.forEach((el, i) => {
-        // não sobrescreve se já tiver classe manual
         if (el.className.includes("animate-")) return;
 
         let anim = "fade-up";
 
-        if (el.tagName === "H1") anim = "fade-up";
-        else if (el.tagName === "H2") anim = "fade-left";
-        else if (el.tagName === "H3") anim = "fade-up";
+        if (el.tagName === "H2") anim = "fade-left";
         else if (el.tagName === "IMG") anim = "zoom";
         else if (el.tagName === "BUTTON" || el.tagName === "A") anim = "scale";
 
         el.classList.add(`animate-${anim}`);
 
-        // pequeno stagger automático
+        // pequeno stagger visual
         el.style.transitionDelay = `${i * 0.05}s`;
       });
     });
@@ -52,22 +49,18 @@ gsap.registerPlugin(ScrollTrigger);
   // ===============================
   function prepareElements() {
     Object.keys(animations).forEach(type => {
-      const elements = document.querySelectorAll(`.animate-${type}`);
-
-      elements.forEach(el => {
+      document.querySelectorAll(`.animate-${type}`).forEach(el => {
         gsap.set(el, animations[type]);
       });
     });
   }
 
   // ===============================
-  // ANIMAÇÃO COM BATCH (PERFORMANCE)
+  // ANIMAÇÃO (BATCH)
   // ===============================
   function initBatchAnimations() {
     Object.keys(animations).forEach(type => {
-      const selector = `.animate-${type}`;
-
-      ScrollTrigger.batch(selector, {
+      ScrollTrigger.batch(`.animate-${type}`, {
         start: "top 92%",
 
         onEnter: batch => {
@@ -80,17 +73,6 @@ gsap.registerPlugin(ScrollTrigger);
             ease: "power3.out",
             stagger: 0.12,
             overwrite: true
-          });
-        },
-
-        onEnterBack: batch => {
-          gsap.to(batch, {
-            x: 0,
-            y: 0,
-            scale: 1,
-            opacity: 1,
-            duration: 0.6,
-            stagger: 0.08
           });
         },
 
@@ -131,23 +113,13 @@ gsap.registerPlugin(ScrollTrigger);
   // HOVER CARDS
   // ===============================
   function hoverEffects() {
-    const cards = document.querySelectorAll(".card, [class*='card']");
-
-    cards.forEach(card => {
+    document.querySelectorAll(".card, [class*='card']").forEach(card => {
       card.addEventListener("mouseenter", () => {
-        gsap.to(card, {
-          scale: 1.04,
-          y: -6,
-          duration: 0.3
-        });
+        gsap.to(card, { scale: 1.04, y: -6, duration: 0.3 });
       });
 
       card.addEventListener("mouseleave", () => {
-        gsap.to(card, {
-          scale: 1,
-          y: 0,
-          duration: 0.3
-        });
+        gsap.to(card, { scale: 1, y: 0, duration: 0.3 });
       });
     });
   }
@@ -157,7 +129,6 @@ gsap.registerPlugin(ScrollTrigger);
   // ===============================
   function parallax() {
     const heroImg = document.querySelector(".banner img, .hero img");
-
     if (!heroImg) return;
 
     gsap.to(heroImg, {
@@ -173,22 +144,47 @@ gsap.registerPlugin(ScrollTrigger);
   }
 
   // ===============================
+  // LOADER
+  // ===============================
+  function initLoader() {
+    const loader = document.getElementById("page-loader");
+    if (!loader) return;
+
+    function hideLoader() {
+      gsap.to(loader, {
+        opacity: 0,
+        duration: 0.6,
+        onComplete: () => loader.remove()
+      });
+    }
+
+    window.addEventListener("load", hideLoader);
+
+    // fallback segurança
+    setTimeout(hideLoader, 3000);
+  }
+
+  // ===============================
   // INIT
   // ===============================
   function init() {
-    autoApplyAttributes(); // 👈 automático controlado
+    try {
+      autoApplyAttributes();
+      prepareElements();
+      initBatchAnimations();
+      initObserverFallback();
+      hoverEffects();
+      parallax();
+      initLoader();
 
-    prepareElements();
-    initBatchAnimations();
-    initObserverFallback();
-    hoverEffects();
-    parallax();
+      window.addEventListener("load", () => {
+        ScrollTrigger.refresh();
+      });
 
-    window.addEventListener("load", () => {
-      ScrollTrigger.refresh();
-    });
-
-    console.log("✨ Auto Animate (leve e estável) iniciado");
+      console.log("✨ GSAP Auto Animate OK");
+    } catch (e) {
+      console.error("Erro no GSAP Auto:", e);
+    }
   }
 
   // DOM READY

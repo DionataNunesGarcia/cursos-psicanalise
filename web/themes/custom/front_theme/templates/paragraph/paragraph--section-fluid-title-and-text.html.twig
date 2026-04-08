@@ -45,7 +45,7 @@
 
             {# Coluna do Conteúdo (2/3) #}
             {% if content.field_body|render %}
-              <div class="md:col-span-2">
+              <div class="md:col-span-2 animate-fade-left">
                 <div class="text-base leading-relaxed">
                   {# Removido o <p> fixo pois o CKEditor geralmente já envia o conteúdo dentro de <p> #}
                   {{ content.field_body }}

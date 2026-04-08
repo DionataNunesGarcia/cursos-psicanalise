@@ -5,4 +5,8 @@ global:
   js:
     dist/js/main.js: {}
   dependencies:
+    - core/jquery
     - core/drupal
+    - core/once
+    - core/drupal.ajax
+    - core/drupal.dialog.ajax

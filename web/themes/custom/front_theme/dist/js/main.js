@@ -12943,24 +12943,6 @@
   };
   _getGSAP3() && gsap3.registerPlugin(ScrollTrigger2);
 
-  // src/js/components/gsap.js
-  gsapWithCSS.registerPlugin(ScrollTrigger2);
-  document.addEventListener("DOMContentLoaded", () => {
-    gsapWithCSS.utils.toArray("[data-animate='fade-up']").forEach((el) => {
-      gsapWithCSS.from(el, {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 85%",
-          toggleActions: "play none none none"
-        }
-      });
-    });
-  });
-
   // src/js/components/gsap-auto.js
   gsapWithCSS.registerPlugin(ScrollTrigger2);
   (function() {
@@ -12980,9 +12962,7 @@
         elements.forEach((el, i) => {
           if (el.className.includes("animate-")) return;
           let anim = "fade-up";
-          if (el.tagName === "H1") anim = "fade-up";
-          else if (el.tagName === "H2") anim = "fade-left";
-          else if (el.tagName === "H3") anim = "fade-up";
+          if (el.tagName === "H2") anim = "fade-left";
           else if (el.tagName === "IMG") anim = "zoom";
           else if (el.tagName === "BUTTON" || el.tagName === "A") anim = "scale";
           el.classList.add(`animate-${anim}`);
@@ -12992,16 +12972,14 @@
     }
     function prepareElements() {
       Object.keys(animations).forEach((type) => {
-        const elements = document.querySelectorAll(`.animate-${type}`);
-        elements.forEach((el) => {
+        document.querySelectorAll(`.animate-${type}`).forEach((el) => {
           gsapWithCSS.set(el, animations[type]);
         });
       });
     }
     function initBatchAnimations() {
       Object.keys(animations).forEach((type) => {
-        const selector3 = `.animate-${type}`;
-        ScrollTrigger2.batch(selector3, {
+        ScrollTrigger2.batch(`.animate-${type}`, {
           start: "top 92%",
           onEnter: (batch) => {
             gsapWithCSS.to(batch, {
@@ -13013,16 +12991,6 @@
               ease: "power3.out",
               stagger: 0.12,
               overwrite: true
-            });
-          },
-          onEnterBack: (batch) => {
-            gsapWithCSS.to(batch, {
-              x: 0,
-              y: 0,
-              scale: 1,
-              opacity: 1,
-              duration: 0.6,
-              stagger: 0.08
             });
           },
           once: true
@@ -13051,21 +13019,12 @@
       });
     }
     function hoverEffects() {
-      const cards = document.querySelectorAll(".card, [class*='card']");
-      cards.forEach((card) => {
+      document.querySelectorAll(".card, [class*='card']").forEach((card) => {
         card.addEventListener("mouseenter", () => {
-          gsapWithCSS.to(card, {
-            scale: 1.04,
-            y: -6,
-            duration: 0.3
-          });
+          gsapWithCSS.to(card, { scale: 1.04, y: -6, duration: 0.3 });
         });
         card.addEventListener("mouseleave", () => {
-          gsapWithCSS.to(card, {
-            scale: 1,
-            y: 0,
-            duration: 0.3
-          });
+          gsapWithCSS.to(card, { scale: 1, y: 0, duration: 0.3 });
         });
       });
     }
@@ -13083,17 +13042,35 @@
         }
       });
     }
+    function initLoader() {
+      const loader = document.getElementById("page-loader");
+      if (!loader) return;
+      function hideLoader() {
+        gsapWithCSS.to(loader, {
+          opacity: 0,
+          duration: 0.6,
+          onComplete: () => loader.remove()
+        });
+      }
+      window.addEventListener("load", hideLoader);
+      setTimeout(hideLoader, 3e3);
+    }
     function init4() {
-      autoApplyAttributes();
-      prepareElements();
-      initBatchAnimations();
-      initObserverFallback();
-      hoverEffects();
-      parallax();
-      window.addEventListener("load", () => {
-        ScrollTrigger2.refresh();
-      });
-      console.log("\u2728 Auto Animate (leve e est\xE1vel) iniciado");
+      try {
+        autoApplyAttributes();
+        prepareElements();
+        initBatchAnimations();
+        initObserverFallback();
+        hoverEffects();
+        parallax();
+        initLoader();
+        window.addEventListener("load", () => {
+          ScrollTrigger2.refresh();
+        });
+        console.log("\u2728 GSAP Auto Animate OK");
+      } catch (e) {
+        console.error("Erro no GSAP Auto:", e);
+      }
     }
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", init4);
@@ -13106,23 +13083,6 @@
       }
     };
   })();
-
-  // src/js/components/init-loader.js
-  function initLoader() {
-    const loader = document.getElementById("page-loader");
-    if (!loader) return;
-    window.addEventListener("load", () => {
-      gsapWithCSS.to(loader, {
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2.out",
-        onComplete: () => {
-          loader.remove();
-        }
-      });
-    });
-  }
-  initLoader();
 
   // src/js/components/glightbox.js
   var import_glightbox = __toESM(require_glightbox_min());

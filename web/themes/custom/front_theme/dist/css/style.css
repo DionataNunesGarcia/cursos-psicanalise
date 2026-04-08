@@ -1742,10 +1742,6 @@
   }
 }
 
-.paragraph--type--section-banner {
-  padding: 100px 0;
-}
-
 .paragraph--type--section-banner.banner-type-default {
   text-align: center;
 }
@@ -1790,16 +1786,12 @@
 .paragraph--type--section-banner.banner-type-slider{
   position: relative;
   overflow: hidden;
-  padding-left: var(--space-6);
-  padding-right: var(--space-6);
   padding-top: 6rem;
   padding-bottom: 5rem;
 }
 
 @media (min-width: 1024px){
   .paragraph--type--section-banner.banner-type-slider{
-    padding-left: 3rem;
-    padding-right: 3rem;
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
@@ -4044,6 +4036,11 @@ nav ul, nav ol {
   color: rgb(255 255 255 / 0.9);
 }
 
+.text-neutral-50{
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity));
+}
+
 .underline{
   text-decoration-line: underline;
 }
@@ -4084,10 +4081,6 @@ nav ul, nav ol {
 
 .grayscale{
   --tw-grayscale: grayscale(100%);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
