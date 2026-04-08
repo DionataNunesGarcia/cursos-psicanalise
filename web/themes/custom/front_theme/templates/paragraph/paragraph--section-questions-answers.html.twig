@@ -9,9 +9,15 @@
 %}
 {% set side = content.field_side_of_the_image[0]['#markup'] %}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
+  <section
+    {{ attributes
+      .addClass(classes)
+      .addClass('relative overflow-hidden', 'auto-animate')
+      .setAttribute('data-animate', 'fade-up')
+    }}
+  >
     {% block content %}
-      <div class="container px-6 xl:px-0 mx-auto max-w-[1400px] ">
+      <div class="container px-6 2xl:px-0 mx-auto max-w-[1400px] ">
         <div class="flex flex-col md:flex-row gap-10 items-start">
 
           {# TEXTO + IMAGEM #}
@@ -62,5 +68,5 @@
         </div>
       </div>
     {% endblock %}
-  </div>
+  </section>
 {% endblock paragraph %}

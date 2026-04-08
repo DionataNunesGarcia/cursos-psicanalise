@@ -9,7 +9,13 @@
 %}
 
 {% block paragraph %}
-  <section{{ attributes.addClass(classes).addClass('relative overflow-hidden') }}>
+  <section
+    {{ attributes
+      .addClass(classes)
+      .addClass('relative overflow-hidden', 'auto-animate')
+      .setAttribute('data-animate', 'fade-up')
+    }}
+  >
     
     <div class="absolute inset-0 pointer-events-none">
       <svg class="w-full h-full text-neutral-900" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
