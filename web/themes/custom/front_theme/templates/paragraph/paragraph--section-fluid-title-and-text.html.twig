@@ -18,8 +18,14 @@
 {% block paragraph %}
   {# Só renderiza o container principal se houver algum conteúdo nos campos #}
   {% if content.field_section_title|render or content.field_body|render %}
-    <div{{ attributes.addClass(classes) }}>
-      <div class="container mx-auto px-6 xl:px-0 max-w-[1400px]">
+    <section
+      {{ attributes
+        .addClass(classes)
+        .addClass('relative overflow-hidden', 'auto-animate')
+        .setAttribute('data-animate', 'fade-up')
+      }}
+    >
+      <div class="container mx-auto px-6 2xl:px-0 max-w-[1400px]">
         {% block content %}
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             
@@ -50,6 +56,6 @@
           </div>
         {% endblock %}
       </div>
-    </div>
+    </section>
   {% endif %}
 {% endblock paragraph %}

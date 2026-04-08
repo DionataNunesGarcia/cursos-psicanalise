@@ -1,45 +1,36 @@
-<article class="bg-white p-6 shadow-xl text-center h-full flex flex-col justify-between">
-
-  <div class="flex flex-col items-center">
-
-    {# Imagem #}
-    {% if content.field_team_image %}
-      <div class="mb-3 overflow-hidden">
-        {{ content.field_team_image }}
-      </div>
-    {% endif %}
-
-    {# Nome #}
-    <h3 class="font-semibold">
+<div class="group cursor-pointer">
+  <div class="relative aspect-[3/4] overflow-hidden bg-neutral-100 mb-4 border-4 border-white shadow-md group-hover:border-amber-600 transition-all duration-300">
+    <img 
+      src="{{ file_url(content.field_team_image[0]['#media'].field_media_image.entity.uri.value)}}" 
+      alt="{{ label[0]['#context']['value'] }}" 
+      class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+    >
+  </div>
+  <div class="space-y-1">
+    <h3 class="font-serif text-xl tracking-tight">
       {{ label[0]['#context']['value'] }}
     </h3>
-
-    {# Cargo #}
-    {% if content.field_team_role %}
-      <div class="text-xs text-gray-500 flex gap-1 justify-center mt-6">
+    <p class="text-sm text-neutral-600">
+      {# Cargo #}
+      {% if content.field_team_role %}
         {% for item in content.field_team_role['#items'] %}
           <span>{{ item.entity.label }}</span>
           {% if not loop.last %}
             <span>|</span>
           {% endif %}
         {% endfor %}
-      </div>
-    {% endif %}
-
-    {# Bio #}
-    {% if content.field_bio %}
-      <div class="text-gray-600 text-sm italic mb-6 line-clamp-3 mt-6 ">
-        {{ content.field_bio }}
-      </div>
-    {% endif %}
-
-  </div>
-
-  {# LINK FINAL #}
-  <div class="mt-4">
+      {% endif %}
+    </p>
     <a href="{{ url }}" class="text-primary font-semibold hover:underline">
       Veja mais →
     </a>
   </div>
+</div>
 
-</article>
+
+    {# Bio #}
+    {# {% if content.field_bio %}
+      <div class="text-gray-600 text-sm italic mb-6 line-clamp-3 mt-6 ">
+        {{ content.field_bio }}
+      </div>
+    {% endif %} #}

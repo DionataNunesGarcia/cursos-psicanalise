@@ -1,6 +1,6 @@
 {%
   set classes = [
-    'container px-6 xl:px-0 py-20 lg:py-32  mx-auto max-w-[1400px]',
+    'container px-6 2xl:px-0 py-20 lg:py-32 px-6 2xl:px-0  mx-auto max-w-[1400px]',
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
@@ -8,7 +8,13 @@
   ]
 %}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
+  <section
+    {{ attributes
+      .addClass(classes)
+      .addClass('relative overflow-hidden', 'auto-animate')
+      .setAttribute('data-animate', 'fade-up')
+    }}
+  >
     {% block content %}
       <div class="w-16 h-1 bg-amber-600 mb-6"></div>
       <h3 class="font-serif text-4xl lg:text-5xl tracking-tight mb-6 font-semibold">
@@ -18,5 +24,5 @@
         {{ content.field_body|raw }}
       </div>
     {% endblock %}
-  </div>
+  </section>
 {% endblock paragraph %}

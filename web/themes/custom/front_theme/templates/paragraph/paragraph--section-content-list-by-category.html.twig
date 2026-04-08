@@ -1,6 +1,6 @@
 {%
   set classes = [
-    'container mx-auto px-6 xl:px-0 py-20 lg:py-32 max-w-[1400px]',
+    'container mx-auto px-6 2xl:px-0 py-20 lg:py-32 max-w-[1400px]',
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
@@ -8,7 +8,13 @@
   ]
 %}
 
-<div{{ attributes.addClass(classes) }}>
+<section
+  {{ attributes
+    .addClass(classes)
+    .addClass('relative overflow-hidden', 'auto-animate')
+    .setAttribute('data-animate', 'fade-up')
+  }}
+>
   {% if paragraph.field_content_category.entity %}
     {% set tid = paragraph.field_content_category.entity.id %}
     {% set view_name = 'contents_by_category' %}
@@ -28,4 +34,4 @@
       {{ drupal_view(view_name, view_block, tid) }}
     {% endif %}
   {% endif %}
-</div>
+</section>
