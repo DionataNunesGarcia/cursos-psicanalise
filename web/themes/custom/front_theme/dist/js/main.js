@@ -12964,7 +12964,7 @@
           let anim = "fade-up";
           if (el.tagName === "H2") anim = "fade-left";
           else if (el.tagName === "IMG") anim = "zoom";
-          else if (el.tagName === "BUTTON" || el.tagName === "A") anim = "scale";
+          else if (el.tagName === "BUTTON" || el.tagName === "A") anim = "fade-up";
           el.classList.add(`animate-${anim}`);
           el.style.transitionDelay = `${i * 0.05}s`;
         });
@@ -13108,6 +13108,52 @@
     });
   }
   document.addEventListener("DOMContentLoaded", initLightbox);
+
+  // src/js/components/modals.js
+  document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("course-subscription-modal");
+    const closeBtn = document.getElementById("modal-close-btn");
+    const triggers = document.querySelectorAll(".modal-subscription-trigger");
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", function(e) {
+        e.preventDefault();
+        if (modal) modal.classList.remove("hidden");
+      });
+    });
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function() {
+        modal.classList.add("hidden");
+      });
+    }
+    if (modal) {
+      modal.addEventListener("click", function(e) {
+        if (e.target === modal) {
+          modal.classList.add("hidden");
+        }
+      });
+    }
+  });
+
+  // src/js/components/forms.js
+  document.addEventListener("DOMContentLoaded", function() {
+    const submitDiv = document.querySelector("#edit-actions");
+    const submitButton = document.querySelector("#edit-actions-submit");
+    submitButton.classList.add(
+      "w-full",
+      "px-4",
+      "py-4",
+      "bg-emerald-800",
+      "text-white",
+      "tracking-wide",
+      "hover:bg-emerald-900",
+      "transition-colors",
+      "text-center",
+      "text-1xl"
+    );
+    submitDiv.addEventListener("click", function() {
+      submitButton.click();
+    });
+  });
 
   // src/js/components/search.js
   (function($, Drupal2, once2) {

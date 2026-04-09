@@ -37,9 +37,13 @@
         "drupal/metatag": "^2.2",
         "drupal/paragraphs": "^1.20",
         "drupal/pathauto": "^1.14",
+        "drupal/recaptcha_v3": "^2.0",
+        "drupal/smtp": "^1.4",
         "drupal/tailwindcss": "^5.0@alpha",
         "drupal/token": "^1.17",
         "drupal/twig_tweak": "^3.4",
+        "drupal/webform": "^6.2",
+        "drupal/webform_views": "^5.6",
         "drush/drush": "^13.7"
     },
     "conflict": {

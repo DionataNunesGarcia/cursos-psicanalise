@@ -1,0 +1,20 @@
+uuid: 948a0a12-745f-491f-be57-f60da3e34079
+langcode: pt-br
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_workload
+field_name: field_workload
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

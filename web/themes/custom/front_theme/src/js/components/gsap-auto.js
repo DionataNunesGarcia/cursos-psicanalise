@@ -34,7 +34,7 @@ gsap.registerPlugin(ScrollTrigger);
 
         if (el.tagName === "H2") anim = "fade-left";
         else if (el.tagName === "IMG") anim = "zoom";
-        else if (el.tagName === "BUTTON" || el.tagName === "A") anim = "scale";
+        else if (el.tagName === "BUTTON" || el.tagName === "A") anim = "fade-up";
 
         el.classList.add(`animate-${anim}`);
 

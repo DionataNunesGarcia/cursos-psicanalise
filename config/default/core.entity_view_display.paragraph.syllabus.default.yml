@@ -1,0 +1,31 @@
+uuid: c7a83c1c-2201-40e1-a3f6-57a6cdb61a5d
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.syllabus.field_body
+    - field.field.paragraph.syllabus.field_title
+    - paragraphs.paragraphs_type.syllabus
+  module:
+    - text
+id: paragraph.syllabus.default
+targetEntityType: paragraph
+bundle: syllabus
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,21 @@
+uuid: 4f34955d-2686-473b-82ee-bdb2ac1efcbf
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_level
+    - node.type.courses
+  module:
+    - options
+id: node.courses.field_course_level
+field_name: field_course_level
+entity_type: node
+bundle: courses
+label: 'Nível do curso'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

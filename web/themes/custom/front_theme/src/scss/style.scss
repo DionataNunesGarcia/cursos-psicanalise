@@ -18,7 +18,11 @@
 @use "components/text-content";
 @use "components/banners";
 @use "components/columns";
+@use "components/forms";
 @use "components/sliders";
+
+// Contents
+@use "contents/courses-node";
 
 // Layout
 @use "layout/header";
