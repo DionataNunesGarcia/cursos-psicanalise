@@ -1,0 +1,24 @@
+uuid: 58b706df-257b-48b2-9e7c-0ec2c8e3a0e8
+langcode: pt-br
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: topics
+label: Tópicos
+type: 'canonical_entities:taxonomy_term'
+pattern: '/topico/[term:name]'
+selection_criteria:
+  986d0fa4-8704-42ec-ade5-1564aa887d01:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: 986d0fa4-8704-42ec-ade5-1564aa887d01
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      tags: tags
+selection_logic: and
+weight: -5
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Idioma

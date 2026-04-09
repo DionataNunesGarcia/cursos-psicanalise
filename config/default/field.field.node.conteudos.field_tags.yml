@@ -10,7 +10,7 @@ id: node.conteudos.field_tags
 field_name: field_tags
 entity_type: node
 bundle: conteudos
-label: Tags
+label: Tópicos
 description: ''
 required: false
 translatable: false
