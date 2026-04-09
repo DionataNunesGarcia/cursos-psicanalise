@@ -20,24 +20,52 @@ jobs:
       - name: Install Composer Dependencies
         run: composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ secrets.PANTHEON_SSH_KEY }}
+      - name: Setup SSH config
+        run: |
+          mkdir -p ~/.ssh
+          echo "Host pantheon
+            HostName codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in
+            User git
+            Port 2222
+            IdentityFile ~/.ssh/pantheon
+            StrictHostKeyChecking no" > ~/.ssh/config
+          chmod 600 ~/.ssh/config
+
+      - name: Check SSH Key
+        run: |
+          if [ ! -f ~/.ssh/pantheon ]; then
+            echo "SSH key for Pantheon not found!"
+            exit 1
+          fi
+          chmod 600 ~/.ssh/pantheon
+          ssh -o StrictHostKeyChecking=no -p 2222 git@codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in exit || exit 1
 
       - name: Configure Git
         run: |
           git config --global user.email "deploy@pantheon.io"
           git config --global user.name "Pantheon Deploy Bot"
-          ssh-keyscan codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in >> ~/.ssh/known_hosts 2>/dev/null || true
+          ssh-keyscan -p 2222 codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in >> ~/.ssh/known_hosts 2>/dev/null || true
 
-      - name: Deploy Code to Pantheon
+      - name: Commit vendor and contrib
+        run: |
+          git add vendor web/modules/contrib
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "Add vendor and contrib modules for deploy"
+          else
+            echo "No changes in vendor or contrib"
+          fi
+
+      - name: Add remote and push
         run: |
           git remote remove pantheon || true
-          git remote add pantheon git@codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in:~/repository.git
+          git remote add pantheon pantheon:~/repository.git
           git add .
-          git commit -m "Deploy from GitHub Actions" || echo "No changes to commit"
-          git push pantheon main:master --force
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "Deploy from GitHub Actions"
+          else
+            echo "No additional changes to commit"
+          fi
+          git push pantheon main:master --force || echo "Push failed. Check SSH key and permissions."
 
       - name: Clear Cache
         run: |
