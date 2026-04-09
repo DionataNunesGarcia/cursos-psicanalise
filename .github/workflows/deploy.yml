@@ -34,7 +34,7 @@ jobs:
       - name: Deploy Code to Pantheon
         run: |
           git remote remove pantheon || true
-          git remote add pantheon ssh://5f4cfc0f-9aef-444d-a8f0-d14d742e7bff@codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in:2222/~/repository.git
+          git remote add pantheon ssh://codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in:2222/~/repository.git
           git add .
           git commit -m "Deploy from GitHub Actions" || echo "No changes to commit"
           git push pantheon main:master --force
