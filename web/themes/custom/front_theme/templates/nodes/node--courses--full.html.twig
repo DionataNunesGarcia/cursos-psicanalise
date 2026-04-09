@@ -122,7 +122,9 @@
               </div>
             {% endif %}
           </div>
-          <button class="w-full py-4 bg-emerald-700 text-white tracking-wide hover:bg-emerald-800 transition-colors">Enroll Now</button>
+          <button class="w-full py-4 bg-emerald-700 text-white tracking-wide hover:bg-emerald-800 transition-colors modal-subscription-trigger">
+            {{ 'Inscreva-se agora'|t }}
+          </button>
           <div class="pt-6 border-t border-neutral-200 space-y-3 text-sm">
             {{ content.field_course_includes }}
           </div>
@@ -150,7 +152,7 @@
     </div>
   </section>
   {% if node.field_target_audience.value or node.field_requirements.value or node.field_learning_objectives.value %}
-    <section class="container-fluid mx-auto py-20 lg:py-32 bg-orange-700 text-white paragraph paragraph--type--section-columns paragraph--view-mode--default relative overflow-hidden auto-animate" data-animate="fade-up">
+    <section class="container-fluid mx-auto py-20 lg:py-32 bg-emerald-700 text-white paragraph paragraph--type--section-columns paragraph--view-mode--default relative overflow-hidden auto-animate" data-animate="fade-up">
 
       <div class="container mx-auto px-6 2xl:px-0 max-w-[1400px]">
 
@@ -252,7 +254,7 @@
       <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
         {{ 'Inscreva-se agora e comece sua jornada de aprendizado e crescimento profissional.'|t }}
       </p>
-      <button class="px-12 py-5 bg-white text-black tracking-wide hover:bg-neutral-100 transition-colors text-lg">
+      <button class="px-12 py-5 bg-white text-black tracking-wide hover:bg-neutral-100 transition-colors modal-subscription-trigger" @click="open = true">
         {{ 'Inscreva-se agora'|t }} — 
         {% if node.field_price.value %}
           {{ 'R$'|t }} {{ content.field_price['#items'].value|number_format(2, ',', '.') }}
@@ -263,3 +265,6 @@
     </div>
   </section>
 </article>
+
+<!-- Modal -->
+{% include '@front_theme/includes/modal-form-course.twig' %}

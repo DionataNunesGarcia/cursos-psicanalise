@@ -41,3 +41,8 @@ cloneable_entities:
   - base_field_override
   - link_icon_service
   - entity_browser
+  - webform
+  - webform_submission
+  - webform_options
+  - captcha_point
+  - recaptcha_v3_action
