@@ -28,7 +28,6 @@ docroot/themes/custom/*/public/**
 /web/sites/*/files/*
 
 # Ignore specific development-related files or directories.
-/private/
 /drush/contrib/
 .env
 .idea/

@@ -1,0 +1,18 @@
+api_version: 1
+
+# Configurações do site
+php_version: 8.2
+
+# Esteira de Deploy (Quicksilver)
+workflows:
+  deploy:
+    after:
+      - type: webphp
+        description: "Executa a esteira de deploy (updb, cim, cr)"
+        script: private/scripts/deploy.php
+  
+  sync_code:
+    after:
+      - type: webphp
+        description: "Roda atualizações após sincronizar código no ambiente Dev"
+        script: private/scripts/deploy.php
