@@ -61,5 +61,5 @@ jobs:
       - name: Deploy to Pantheon
         run: |
           git remote remove pantheon || true
-          git remote add pantheon ssh://codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in:2222/~/repository.git
+          git remote add pantheon ssh://codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff@codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in:2222/~/repository.git
           git push pantheon main:master
