@@ -1,0 +1,36 @@
+name: Deploy to Pantheon
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: gd, mbstring, xml
+
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.PANTHEON_SSH_KEY }}
+          known_hosts: drush.in # placeholder, o comando abaixo resolve melhor
+          if_key_exists: replace
+
+      - name: Add Pantheon to Known Hosts
+        run: ssh-keyscan -p 2222 codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in >> ~/.ssh/known_hosts
+
+      - name: Deploy Code to Pantheon
+        run: |
+          git remote add pantheon ssh://codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in:2222/~/repository.git
+          git push pantheon main:master --force
