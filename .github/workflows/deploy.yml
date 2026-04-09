@@ -20,6 +20,15 @@ jobs:
       - name: Install Composer Dependencies
         run: composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
+      - name: Check Secrets
+        run: |
+          if [ -z "${{ secrets.PANTHEON_SSH_KEY }}" ]; then
+            echo "❌ PANTHEON_SSH_KEY está vazio!"
+            exit 1
+          else
+            echo "✅ Secret encontrado"
+          fi
+
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.8.0
         with:
