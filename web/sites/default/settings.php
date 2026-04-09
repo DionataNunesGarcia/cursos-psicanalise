@@ -43,8 +43,7 @@ if (file_exists($app_root . '/' . $site_path . '/settings.ddev.php')) {
 
 // Por último, forçamos o caminho correto para a Pantheon e produção
 // Isso garante que mesmo que o DDEV aponte para outro lugar, a Pantheon use a raiz correta.
-$settings['config_sync_directory'] = './config/default';
-
+$settings['config_sync_directory'] = '../config/default';
 /**
  * Configurações específicas para ambientes Pantheon (Dev, Test, Live)
  */
