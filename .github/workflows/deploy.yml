@@ -1,65 +1,45 @@
 name: Deploy to Pantheon
-
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # 📥 Clona o repositório
-      - name: Checkout código
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      # 🐘 Setup do PHP
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
-          extensions: mbstring, xml, gd
-          coverage: none
+          extensions: gd, mbstring, xml
 
-      # 📦 Instala dependências
       - name: Install Composer Dependencies
-        run: |
-          composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist --ignore-platform-reqs
+        run: composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
-      # 🔍 Verifica se o secret existe
-      - name: Check SSH Key
-        run: |
-          if [ -z "${{ secrets.PANTHEON_SSH_KEY }}" ]; then
-            echo "❌ Secret PANTHEON_SSH_KEY não encontrado"
-            exit 1
-          else
-            echo "✅ SSH key carregada"
-          fi
-
-      # 🔐 Configura SSH
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.PANTHEON_SSH_KEY }}
 
-      # 🧠 Adiciona Pantheon ao known_hosts
-      - name: Add Pantheon to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -p 2222 codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in >> ~/.ssh/known_hosts 2>/dev/null
-
-      # ⚙️ Configura Git
       - name: Configure Git
         run: |
           git config --global user.email "deploy@pantheon.io"
           git config --global user.name "Pantheon Deploy Bot"
+          ssh-keyscan -p 2222 codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in >> ~/.ssh/known_hosts 2>/dev/null || true
 
-      # 🚀 Deploy
-      - name: Deploy to Pantheon
+      - name: Deploy Code to Pantheon
         run: |
           git remote remove pantheon || true
-          git remote add pantheon ssh://codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff@codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in:2222/~/repository.git
-          git push pantheon main:master
+          git remote add pantheon ssh://codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in:2222/~/repository.git
+          git add .
+          git commit -m "Deploy from GitHub Actions" || echo "No changes to commit"
+          git push pantheon main:master --force
+
+      - name: Clear Cache
+        run: |
+          terminus auth:login --machine-token=${{ secrets.PANTHEON_MACHINE_TOKEN }}
+          terminus drush cursos-psicanalise.dev -- cr
