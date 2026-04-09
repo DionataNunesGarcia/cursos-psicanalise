@@ -32,17 +32,16 @@
 
     {# 3. Conteúdo Principal #}
     <div class="max-w-[1400px] mx-auto relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="columns-content">
         
         {# Coluna de Texto #}
-        <div class="space-y-8">
-          <div class="space-y-6">
+        <div class="content-text">
+          <div class="content-titles">
             
             {# Título dinâmico com primeira palavra colorida #}
             {% if content.field_section_title|render %}
               {% set title = content.field_section_title[0]['#context']['value'] %}
               {% set words = title|split(' ') %}
-              </h1>
               <h1 class="font-serif text-5xl lg:text-7xl leading-[1.1] tracking-tight">
                 <span class="text-primary">{{ words[0] }}</span>
                 {{ words|slice(1)|join(' ') }}
@@ -51,11 +50,12 @@
 
             {# Subtítulo / Texto #}
             {% if content.field_subtitle|render %}
-              <p class="text-lg lg:text-xl text-neutral-600 leading-relaxed max-w-xl">
+              <h2 class="text-lg lg:text-xl text-neutral-600 leading-relaxed">
                 {{ content.field_subtitle[0]['#context']['value'] }}
-              </p>
-            {% elseif content.field_text|render %}
-              <div class="text-lg lg:text-xl text-neutral-600 leading-relaxed max-w-xl">
+              </h2>
+            {% endif %}
+            {% if content.field_text|render %}
+              <div class="text-lg lg:text-xl text-neutral-600 leading-relaxed">
                 {{ content.field_text }}
               </div>
             {% endif %}
@@ -63,7 +63,7 @@
 
           {# Botões (CTAs) #}
           {% if content.field_cta_primary|render or content.field_cta_secondary|render %}
-            <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex flex-col sm:flex-row gap-4 actions">
               {% if content.field_cta_primary|render %}
                 <a href="{{ content.field_cta_primary[0]['#url'] }}" class="px-8 py-4 bg-emerald-800 text-white tracking-wide hover:bg-emerald-900 transition-colors text-center">
                   {{ content.field_cta_primary[0]['#title'] }}

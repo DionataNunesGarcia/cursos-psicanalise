@@ -1,14 +1,13 @@
 .paragraph--type--section-banner {
   &.banner-type-default {
+    @apply pt-24 pb-20 lg:pt-32 lg:pb-32 relative overflow-hidden;
     text-align: center;
+    
+    .actions {
+      @apply flex flex-col sm:flex-row gap-4 mt-10 justify-center;
+    }
     .content-text {
-      h2 {
-        font-weight: 500;
-        margin-bottom: 24px;
-        font-size: 48px;
-        &.text-primary {
-          color: hsl(var(--color-primary));
-        }
+      h1 {
         &::before {
           content: "";
           display: block;
@@ -21,18 +20,15 @@
           margin: 0 auto;
         }
       }
-      h3 {
-        font-weight: 400;
-        margin-bottom: 24px;
-        font-size: 32px;
+      h2 {
+        @apply w-full mx-auto text-3xl lg:text-3xl font-serif font-medium leading-[1.1] tracking-tight text-black opacity-90;
       }
       p {
+        @apply w-full max-w-2xl mx-auto text-lg lg:text-xl opacity-90;
         font-size: 18px;
         margin-bottom: 72px;
+        text-align: center;
       }
-    }
-    .ctas {
-      justify-content: center;
     }
   }
 
@@ -42,6 +38,15 @@
     position: relative;
     background-color: #fff;
 
+    .columns-content {
+      @apply grid lg:grid-cols-2 gap-12 lg:gap-20 items-center;
+    }
+    .content-text {
+      @apply  space-y-8;
+    }
+    .content-titles {
+      @apply  space-y-6;
+    }
     // ===== IMAGEM =====
     .banner-image-wrapper {
       position: relative;
@@ -84,20 +89,17 @@
     .content-text {
       position: relative;
       z-index: 10; // Acima da imagem e do SVG
-      
-      h2, h3, .field-text {
-        color: #fff; // Garante leitura sobre a imagem
-      }
 
       .field-text {
         @apply max-w-2xl mt-4 text-lg lg:text-xl opacity-90;
       }
-    }
 
-    // Ajuste dos botões sobre o background
-    .ctas {
-      .btn-outline {
-        @apply border-white text-white hover:bg-white hover:text-black;
+      h2 {
+        @apply text-3xl lg:text-3xl font-serif font-medium leading-[1.1] tracking-tight text-black max-w-xl;
+      }
+
+      p {
+        @apply font-serif font-medium leading-[1.1] tracking-tight text-black max-w-xl;
       }
     }
   }

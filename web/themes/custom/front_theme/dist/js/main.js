@@ -13138,21 +13138,25 @@
   document.addEventListener("DOMContentLoaded", function() {
     const submitDiv = document.querySelector("#edit-actions");
     const submitButton = document.querySelector("#edit-actions-submit");
-    submitButton.classList.add(
-      "w-full",
-      "px-4",
-      "py-4",
-      "bg-emerald-800",
-      "text-white",
-      "tracking-wide",
-      "hover:bg-emerald-900",
-      "transition-colors",
-      "text-center",
-      "text-1xl"
-    );
-    submitDiv.addEventListener("click", function() {
-      submitButton.click();
-    });
+    if (submitButton) {
+      submitButton.classList.add(
+        "w-full",
+        "px-4",
+        "py-4",
+        "bg-emerald-800",
+        "text-white",
+        "tracking-wide",
+        "hover:bg-emerald-900",
+        "transition-colors",
+        "text-center",
+        "text-1xl"
+      );
+      if (submitDiv) {
+        submitDiv.addEventListener("click", function() {
+          submitButton.click();
+        });
+      }
+    }
   });
 
   // src/js/components/search.js

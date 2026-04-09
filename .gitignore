@@ -41,6 +41,7 @@ docroot/themes/custom/*/public/**
 *.zip
 *.sql.gz
 .DS_Store
+!assets/db/*
 
 # ddev
 .ddev/config.local.yaml

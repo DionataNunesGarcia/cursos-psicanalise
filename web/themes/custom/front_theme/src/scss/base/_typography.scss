@@ -42,6 +42,7 @@
     color: hsl(var(--color-gray-600));
     line-height: 1.625;
     margin-bottom: 1.25rem;
+    letter-spacing: normal;
 
     @media (min-width: 768px) {
       font-size: 1rem;
