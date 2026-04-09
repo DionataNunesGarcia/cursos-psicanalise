@@ -29,12 +29,12 @@ jobs:
         run: |
           git config --global user.email "deploy@pantheon.io"
           git config --global user.name "Pantheon Deploy Bot"
-          ssh-keyscan -p 2222 codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in >> ~/.ssh/known_hosts 2>/dev/null || true
+          ssh-keyscan codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in >> ~/.ssh/known_hosts 2>/dev/null || true
 
       - name: Deploy Code to Pantheon
         run: |
           git remote remove pantheon || true
-          git remote add pantheon ssh://codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in:2222/~/repository.git
+          git remote add pantheon git@codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in:~/repository.git
           git add .
           git commit -m "Deploy from GitHub Actions" || echo "No changes to commit"
           git push pantheon main:master --force
