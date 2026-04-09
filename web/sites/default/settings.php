@@ -32,3 +32,10 @@ $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
   include $local_settings;
 }
+
+$settings['config_sync_directory'] = dirname(DRUPAL_ROOT) . '/config/default';
+$settings['config_vcs_directory'] = dirname(DRUPAL_ROOT) . '/config/default';
+
+if (file_exists($app_root . '/' . $site_path . '/settings.ddev.php')) {
+  include $app_root . '/' . $site_path . '/settings.ddev.php';
+}
