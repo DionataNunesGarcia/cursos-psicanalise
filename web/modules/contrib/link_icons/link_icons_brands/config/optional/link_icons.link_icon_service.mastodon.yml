@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mastodon
+label: 'Mastodon'
+hostnames:
+ - 'joinmastodon.org'
+ - 'mastodon.social'
+ - 'mstdn.social'
+ - 'mastodon.world'
+ - 'mas.to'
+ - 'mstdn.party'
+ - 'mstdn.games'
+ - 'mastodon.green'
+ - 'mastodon.energy'
+icon: 'mastodon'
+icon_style: 'brand'
+color: '#5C4FE6'

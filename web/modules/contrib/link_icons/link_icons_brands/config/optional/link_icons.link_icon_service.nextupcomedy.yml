@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+id: nextupcomedy
+label: 'NextUp Comedy'
+hostnames:
+ - 'nextupcomedy.com'
+class: 'nextup-comedy'
+icon: 'play'
+icon_style: 'solid'
+icon_square: 'film'
+icon_circle: 'play-circle'
+color: '#13B2A9'

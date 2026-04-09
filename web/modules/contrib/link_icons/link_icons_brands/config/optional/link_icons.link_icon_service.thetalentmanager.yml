@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: thetalentmanager
+label: 'The Talent Manager'
+hostnames:
+ - 'thetalentmanager.com'
+class: 'the-talent-manager'
+icon: 'play-circle'
+icon_style: 'solid'
+color: '#40CCD8'

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: letterboxd
+label: 'Letterboxd'
+hostnames:
+ - 'letterboxd.com'
+icon: 'letterboxd'
+icon_style: 'brand'
+icon_square: 'square-letterboxd'
+color: 'black'

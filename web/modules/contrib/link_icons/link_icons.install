@@ -1,0 +1,132 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for link_icons.
+ */
+
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Url;
+use Drupal\Core\Routing\RouteProviderInterface;
+
+/**
+ * Implements hook_requirements().
+ */
+function link_icons_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'runtime') {
+    $module_machine_name = basename(__FILE__, '.install');
+    $module_name = \Drupal::service('extension.list.module')->getName($module_machine_name);
+
+    if (\Drupal::state()->get('system.maintenance_mode')) {
+      $requirements[$module_machine_name . '_maintenance_mode'] = [
+        'severity' => REQUIREMENT_WARNING,
+        'title' => $module_name,
+        'value' => new TranslatableMarkup('Not enabled while in maintenance mode'),
+        'description' => new TranslatableMarkup('Please note that while the site is in maintenance mode none of the link icons will be output.'),
+      ];
+    }
+
+    $services = count(\Drupal::entityTypeManager()->getStorage('link_icon_service')->loadMultiple());
+    $units = ' service' . ($services != 1 ? 's' : '');
+    $info = \Drupal::service('extension.list.module')->getExtensionInfo($module_machine_name);
+
+    $route_provider = \Drupal::service('router.route_provider');
+
+    $requirements[$module_machine_name] = [
+      'severity' => REQUIREMENT_OK,
+      'title' => $module_name,
+      'value' => new TranslatableMarkup('@name @version is installed with @services', [
+        '@name' => $module_name,
+        '@version' => $info['version'],
+        '@services' => $services . $units,
+      ]),
+      'description' => (count($route_provider->getRoutesByNames(['help.page'])) === 1
+        ? new TranslatableMarkup('The @name module is installed, with <a href="@url_services">@services</a> available for use. See <a href="@url_help">the module help page</a> for explanations of each service configuration field.', [
+            '@name' => $module_name,
+            '@services' => $services . ' link icon' . $units,
+            '@url_services' => Url::fromRoute('entity.link_icon_service.collection')->toString(),
+            '@url_help' => Url::fromRoute('help.page', ['name' => $module_machine_name])->toString(),
+          ])
+        : new TranslatableMarkup('The @name module is installed, with <a href="@url_services">@services</a> available for use. Enable the core help module to see the module help page for explanations of each service configuration field.', [
+          '@name' => $module_name,
+          '@services' => $services . ' link icon' . $units,
+          '@url_services' => Url::fromRoute('entity.link_icon_service.collection')->toString(),
+        ])
+      ),
+    ];
+
+    // Recommend the Links Icons Brands sub-module.
+    if (!\Drupal::moduleHandler()->moduleExists('link_icons_brands')) {
+      $requirements['link_icons_brands'] = [
+        'severity' => REQUIREMENT_INFO,
+        'title' => $module_name,
+        'value' => new TranslatableMarkup('@name Brands sub-module is recommended', [
+          '@name' => $module_name,
+        ]),
+        'description' => new TranslatableMarkup('The @name Brands sub-module is recommended to add and maintain many popular link icon services to this website.', [
+          '@name' => $module_name,
+        ]),
+      ];
+    }
+  }
+
+  return $requirements;
+}
+
+/**
+ * Implements hook_install().
+ */
+function link_icons_install() {
+  $module_machine_name = basename(__FILE__, '.install');
+  $module_name = \Drupal::service('extension.list.module')->getName($module_machine_name);
+
+  \Drupal::messenger()->addMessage(t('Thanks for installing @name!', [
+    '@name' => $module_name,
+  ]));
+
+  /** @var \Drupal\Core\Routing\RouteBuilderInterface $routeBuilder $route_builder */
+  $route_builder = \Drupal::service('router.builder');
+
+  // Makes the 'link_icons.config' route available here, see hook_install doc.
+  $route_builder->rebuild();
+
+  \Drupal::messenger()->addMessage(t('To use @module_name:
+    <ul>
+      <li>Head to a <a href="@url_types">content type</a> display management tab where you have a link field/fields. In the format column for the link field that you want to use this formatter, select the \'Service icon (with options)\' format, and save the form to put it into use.</li>
+      <li>Click the settings cog/gear button to view and edit the (hopefully) self-explanatory options for how the links should be displayed. These exploit <a href="https://fontawesome.com/how-to-use/on-the-web/styling/" target="_blank">many of the Font Awesome styling features</a>.</li>
+      <li>To customise the icons further, just theme your pages as usual. With the icons rendered as text characters using Font Awesome, you can style them with CSS as you wish.</li>
+    </ul>', [
+      '@module_name' => $module_name,
+      '@url_types' => Url::fromRoute('entity.node_type.collection')->toString(),
+    ]
+  ));
+
+  $route_provider = \Drupal::service('router.route_provider');
+
+  \Drupal::messenger()->addMessage(
+    count($route_provider->getRoutesByNames(['help.page'])) === 1
+    ? t('To customise which hostnames result in which icons being used (including the colour, HTML class and more), use the services configuration page at <a href="@url_services">Home &raquo; Admin &raquo; Configuration &raquo; Search &amp; Metadata &raquo; Link icon services</a> (<a href="@url_services">@url_services</a>) to add, modify and remove service configurations. See <a href="@url_help">the module help page</a> for explanations of each service configuration field.', [
+        '@url_services' => Url::fromRoute('entity.link_icon_service.collection')->toString(),
+        '@url_help' => Url::fromRoute('help.page', ['name' => $module_machine_name])->toString(),
+      ])
+    : t('To customise which hostnames result in which icons being used (including the colour, HTML class and more), use the services configuration page at <a href="@url_services">Home &raquo; Admin &raquo; Configuration &raquo; Search &amp; Metadata &raquo; Link icon services</a> (<a href="@url_services">@url_services</a>) to add, modify and remove service configurations. Enable the core help module to see the module help page for explanations of each service configuration field.', [
+        '@url_services' => Url::fromRoute('entity.link_icon_service.collection')->toString(),
+      ])
+  );
+
+  if (!\Drupal::moduleHandler()->moduleExists($module_machine_name . '_brands')) {
+    \Drupal::messenger()->addMessage(t('<a href="@url_modules">Install the @machine_name_brands submodule</a>, if you haven\'t already, to add service configurations for many popular brand services.', [
+      '@machine_name' => $module_machine_name,
+      '@url_modules' => Url::fromRoute('system.modules_list')->toString(),
+    ]));
+  }
+}
+
+/**
+ * Update the schema for link_icon_service entity.
+ */
+function link_icons_update_8001() {
+  \Drupal::service('entity.definition_update_manager')->applyUpdates();
+}

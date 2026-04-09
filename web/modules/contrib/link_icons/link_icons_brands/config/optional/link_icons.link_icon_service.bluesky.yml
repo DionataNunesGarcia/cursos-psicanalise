@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies: {  }
+id: bluesky
+label: 'Bluesky'
+hostnames:
+ - 'bsky.app'
+ - 'bsky.social'
+icon: 'bluesky'
+icon_style: 'brand'
+icon_square: 'square-bluesky'
+color: '#0085FF'

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: substack
+label: 'Substack'
+hostnames:
+ - 'substack.com'
+icon: 'bookmark'
+icon_style: 'solid'
+color: '#FF6719'

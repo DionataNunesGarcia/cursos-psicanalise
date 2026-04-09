@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: chortle
+label: 'Chortle'
+hostnames:
+ - 'chortle.co.uk'
+icon: 'glasses'
+icon_style: 'solid'
+color: '#03274B'

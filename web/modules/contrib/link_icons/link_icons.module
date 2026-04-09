@@ -1,0 +1,753 @@
+<?php
+
+/**
+ * @file
+ * A module adding a field formatter for Link fields.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+use Drupal\Core\Render\Markup;
+use Drupal\Component\Render\FormattableMarkup;
+
+/**
+ * Implements hook_help().
+ */
+function link_icons_help($route_name, RouteMatchInterface $route_match) {
+  $module_machine_name = basename(__FILE__, '.module');
+
+  if ($route_name == 'help.page.' . $module_machine_name) {
+    $dom = new DOMDocument();
+
+    $module_name = \Drupal::service('extension.list.module')->getName($module_machine_name);
+
+    $dom->appendChild($dom->createElement('h2', t('About @module_name', ['@module_name' => $module_name])));
+
+    $about = $dom->createDocumentFragment();
+    $about->appendXML(t(
+      'The <em>@module_name</em> module provides the ability to format link fields with an additional configurable icon that represents the site that the link is to.',
+      ['@module_name' => $module_name]
+    ));
+    $p = $dom->createElement('p');
+    $p->appendChild($about);
+    $dom->appendChild($p);
+
+    $dom->appendChild($dom->createElement('h3', t('Uses')));
+
+    $uses = $dom->createElement('dl');
+    $uses->appendChild($dom->createElement('dt', t('Displaying links')));
+    $links = $dom->createDocumentFragment();
+    $links->appendXML(t(
+      'Link fields can be displayed using the <em>@module_name</em> field formatter on the field display settings page for any content type. If this formatter is used, you can configure how the icon is formatted around the link.',
+      ['@module_name' => $module_name]
+    ));
+    $dd = $dom->createElement('dd');
+    $dd->appendChild($links);
+    $uses->appendChild($dd);
+    $dom->appendChild($uses);
+
+    $dom->appendChild($dom->createElement('h3', t('Configuration settings')));
+
+    $config = $dom->createElement('dl');
+
+    $config->appendChild($dom->createElement('dt', t('Text alongside the icon')));
+    $dd = $dom->createElement('dd', t('Select what text should appear with each icon (if any). The options are:'));
+    $list = $dom->createElement('ul');
+    $list->appendChild($dom->createElement('li', t('link title, or else link URL')));
+    $list->appendChild($dom->createElement('li', t('link title')));
+    $list->appendChild($dom->createElement('li', t('link URL')));
+    $list->appendChild($dom->createElement('li', t('link title - link URL')));
+    $list->appendChild($dom->createElement('li', t('link title: link URL')));
+    $list->appendChild($dom->createElement('li', t('link URL (link title)')));
+    $dd->appendChild($list);
+    $config->appendChild($dd);
+
+    $config->appendChild($dom->createElement('dt', t('Hide the scheme from the URL?')));
+    $config->appendChild($dom->createElement('dd', t("Should the scheme (ex. 'http://', 'https://', 'mailto:', 'tel:') be hidden from the URL, if it is used in the text?")));
+
+    $config->appendChild($dom->createElement('dt', t('Order of icon and text')));
+    $dd = $dom->createElement('dd', t('Select the order of each icon and its text (if any). The options are:'));
+    $list = $dom->createElement('ul');
+    $list->appendChild($dom->createElement('li', t('icon first')));
+    $list->appendChild($dom->createElement('li', t('icon last')));
+    $dd->appendChild($list);
+    $config->appendChild($dd);
+
+    $config->appendChild($dom->createElement('dt', t('Size of the icon')));
+    $dd = $dom->createElement('dd', t('Select what size each icon should be. This is not used/supported if icons have a background (see the setting below). The options are:'));
+    $list = $dom->createElement('ul');
+    $list->appendChild($dom->createElement('li', t('100%')));
+    $list->appendChild($dom->createElement('li', t('133%')));
+    $list->appendChild($dom->createElement('li', t('200%')));
+    $list->appendChild($dom->createElement('li', t('300%')));
+    $list->appendChild($dom->createElement('li', t('400%')));
+    $list->appendChild($dom->createElement('li', t('500%')));
+    $dd->appendChild($list);
+    $config->appendChild($dd);
+
+    $config->appendChild($dom->createElement('dt', t('Width of icons')));
+    $dd = $dom->createElement('dd', t('Select whether each icon should have a fixed or variable width. This can help with horizontal alignment. The options are:'));
+    $list = $dom->createElement('ul');
+    $list->appendChild($dom->createElement('li', t('fixed width')));
+    $list->appendChild($dom->createElement('li', t('variable width')));
+    $dd->appendChild($list);
+    $config->appendChild($dd);
+
+    $config->appendChild($dom->createElement('dt', t('Coloured icons')));
+    $dd = $dom->createElement('dd', t("Select whether each service icon should be coloured correctly (if that's possible with a single colour). The options are:"));
+    $list = $dom->createElement('ul');
+    $list->appendChild($dom->createElement('li', t('coloured')));
+    $list->appendChild($dom->createElement('li', t('uncoloured')));
+    $dd->appendChild($list);
+    $config->appendChild($dd);
+
+    $config->appendChild($dom->createElement('dt', t('Pre-shaped icons')));
+    $dd = $dom->createElement('dd', t('Select whether each service icon should be the pre-squared or pre-circled version (if available). The options are:'));
+    $list = $dom->createElement('ul');
+    $list->appendChild($dom->createElement('li', t('squared')));
+    $list->appendChild($dom->createElement('li', t('circled')));
+    $list->appendChild($dom->createElement('li', t('squared, or else circled')));
+    $list->appendChild($dom->createElement('li', t('circled, or else squared')));
+    $list->appendChild($dom->createElement('li', t('natural')));
+    $dd->appendChild($list);
+    $config->appendChild($dd);
+
+    $config->appendChild($dom->createElement('dt', t('Background of the icons')));
+    $dd = $dom->createElement('dd', t('Select what background each icon should have (if any). The options are:'));
+    $list = $dom->createElement('ul');
+    $list->appendChild($dom->createElement('li', t('Square with rounded corners solid')));
+    $list->appendChild($dom->createElement('li', t('Square with rounded corners outline')));
+    $list->appendChild($dom->createElement('li', t('Square solid')));
+    $list->appendChild($dom->createElement('li', t('Triangle pointing right (play symbol) solid')));
+    $list->appendChild($dom->createElement('li', t('Circle solid')));
+    $list->appendChild($dom->createElement('li', t('Circle outline')));
+    $list->appendChild($dom->createElement('li', t('Circle outline with notch at the top')));
+    $list->appendChild($dom->createElement('li', t('Circle outline hairline')));
+    $list->appendChild($dom->createElement('li', t('Circle outline with centre dot')));
+    $list->appendChild($dom->createElement('li', t('Cloud solid')));
+    $list->appendChild($dom->createElement('li', t('Sun outline')));
+    $list->appendChild($dom->createElement('li', t('Folder solid')));
+    $list->appendChild($dom->createElement('li', t('Folder outline')));
+    $list->appendChild($dom->createElement('li', t('File solid')));
+    $list->appendChild($dom->createElement('li', t('File outline')));
+    $list->appendChild($dom->createElement('li', t('Heart solid')));
+    $list->appendChild($dom->createElement('li', t('Heart outline')));
+    $list->appendChild($dom->createElement('li', t('Laptop')));
+    $list->appendChild($dom->createElement('li', t('Tablet')));
+    $dd->appendChild($list);
+    $config->appendChild($dd);
+
+    $dom->appendChild($config);
+
+    $dom->appendChild($dom->createElement('h3', t('Service configuration')));
+
+    $configuration = $dom->createDocumentFragment();
+    $configuration->appendXML(t(
+      "When using this formatter, you can manage the services (URL formats) that should or shouldn't have their own specific icons, on the @collection configuration page. The services each have the following settings:",
+      ['@collection' => Link::createFromRoute('Link icon services', 'entity.link_icon_service.collection')->toString()]
+    ));
+    $p = $dom->createElement('p');
+    $p->appendChild($configuration);
+    $dom->appendChild($p);
+
+    $service = $dom->createElement('dl');
+
+    $service->appendChild($dom->createElement('dt', t('Hostname(s)')));
+    $service->appendChild($dom->createElement('dd', t("The domain name(s) to look for at the end of the hostname within the URL of the link - ex. 'google.com'.")));
+
+    $service->appendChild($dom->createElement('dt', t('Class')));
+    $service->appendChild($dom->createElement('dd', t("The HTML class to use for the generated link icon (ex. 'google').")));
+
+    $service->appendChild($dom->createElement('dt', t('Icon name')));
+    $service->appendChild($dom->createElement('dd', t("The main Font Awesome icon ID to use when generating the link icon, without any preceeding 'fa-', ex. 'google'")));
+
+    $service->appendChild($dom->createElement('dt', t('Icon style')));
+    $service->appendChild($dom->createElement('dd', t("The main Font Awesome icon style to use when generating the link icon, ex. 'solid' or 'brand'.")));
+
+    $service->appendChild($dom->createElement('dt', t('Square icon name')));
+    $service->appendChild($dom->createElement('dd', t("A square Font Awesome icon ID to use when generating the link icon, without any preceeding 'fa-', ex. 'google-plus-square'.")));
+
+    $service->appendChild($dom->createElement('dt', t('Circular icon name')));
+    $service->appendChild($dom->createElement('dd', t("A circular Font Awesome icon ID to use when generating the link icon, without any preceeding 'fa-', ex. 'google-plus-circle'.")));
+
+    $service->appendChild($dom->createElement('dt', t('Icon colour')));
+    $service->appendChild($dom->createElement('dd', t("The CSS 'color' to use when generating the link icon, ex. 'black', '#000000' or 'rgb(0, 0, 0)'")));
+
+    $dom->appendChild($service);
+
+    return $dom->saveHTML();
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function link_icons_field_formatter_info() {
+  return [
+    'link_icons_icon' => [
+      'label' => t('Service icon (with options)'),
+      'description' => t('Displays an icon for the service being linked to - ex. Facebook, Twitter or LinkedIn'),
+      'field types' => ['link_field'],
+      'settings' => [
+        'text' => 'title',
+        'hideURLscheme' => TRUE,
+        'order' => 'first',
+        'size' => '1x',
+        'width' => 'fixed',
+        'coloured' => 'coloured',
+        'shaped' => 'natural',
+        'background' => 'none',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Generates markup for a link.
+ */
+function _link_icons_link_markup(string $title, string $url, array $settings, array $services = [], bool $link = FALSE) {
+  if (!count($services)) {
+    $services = \Drupal::entityTypeManager()->getStorage('link_icon_service')->loadMultiple();
+  }
+
+  $url_full = $url;
+
+  $parsed = parse_url($url);
+
+  if (isset($parsed['scheme'])) {
+    switch ($parsed['scheme']) {
+      case 'mailto':
+        $service = [
+          'id' => 'mailto',
+          'class' => 'mailto',
+          'icon' => 'envelope',
+          'icon_style' => 'solid',
+          'icon_square' => 'envelope-square',
+          'color' => 'navy',
+        ];
+
+        break;
+
+      case 'tel':
+        $service = [
+          'id' => 'tel',
+          'class' => 'tel',
+          'icon' => 'phone',
+          'icon_style' => 'solid',
+          'icon_square' => 'phone-square',
+          'color' => 'navy',
+        ];
+
+        break;
+
+      case 'http':
+      case 'https':
+      default:
+        $hostparts = explode('.', $parsed['host']);
+        $parts = count($hostparts);
+        $host3 = '';
+        $host4 = '';
+        $host5 = '';
+        if ($parts == 1) {
+          $host = $hostparts[0];
+        }
+        else {
+          $host = $hostparts[$parts - 2] . '.' . $hostparts[$parts - 1];
+          if ($parts > 2) {
+            $host3 = $hostparts[$parts - 3] . '.' . $host;
+            if ($parts > 3) {
+              $host4 = $hostparts[$parts - 4] . '.' . $host3;
+              if ($parts > 4) {
+                $host5 = $hostparts[$parts - 5] . '.' . $host4;
+              }
+            }
+          }
+        }
+
+        // Set the default service to a generic navy globe.
+        $service = [
+          'class' => 'generic',
+          'icon' => 'globe',
+          'icon_style' => 'solid',
+          'icon_square' => '',
+          'icon_circle' => '',
+          'color' => 'navy',
+        ];
+
+        // Find the service from $services.
+        foreach ($services as $aservice) {
+          foreach ($aservice->get('hostnames') as $hostname) {
+            if ($hostname == $host5 || $hostname == $host4 || $hostname == $host3 || $hostname == $host) {
+              $service = [
+                'id' => $aservice->get('id'),
+                'class' => $aservice->get('class') ?: $aservice->get('id'),
+                'icon' => $aservice->get('icon'),
+                'icon_style' => $aservice->get('icon_style'),
+                'icon_square' => $aservice->get('icon_square') ?: '',
+                'icon_circle' => $aservice->get('icon_circle') ?: '',
+                'color' => $aservice->get('color') ?: '',
+              ];
+            }
+          }
+        }
+
+        break;
+    }
+  }
+
+  $hollow_endings = [
+    '-o',
+    '-o-notch',
+    '-thin',
+    'sun',
+    'laptop',
+    'tablet',
+  ];
+
+  // Determine if the icon needs to be inverted.
+  if ($settings['background'] != 'none') {
+    $inverse = TRUE;
+    foreach ($hollow_endings as $ending) {
+      if ($inverse) {
+        $ending_length = strlen($ending);
+        if ($ending_length <= strlen($settings['background'])) {
+          if (substr_compare($settings['background'], $ending, -$ending_length) === 0) {
+            $inverse = FALSE;
+          }
+        }
+      }
+    }
+  }
+
+  switch ($settings['shaped']) {
+    case 'squared':
+      $icon = $service['icon_square'] ?: $service['icon'];
+      break;
+
+    case 'squared or else circled':
+      $icon = $service['icon_square'] ?: ($service['icon_circle'] ?: $service['icon']);
+      break;
+
+    case 'circled':
+      $icon = $service['icon_circle'] ?: $service['icon'];
+      break;
+
+    case 'circled or else squared':
+      $icon = $service['icon_circle'] ?: ($service['icon_square'] ?: $service['icon']);
+      break;
+
+    case 'natural':
+    default:
+      $icon = $service['icon'];
+      break;
+  }
+
+  $classes = ['service', $service['class']];
+
+  switch ($service['icon_style']) {
+    case 'solid':
+      $classes[] = 'fa-solid';
+      break;
+
+    case 'regular':
+      $classes[] = 'fa-regular';
+      break;
+
+    case 'light':
+      $classes[] = 'fa-light';
+      break;
+
+    case 'thin':
+      $classes[] = 'fa-thin';
+      break;
+
+    case 'duotone-solid':
+      array_push($classes, 'fa-duotone', 'fa-solid');
+      break;
+
+    case 'duotone-regular':
+      array_push($classes, 'fa-duotone', 'fa-regular');
+      break;
+
+    case 'duotone-light':
+      array_push($classes, 'fa-duotone', 'fa-light');
+      break;
+
+    case 'duotone-thin':
+      array_push($classes, 'fa-duotone', 'fa-thin');
+      break;
+
+    case 'sharp-solid':
+      array_push($classes, 'fa-sharp', 'fa-solid');
+      break;
+
+    case 'sharp-regular':
+      array_push($classes, 'fa-sharp', 'fa-regular');
+      break;
+
+    case 'sharp-light':
+      array_push($classes, 'fa-sharp', 'fa-light');
+      break;
+
+    case 'sharp-thin':
+      array_push($classes, 'fa-sharp', 'fa-thin');
+      break;
+
+    case 'sharp-duotone-solid':
+      array_push($classes, 'fa-sharp-duotone', 'fa-solid');
+      break;
+
+    case 'sharp-duotone-regular':
+      array_push($classes, 'fa-sharp-duotone', 'fa-regular');
+      break;
+
+    case 'sharp-duotone-light':
+      array_push($classes, 'fa-sharp-duotone', 'fa-light');
+      break;
+
+    case 'sharp-duotone-thin':
+      array_push($classes, 'fa-sharp-duotone', 'fa-thin');
+      break;
+
+    case 'brand':
+    default:
+      $classes[] = 'fa-brands';
+      break;
+  }
+
+  $classes[] = 'fa-' . $icon;
+
+  if ($settings['background'] == 'none' && $settings['size'] != '1x') {
+    $classes[] = 'fa-' . $settings['size'];
+  }
+
+  if ($settings['width'] == 'fixed') {
+    $classes[] = 'fa-fw';
+  }
+
+  if ($settings['background'] != 'none') {
+    $classes[] = 'fa-stack-1x';
+    if (isset($inverse) && $inverse) {
+      $classes[] = 'fa-inverse';
+    }
+  }
+
+  // Generate the icon link HTML.
+  $icon_markup = Markup::create(
+    ($settings['background'] != 'none' ? '<span class="fa-stack'
+        . ($settings['size'] != '1x' ? ' fa-' . $settings['size'] : '')
+        . '"><i class="fa fa-'
+        . $settings['background']
+        . ' fa-stack-2x"></i>'
+      : ''
+    )
+    . '<i class="' . implode(' ', $classes) . '"'
+    . ($settings['coloured'] != 'uncoloured' ? ' style="color: ' . $service['color'] . ';"' : '')
+    . '></i>'
+    . ($settings['background'] != 'none' ? '</span>' : '')
+  );
+
+  $icon = $link ?
+    Link::fromTextAndUrl(
+      $icon_markup,
+      Url::fromUri(
+        $url_full,
+        [
+          'attributes' => [
+            'title' => $title,
+            'target' => '_blank',
+          ],
+        ]
+      )
+    )->toString()
+    : $icon_markup->__toString();
+
+  // Generate the text HTML, if required, and combine it with the link
+  // icon HTML in $icon.
+  $text = '';
+
+  if ($settings['hideURLscheme'] == TRUE) {
+    $parsed = parse_url($url);
+
+    if ($parsed['scheme'] != '') {
+      $url = substr($url, strlen($parsed['scheme']));
+      $url = substr($url, 0, 3) == '://' ? substr($url, 3) : $url;
+      $url = substr($url, 0, 1) == ':' ? substr($url, 1) : $url;
+    }
+  }
+
+  if ($settings['text'] != 'none') {
+    switch ($settings['text']) {
+      case 'title or else URL':
+        $text = $title ?: $url;
+        break;
+
+      case 'title':
+        $text = $title;
+        break;
+
+      case 'URL':
+        $text = $url;
+        break;
+
+      case 'title - URL':
+        $text = $title . ' - ' . $url;
+        break;
+
+      case 'title: URL':
+        $text .= $title . ': ' . $url;
+        break;
+
+      case 'URL (title)':
+        $text = $url . ' (' . $title . ')';
+        break;
+    }
+
+    if ($link) {
+      $text = Link::fromTextAndUrl(
+        $text,
+        Url::fromUri(
+          $url_full,
+          [
+            'attributes' => [
+              'title' => $title,
+              'target' => '_blank',
+            ],
+          ]
+        )
+      )->toString();
+    }
+
+    if ($settings['order'] == 'first') {
+      $markup = $icon . ' ' . $text;
+    }
+    else {
+      $markup = $text . ' ' . $icon;
+    }
+  }
+  else {
+    $markup = $icon;
+  }
+
+  return new FormattableMarkup($markup, []);
+}
+
+/**
+ * Returns an array of configuration form fields.
+ */
+function _link_icons_config_fields(array $settings) {
+  return [
+    'text' => [
+      '#type' => 'select',
+      '#title' => t('Text alongside the icon'),
+      '#description' => t('Select what text should appear with each icon (if any)'),
+      '#default_value' => $settings['text'] ?: 'title',
+      '#required' => FALSE,
+      '#empty_value' => 'none',
+      '#options' => [
+        'title or else URL' => t('Link title, or URL if no title'),
+        'title' => t('Link title'),
+        'URL' => t('Link URL'),
+        'title - URL' => t('Link title - link URL'),
+        'title: URL' => t('Link title: link URL'),
+        'URL (title)' => t('link URL (Link title)'),
+      ],
+    ],
+    'hideURLscheme' => [
+      '#type' => 'checkbox',
+      '#title' => t('Hide the scheme from the URL?'),
+      '#description' => t("Should the scheme (ex. 'http://', 'https://', 'mailto:', 'tel:') be hidden from the URL, if it is used in the text?"),
+      '#default_value' => $settings['hideURLscheme'] ?: TRUE,
+      '#required' => FALSE,
+    ],
+    'order' => [
+      '#type' => 'select',
+      '#title' => t('Order of icon and text'),
+      '#description' => t('Select the order of each icon and its text (if any)'),
+      '#default_value' => $settings['order'] ?: 'first',
+      '#required' => TRUE,
+      '#options' => [
+        'first' => t('Icon first'),
+        'last' => t('Icon last'),
+      ],
+    ],
+    'size' => [
+      '#type' => 'select',
+      '#title' => t('Size of the icon'),
+      '#description' => t('Select what size each icon should be (not used/supported if icons have a background [see setting below])'),
+      '#default_value' => $settings['size'] ?: '1x',
+      '#required' => TRUE,
+      '#options' => [
+        '1x' => t('100%'),
+        'lg' => t('133%'),
+        '2x' => t('200%'),
+        '3x' => t('300%'),
+        '4x' => t('400%'),
+        '5x' => t('500%'),
+      ],
+    ],
+    'width' => [
+      '#type' => 'select',
+      '#title' => t('Width of icons'),
+      '#description' => t('Select whether each icon should have a fixed or variable width (helps with horizontal alignment)'),
+      '#default_value' => $settings['width'] ?: 'fixed',
+      '#required' => TRUE,
+      '#options' => [
+        'fixed' => t('Fixed width'),
+        'variable' => t('Variable width'),
+      ],
+    ],
+    'coloured' => [
+      '#type' => 'select',
+      '#title' => t('Coloured icons'),
+      '#description' => t("Select whether each service icon should be coloured correctly (if that's possible with a single colour)"),
+      '#default_value' => $settings['coloured'] ?: 'coloured',
+      '#required' => TRUE,
+      '#options' => [
+        'coloured' => t('Coloured'),
+        'uncoloured' => t('Uncoloured'),
+      ],
+    ],
+    'shaped' => [
+      '#type' => 'select',
+      '#title' => t('Pre-shaped icons'),
+      '#description' => t('Select whether each service icon should be the pre-squared or pre-circled version (if available)'),
+      '#default_value' => $settings['shaped'] ?: 'natural',
+      '#required' => TRUE,
+      '#options' => [
+        'squared' => t('Squared'),
+        'circled' => t('Circled'),
+        'squared or else circled' => t('Squared, or else circled'),
+        'circled or else squared' => t('Circled, or else squared'),
+        'natural' => t('Natural'),
+      ],
+    ],
+    'background' => [
+      '#type' => 'select',
+      '#title' => t('Background of the icons'),
+      '#description' => t('Select what background each icon should have (if any)'),
+      '#default_value' => $settings['background'] ?: 'none',
+      '#required' => FALSE,
+      '#empty_value' => 'none',
+      '#options' => [
+        'square' => t('Square with rounded corners solid'),
+        'square-o' => t('Square with rounded corners outline'),
+        'stop' => t('Square solid'),
+        'play' => t('Triangle pointing right (play symbol) solid'),
+        'circle'  => t('Circle solid'),
+        'circle-o' => t('Circle outline'),
+        'circle-o-notch' => t('Circle outline with notch at the top'),
+        'circle-thin' => t('Circle outline hairline'),
+        'dot-circle-o' => t('Circle outline with centre dot'),
+        'cloud' => t('Cloud solid'),
+        'sun-o' => t('Sun outline'),
+        'folder' => t('Folder solid'),
+        'folder-o' => t('Folder outline'),
+        'file' => t('File solid'),
+        'file-o' => t('File outline'),
+        'heart' => t('Heart solid'),
+        'heart-o' => t('Heart outline'),
+        'laptop' => t('Laptop'),
+        'tablet' => t('Tablet'),
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function link_icons_preprocess_menu(&$variables, $hook) {
+  if (!\Drupal::service('router.admin_context')->isAdminRoute()) {
+    if (isset($variables['menu_name'])) {
+      $config = \Drupal::service('config.factory')->getEditable('link_icons.menu.' . str_replace('-', '_', $variables['menu_name']));
+      if ($config->get('render') == TRUE) {
+        if (isset($variables['items']) && is_array($variables['items'])) {
+          if (!isset($services)) {
+            $services = \Drupal::entityTypeManager()->getStorage('link_icon_service')->loadMultiple();
+          }
+
+          $settings = [
+            'text' => $config->get('text'),
+            'hideURLscheme' => $config->get('hideURLscheme'),
+            'order' => $config->get('order'),
+            'size' => $config->get('size'),
+            'shaped' => $config->get('shaped'),
+            'width' => $config->get('width'),
+            'coloured' => $config->get('coloured'),
+            'background' => $config->get('background'),
+          ];
+
+          foreach ($variables['items'] as $item_id => $item) {
+            if (isset($item['url']) && $item['url']->isExternal()) {
+              $url = $item['url']->getUri();
+              $title = $item['title'];
+
+              $variables['items'][$item_id]['title'] = _link_icons_link_markup($title, $url, $settings, $services);
+            }
+          }
+
+          unset($services);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function link_icons_form_menu_form_alter(&$form, $form_state, $form_id) {
+  $menu_id = str_replace('-', '_', $form_state->getformObject()->getEntity()->id());
+  $config = \Drupal::service('config.factory')->getEditable('link_icons.menu.' . $menu_id);
+
+  $form['link_icons'] = [
+    'render' => [
+      '#type' => 'checkbox',
+      '#title' => t('Render external links with icons?'),
+      '#default_value' => is_null($config->get('render')) ? FALSE : $config->get('render'),
+      '#required' => FALSE,
+    ],
+    'config' => array_merge(
+      [
+        '#type' => 'details',
+        '#title' => t('Link icons'),
+        '#open' => FALSE,
+      ],
+      _link_icons_config_fields(
+        [
+          'text' => $config->get('text'),
+          'hideURLscheme' => $config->get('hideURLscheme'),
+          'order' => $config->get('order'),
+          'size' => $config->get('size'),
+          'shaped' => $config->get('shaped'),
+          'width' => $config->get('width'),
+          'coloured' => $config->get('coloured'),
+          'background' => $config->get('background'),
+        ]
+      )
+    ),
+  ];
+
+  $form['actions']['submit']['#submit'][] = '_link_icons_menu_edit_submit';
+}
+
+/**
+ * Save settings on submission of menu edit form.
+ */
+function _link_icons_menu_edit_submit($form, $form_state) {
+  $key = str_replace('-', '_', $form_state->getformObject()->getEntity()->id());
+  $config = \Drupal::service('config.factory')->getEditable('link_icons.menu.' . $key);
+  $config
+    ->set('render', $form_state->getValue('render'))
+    ->set('text', $form_state->getValue('text'))
+    ->set('hideURLscheme', $form_state->getValue('hideURLscheme'))
+    ->set('order', $form_state->getValue('order'))
+    ->set('size', $form_state->getValue('size'))
+    ->set('width', $form_state->getValue('width'))
+    ->set('coloured', $form_state->getValue('coloured'))
+    ->set('shaped', $form_state->getValue('shaped'))
+    ->set('background', $form_state->getValue('background'))
+    ->save();
+}

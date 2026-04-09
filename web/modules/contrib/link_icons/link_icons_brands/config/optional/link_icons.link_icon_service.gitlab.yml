@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: gitlab
+label: 'GitLab'
+hostnames:
+ - 'gitlab.com'
+icon: 'gitlab'
+icon_style: 'brand'
+color: '#FC6D26'
