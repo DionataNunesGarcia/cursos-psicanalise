@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
+langcode: pt-br
+uuid: d8d3d98b-8173-4d9f-bfb5-d55fcb661ec0
+name: 'Psicanalise Preta'
+mail: camilapsi.moraes@gmail.com
+slogan: ''
+page:
+  403: /node/17
+  404: /node/18
+  front: /node/1
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: pt-br
+mail_notification: null

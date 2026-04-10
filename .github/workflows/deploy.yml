@@ -1,0 +1,65 @@
+name: Deploy to Pantheon
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Pega o código do GitHub
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Configura PHP e extensões necessárias
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: gd, mbstring, xml
+
+      # Instala dependências do composer
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --optimize-autoloader --ignore-platform-reqs
+
+      # Configura a chave SSH
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PANTHEON_SSH_KEY }}" > ~/.ssh/pantheon
+          chmod 600 ~/.ssh/pantheon
+          echo "Host pantheon
+            HostName codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in
+            User git
+            Port 2222
+            IdentityFile ~/.ssh/pantheon
+            StrictHostKeyChecking no" > ~/.ssh/config
+          ssh-keyscan -p 2222 codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in >> ~/.ssh/known_hosts
+
+      # Configura Git
+      - name: Configure Git
+        run: |
+          git config --global user.email "deploy@pantheon.io"
+          git config --global user.name "Pantheon Deploy Bot"
+
+      # Testa a conexão SSH antes do push
+      - name: Test SSH Connection
+        run: ssh -T pantheon || true
+
+      # Push para Pantheon
+      - name: Deploy Code to Pantheon
+        run: |
+          git remote remove pantheon || true
+          git remote add pantheon pantheon:~/repository.git
+          git add .
+          git commit -m "Deploy from GitHub Actions" || echo "No changes to commit"
+          git push pantheon main:master --force
+
+      # Limpa cache via Terminus
+      - name: Clear Cache
+        run: |
+          terminus auth:login --machine-token=${{ secrets.PANTHEON_MACHINE_TOKEN }}
+          terminus drush cursos-psicanalise.dev -- cr

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: unity
+label: 'Unity'
+hostnames:
+ - 'unity.com'
+ - 'unity3d.com'
+icon: 'unity'
+icon_style: 'brand'
+color: 'black'

@@ -1,0 +1,22 @@
+uuid: 12192c4b-fef7-41b0-89b5-2c0449168735
+langcode: pt-br
+status: true
+dependencies:
+  module:
+    - node
+id: pattern_equipe
+label: 'Pattern Equipe'
+type: 'canonical_entities:node'
+pattern: '/equipe/[node:title]'
+selection_criteria:
+  334e42c2-9e1e-41fe-9a2b-65da899c2f30:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 334e42c2-9e1e-41fe-9a2b-65da899c2f30
+    context_mapping:
+      node: node
+    bundles:
+      team: team
+selection_logic: and
+weight: -5
+relationships: {  }

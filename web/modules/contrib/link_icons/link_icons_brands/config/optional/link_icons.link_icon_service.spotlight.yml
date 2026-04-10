@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: spotlight
+label: 'Spotlight'
+hostnames:
+ - 'spotlight.com'
+icon: 'th-list'
+icon_style: 'solid'
+color: '#40CCD8'

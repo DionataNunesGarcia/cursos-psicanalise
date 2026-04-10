@@ -1,0 +1,126 @@
+uuid: 34c21f9c-24f0-4083-9bb1-182f091113a8
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - ckeditor5
+_core:
+  default_config_hash: 4mmJmN8kEiUf9aytnx0QPOORBNL5JaF_ijXRwOm2stg
+format: full_html
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - bold
+      - italic
+      - strikethrough
+      - underline
+      - undo
+      - superscript
+      - subscript
+      - removeFormat
+      - '|'
+      - link
+      - '|'
+      - alignment
+      - indent
+      - bulletedList
+      - numberedList
+      - '|'
+      - blockQuote
+      - drupalInsertImage
+      - drupalMedia
+      - insertTable
+      - horizontalLine
+      - '|'
+      - heading
+      - codeBlock
+      - '|'
+      - sourceEditing
+  plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
+    ckeditor5_codeBlock:
+      languages:
+        -
+          label: 'Texto puro'
+          language: plaintext
+        -
+          label: C
+          language: c
+        -
+          label: 'C#'
+          language: cs
+        -
+          label: C++
+          language: cpp
+        -
+          label: CSS
+          language: css
+        -
+          label: Alterações
+          language: diff
+        -
+          label: HTML
+          language: html
+        -
+          label: Java
+          language: java
+        -
+          label: JavaScript
+          language: javascript
+        -
+          label: PHP
+          language: php
+        -
+          label: Python
+          language: python
+        -
+          label: Ruby
+          language: ruby
+        -
+          label: TypeScript
+          language: typescript
+        -
+          label: XML
+          language: xml
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_imageResize:
+      allow_resize: true
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+        styles: true
+      multiBlock: true
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    ckeditor_media_resize_mediaResize:
+      apply_image_styles: true
+      image_styles:
+        - cke_media_resize_small
+        - cke_media_resize_medium
+        - cke_media_resize_large
+        - cke_media_resize_xl
+    media_media:
+      allow_view_mode_override: true
+image_upload:
+  status: true
+  scheme: public
+  directory: inline-images
+  max_size: null
+  max_dimensions:
+    width: null
+    height: null

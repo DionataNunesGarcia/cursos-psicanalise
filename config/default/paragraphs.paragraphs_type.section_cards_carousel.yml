@@ -1,0 +1,10 @@
+uuid: 95b3344c-730a-44ab-b3b8-5dfb1af5b824
+langcode: pt-br
+status: true
+dependencies: {  }
+id: section_cards_carousel
+label: 'Seção - Carousel de Cards'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

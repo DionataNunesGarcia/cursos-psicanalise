@@ -1,0 +1,18 @@
+uuid: a4d2e445-ee95-4fd8-99c7-9d6f6238eacb
+langcode: pt-br
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Conteúdos
+type: conteudos
+description: 'Tipo de conteúdo para cadastrar notícias, artigos, blog, dicas e outros conteúdos'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

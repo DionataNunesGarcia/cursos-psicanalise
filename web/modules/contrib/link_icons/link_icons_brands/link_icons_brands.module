@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * A sub-module adding various link icon brand service configurations.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Link;
+
+/**
+ * Implements hook_help().
+ */
+function link_icons_brands_help($route_name, RouteMatchInterface $route_match) {
+  $module_machine_name = basename(__FILE__, '.module');
+  $module_name = \Drupal::service('extension.list.module')->getName($module_machine_name);
+  if ($route_name == 'help.page.' . $module_machine_name) {
+    $dom = new DOMDocument();
+
+    $dom->appendChild($dom->createElement('h2', t('About @module_name', ['@module_name' => $module_name])));
+
+    $collection_route = 'entity.link_icon_service.collection';
+    $intro = $dom->createDocumentFragment();
+    $intro->appendXML(t('The <em>@module_name</em> module adds configurations for various link icon services of online brands. You can modify and/or remove these services on the @link_icon_service_list configuration page.',
+      [
+        '@module_name' => $module_name,
+        '@link_icon_service_list' => Link::createFromRoute(
+          t('Link Icon services'),
+          $collection_route
+        )->toString(),
+      ]
+    ));
+    $p = $dom->createElement('p');
+    $p->appendChild($intro);
+    $dom->appendChild($p);
+
+    $services = \Drupal::entityTypeManager()->getStorage('link_icon_service')->loadMultiple();
+    if (count($services)) {
+      $dom->appendChild($dom->createElement('h3', t('@count services are currently available', ['@count' => count($services)])));
+      $dom->appendChild($dom->createElement('p', t('This dynamically-generated list will also include services not provided by this module:')));
+
+      $list = $dom->createElement('ul');
+      foreach ($services as $service) {
+        if ($service->get('label')) {
+          $link = $dom->createDocumentFragment();
+          $link->appendXML(Link::createFromRoute(
+            $service->get('label'),
+            'entity.link_icon_service.edit_form',
+            ['link_icon_service' => $service->get('id')]
+          )->toString());
+          $li = $dom->createElement('li');
+          $li->appendChild($link);
+          $list->appendChild($li);
+        }
+      }
+      $dom->appendChild($list);
+    }
+    else {
+      $dom->appendChild($dom->createElement('p', t('No services are currently available.')));
+    }
+
+    return $dom->saveHTML();
+  }
+}

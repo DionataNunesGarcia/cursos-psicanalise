@@ -1,0 +1,21 @@
+uuid: ed37101a-b864-459a-b1e5-d0997492866e
+langcode: pt-br
+status: true
+dependencies: {  }
+name: slider_mobile
+label: 'Slider - Mobile - 640×360'
+effects:
+  b9e9f505-f410-4b81-9333-528c0d26fe76:
+    uuid: b9e9f505-f410-4b81-9333-528c0d26fe76
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 360
+      height: 640
+      anchor: center-center
+  79f9df60-5547-4a2a-b6e1-b5ea0c489799:
+    uuid: 79f9df60-5547-4a2a-b6e1-b5ea0c489799
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

@@ -1,0 +1,98 @@
+/* ============================================
+   Typography (Responsiva com Clamp e Media Queries)
+   ============================================ */
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 500;
+  }
+  h1 {
+    /* De ~32px no mobile para 48px no desktop */
+    font-size: clamp(2rem, 5vw, 3rem); 
+    font-weight: 500;
+    line-height: 1.1;
+    color: hsl(var(--color-gray-900));
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    /* De 28px no mobile para 40px no desktop */
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  h3 {
+    /* De 22px no mobile para 32px no desktop */
+    font-size: clamp(1.375rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    /* 15px no mobile, 16px no desktop */
+    font-size: 0.938rem; 
+    color: hsl(var(--color-gray-600));
+    line-height: 1.625;
+    margin-bottom: 1.25rem;
+    letter-spacing: normal;
+
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  a {
+    color: hsl(var(--color-primary));
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      // color: hsl(var(--color-primary-dark));
+      text-decoration: underline;
+    }
+  }
+
+  /* Pequeno ajuste para mobile: garantir que palavras longas não quebrem o layout */
+  h1, h2, h3 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  ul {
+    list-style: disc inside;
+    margin-bottom: 2rem;
+  }
+
+  ol {
+    list-style: auto inside;
+    margin-bottom: 2rem;
+  }
+
+
+  hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 2rem 0 !important;
+  }
+  nav {
+    ul, ol {
+      list-style: none;
+      padding: 0;
+      margin: 0 !important;
+    }
+  }
+  .font-bold {
+    font-weight: 700 !important;
+  }
+  .font-semibold {
+    font-weight: 500 !important;
+  }
+}

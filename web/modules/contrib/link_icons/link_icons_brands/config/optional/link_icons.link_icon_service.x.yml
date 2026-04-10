@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: x
+label: 'X'
+hostnames:
+ - 'x.com'
+icon: 'x-twitter'
+icon_style: 'brand'
+icon_square: 'square-x-twitter'
+color: 'black'

@@ -1,0 +1,178 @@
+// ==========================
+// Variáveis de cores
+// ==========================
+$color-success-bg: #e6f9f0;
+$color-success-border: #28a745;
+$color-success-text: #155724;
+
+$color-error-bg: #fdecea;
+$color-error-border: #dc3545;
+$color-error-text: #721c24;
+
+$color-warning-bg: #fff4e5;
+$color-warning-border: #ffc107;
+$color-warning-text: #856404;
+
+$color-shadow: rgba(0, 0, 0, 0.08);
+
+// ==========================
+// Container geral
+// ==========================
+.messages {
+  border-left: 5px solid;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 16px auto;
+  max-width: 1536px;
+  box-shadow: 0 4px 12px $color-shadow;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+
+  // Header / ícone
+  &__icon {
+    flex-shrink: 0;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // Conteúdo
+  &__container {
+    display: flex;
+    gap: 24px;
+  }
+  &__content {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.5;
+
+    a {
+      text-decoration: underline;
+      font-weight: 500;
+    }
+  }
+
+  // Botão fechar
+  &__button {
+    margin-left: auto;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: 0.2s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// ==========================
+// Variantes
+// ==========================
+// ✅ SUCCESS
+.messages--status {
+  background-color: $color-success-bg;
+  border-color: $color-success-border;
+  color: $color-success-text;
+  max-width: 1400px;
+
+  a {
+    color: $color-success-border;
+  }
+}
+
+// ❌ ERROR
+.messages--error {
+  background-color: $color-error-bg;
+  border-color: $color-error-border;
+  color: $color-error-text;
+
+  a {
+    color: $color-error-border;
+  }
+}
+
+// ⚠️ WARNING
+.messages--warning {
+  background-color: $color-warning-bg;
+  border-color: $color-warning-border;
+  color: $color-warning-text;
+
+  a {
+    color: $color-warning-border;
+  }
+}
+
+// ==========================
+// Versão fixa no topo (opcional)
+// ==========================
+.messages-top {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  z-index: 9999;
+}
+
+// ==========================
+// Animação
+// ==========================
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.messages__button {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+}
+
+.messages__close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2px;
+    background-color: currentColor;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

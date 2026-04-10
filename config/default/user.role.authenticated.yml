@@ -1,0 +1,36 @@
+uuid: 5cca6cca-f005-4a37-8b82-9c1551e5eb80
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.webform_default
+  module:
+    - comment
+    - file
+    - filter
+    - fontawesome
+    - media
+    - search
+    - shortcut
+    - system
+_core:
+  default_config_hash: hcfESiA8tr3D1muRk2KF7tbcun16ZJlG1R5SzKGed6g
+id: authenticated
+label: 'Usuário autenticado'
+weight: 1
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access fontawesome additional settings'
+  - 'access shortcuts'
+  - 'delete own files'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'use text format basic_html'
+  - 'use text format full_html'
+  - 'use text format webform_default'
+  - 'view media'

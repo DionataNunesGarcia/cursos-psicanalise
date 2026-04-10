@@ -1,0 +1,215 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for link_icons.
+ */
+
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Url;
+use Drupal\Core\Config\FileStorage;
+use Drupal\Core\Routing\RouteProviderInterface;
+
+/**
+ * Implements hook_requirements().
+ */
+function link_icons_brands_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'runtime') {
+    $module_machine_name = basename(__FILE__, '.install');
+    $module_name = \Drupal::service('extension.list.module')->getName($module_machine_name);
+
+    if (\Drupal::state()->get('system.maintenance_mode')) {
+      $requirements[$module_machine_name . '_maintenance_mode'] = [
+        'severity' => REQUIREMENT_WARNING,
+        'title' => $module_name,
+        'value' => new TranslatableMarkup('Not enabled while in maintenance mode'),
+        'description' => new TranslatableMarkup('Please note that while the site is in maintenance mode none of the link icon brand services will be maintained.'),
+      ];
+    }
+
+    $info = \Drupal::service('extension.list.module')->getExtensionInfo($module_machine_name);
+
+    $route_provider = \Drupal::service('router.route_provider');
+
+    $requirements[$module_machine_name] = [
+      'severity' => REQUIREMENT_OK,
+      'title' => $module_name,
+      'value' => new TranslatableMarkup('@name @version is installed', [
+        '@name' => $module_name,
+        '@version' => $info['version'],
+      ]),
+      'description' => (
+        count($route_provider->getRoutesByNames(['help.page'])) === 1
+        ? new TranslatableMarkup('The @name module is installed. See <a href="@url_help">the module help page</a> for a list of services currently available.', [
+          '@name' => $module_name,
+          '@url_help' => Url::fromRoute('help.page', ['name' => $module_machine_name])->toString(),
+        ])
+        : new TranslatableMarkup('The @name module is installed. Enable the core help module to see the module help page for a list of services currently available.', [
+          '@name' => $module_name,
+        ])
+      ),
+    ];
+  }
+
+  return $requirements;
+}
+
+/**
+ * Helper function to read in new/updated brand service config files.
+ */
+function _link_icons_brands_read_services_config(array $config_files) {
+  /**
+   * @var \Drupal\Core\Config\FileStorage $source_dir
+   */
+  $source_dir = new FileStorage(\Drupal::service('extension.list.module')->getPath(basename(__FILE__, '.install')) . '/config/optional');
+
+  /**
+   * @var \Drupal\Core\Config\StorageInterface $config_storage
+   */
+  $config_storage = \Drupal::service('config.storage');
+
+  foreach ($config_files as $config) {
+    $config_name = 'link_icons.link_icon_service.' . $config;
+    $config_storage->write($config_name, $source_dir->read($config_name));
+    \Drupal::configFactory()->getEditable($config_name)->set('uuid', \Drupal::service('uuid')->generate())->save();
+  }
+
+  return 'Added/updated configurations for ' . implode(', ', $config_files) . '.';
+}
+
+/**
+ * Add and update link icon services configurations for Acast, Airbnb, Audible, Blogger, Dailymotion, eBay, iTunes, Kickstarter, Mixcloud, Napster, Periscope, Skype & Slack.
+ */
+function link_icons_brands_update_8301() {
+  return _link_icons_brands_read_services_config([
+    'acast',
+    'airbnb',
+    'audible',
+    'blogger',
+    'dailymotion',
+    'ebay',
+    'itunes',
+    'kickstarter',
+    'mixcloud',
+    'napster',
+    'periscope',
+    'skype',
+    'slack',
+  ]);
+}
+
+/**
+ * Update link icon services configurations for Bitbucket, Facebook & Pinterest.
+ */
+function link_icons_brands_update_8302() {
+  return _link_icons_brands_read_services_config([
+    'bitbucket',
+    'facebook',
+    'pinterest',
+  ]);
+}
+
+/**
+ * Update link icon services configuration for Wikipedia.
+ */
+function link_icons_brands_update_8303() {
+  return _link_icons_brands_read_services_config([
+    'wikipedia',
+  ]);
+}
+
+/**
+ * Add and update link icon services configurations for British Comedy Guide, Chortle, Facebook, NextUp Comedy, Spotify, Spotlight, The Talent Manager, TikTok, Tripadvisor & YouTube.
+ */
+function link_icons_brands_update_8304() {
+  return _link_icons_brands_read_services_config([
+    'britishcomedyguide',
+    'chortle',
+    'facebook',
+    'nextupcomedy',
+    'spotify',
+    'spotlight',
+    'thetalentmanager',
+    'tiktok',
+    'tripadvisor',
+    'youtube',
+  ]);
+}
+
+/**
+ * Update link icon services configuration for Google Maps.
+ */
+function link_icons_brands_update_8305() {
+  return _link_icons_brands_read_services_config([
+    'blogger',
+    'googlemaps',
+  ]);
+}
+
+/**
+ * Update link icon services configuration for Amazon.
+ */
+function link_icons_brands_update_8306() {
+  return _link_icons_brands_read_services_config([
+    'amazon',
+  ]);
+}
+
+/**
+ * Add link icon services configuration for X.
+ */
+function link_icons_brands_update_8307() {
+  return _link_icons_brands_read_services_config([
+    'x',
+  ]);
+}
+
+/**
+ * Update link icon services configuration for X.
+ */
+function link_icons_brands_update_8308() {
+  return _link_icons_brands_read_services_config([
+    'x',
+  ]);
+}
+
+/**
+ * Add link icon services configuration for Bluesky, Discord & Mastodon.
+ */
+function link_icons_brands_update_8309() {
+  return _link_icons_brands_read_services_config([
+    'bluesky',
+    'discord',
+    'mastodon',
+  ]);
+}
+
+/**
+ * Update link icon services configuration for Chortle, Font Awesome & Google Maps.
+ */
+function link_icons_brands_update_8310() {
+  return _link_icons_brands_read_services_config([
+    'chortle',
+    'fontawesome',
+    'googlemaps',
+  ]);
+}
+
+/**
+ * Add and update link icon services configuration for Figma, GitLab, Ko-fi, Letterboxd, Patreon, Substack, Telegram, Threads & Unity.
+ */
+function link_icons_brands_update_8311() {
+  return _link_icons_brands_read_services_config([
+    'figma',
+    'gitlab',
+    'ko_fi',
+    'letterboxd',
+    'patreon',
+    'substack',
+    'telegram',
+    'threads',
+    'unity',
+  ]);
+}

@@ -1,0 +1,30 @@
+.header-main {
+  #block-front-theme-main-menu {
+    ul {
+      li {
+        padding: 0 8px;
+        border-radius: 4px;
+        &:hover,
+        &:focus,
+        &.active {
+          background-color: hsl(var(--color-white-90));
+          a {
+            color: hsl(var(--color-primary-dark));
+          }
+        }
+      }
+      &.dropdown {
+        li {
+          width: 100%;
+          &:hover,
+          &:focus {
+            background-color: transparent;
+            a {
+              color: hsl(var(--color-primary-dark));
+            }
+          }
+        }
+      }
+    }
+  }
+}

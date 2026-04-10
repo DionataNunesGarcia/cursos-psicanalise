@@ -1,0 +1,50 @@
+uuid: b22bc64c-5a58-4977-9770-1664424491b3
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.node.team.field_bio
+    - field.field.node.team.field_prefix
+    - field.field.node.team.field_team_image
+    - field.field.node.team.field_team_role
+    - field.field.node.team.field_user
+    - node.type.team
+  module:
+    - text
+    - user
+id: node.team.card
+targetEntityType: node
+bundle: team
+mode: card
+content:
+  field_bio:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_team_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_team_role:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_prefix: true
+  field_user: true
+  langcode: true
+  links: true

@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies: {  }
+id: threads
+label: 'Threads'
+hostnames:
+ - 'threads.com'
+ - 'threads.net'
+icon: 'threads'
+icon_style: 'brand'
+icon_square: 'square-threads'
+color: 'black'

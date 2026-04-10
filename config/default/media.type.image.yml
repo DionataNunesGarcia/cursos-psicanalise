@@ -1,0 +1,16 @@
+uuid: 08423e97-6cf0-440a-bff1-56967bcfb08b
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: VWUWqwszm5ZaqT3frIPWjyyVmvmWnWMFRphkVXCl8t0
+id: image
+label: Imagem
+description: 'A locally hosted image file.'
+source: image
+queue_thumbnail_downloads: false
+new_revision: true
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

@@ -1,0 +1,35 @@
+// Utilities 
+@use "utilities/colors";
+@use "utilities/search";
+
+// ⚠️ Primeiro, todos os @use
+@use "base/fonts";
+@use "base/variables";
+@use "base/reset";
+@use "base/typography";
+@use "base/messages";
+
+// Components
+@use "components/badges";
+@use "components/buttons";
+@use "components/cards";
+@use "components/carousel";
+@use "components/media";
+@use "components/text-content";
+@use "components/banners";
+@use "components/columns";
+@use "components/forms";
+@use "components/sliders";
+
+// Contents
+@use "contents/courses-node";
+
+// Layout
+@use "layout/header";
+@use "layout/main-menu";
+@use "layout/layout";
+@use "layout/footer";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,0 +1,11 @@
+uuid: 648acc84-30d9-4f31-8505-093ffb7d6448
+langcode: pt-br
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: iTEzwrEQ_4JIb-OYGiqzyF2TmMgWyWayresXcWgwGWM
+name: Tópicos
+vid: tags
+description: 'Use etiquetas para agrupar artigos sobre temas semelhantes em categorias.'
+weight: 0
+new_revision: false

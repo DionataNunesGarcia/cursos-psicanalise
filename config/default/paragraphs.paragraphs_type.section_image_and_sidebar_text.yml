@@ -1,0 +1,10 @@
+uuid: bd8481ab-0dd2-4323-af6b-cfa8f86fa839
+langcode: pt-br
+status: true
+dependencies: {  }
+id: section_image_and_sidebar_text
+label: 'Seção - Imagem e texto lateral'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

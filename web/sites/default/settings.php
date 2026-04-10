@@ -32,3 +32,26 @@ $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
   include $local_settings;
 }
+
+/**
+ * DEFINIÇÃO DO DIRETÓRIO DE CONFIGURAÇÃO
+ */
+// Primeiro, carregamos o que o DDEV/Local definirem
+if (file_exists($app_root . '/' . $site_path . '/settings.ddev.php')) {
+  include $app_root . '/' . $site_path . '/settings.ddev.php';
+}
+
+// Por último, forçamos o caminho correto para a Pantheon e produção
+// Isso garante que mesmo que o DDEV aponte para outro lugar, a Pantheon use a raiz correta.
+$settings['config_sync_directory'] = '../config/default';
+/**
+ * Configurações específicas para ambientes Pantheon (Dev, Test, Live)
+ */
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  $settings['php_storage']['twig']['directory'] = '/tmp/twig';
+  
+  $settings['trusted_host_patterns'] = [
+    '^.+\.pantheonsite\.io$',
+    '^localhost$',
+  ];
+}

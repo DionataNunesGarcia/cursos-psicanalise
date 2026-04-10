@@ -1,0 +1,10 @@
+uuid: 6bed1e98-0d33-4abf-89ed-c417c89ea519
+langcode: pt-br
+status: true
+dependencies: {  }
+id: section_fluid_title_and_text
+label: 'Seção - Título e texto Fluido'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

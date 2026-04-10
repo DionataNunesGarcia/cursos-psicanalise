@@ -1,0 +1,21 @@
+uuid: df5a6e1c-35e8-46fd-8387-d933732737a4
+langcode: pt-br
+status: true
+dependencies: {  }
+name: slider_desktop_large
+label: 'Slider - Desktop Large - 1920×800'
+effects:
+  978497ca-5ffa-458a-9594-0fcbac93c770:
+    uuid: 978497ca-5ffa-458a-9594-0fcbac93c770
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 800
+      anchor: center-center
+  ab09ecd1-599c-4233-9130-b524ed18bc13:
+    uuid: ab09ecd1-599c-4233-9130-b524ed18bc13
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

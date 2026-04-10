@@ -1,0 +1,29 @@
+uuid: 8d22b1dd-1f7b-41bc-a7d6-28e6d1de7b48
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.highlights_courses.field_text
+    - field.field.paragraph.highlights_courses.field_title
+    - paragraphs.paragraphs_type.highlights_courses
+id: paragraph.highlights_courses.default
+targetEntityType: paragraph
+bundle: highlights_courses
+mode: default
+content:
+  field_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

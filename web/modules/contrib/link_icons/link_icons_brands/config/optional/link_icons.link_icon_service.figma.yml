@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: figma
+label: 'Figma'
+hostnames:
+ - 'figma.com'
+icon: 'figma'
+icon_style: 'brand'
+color: 'black'

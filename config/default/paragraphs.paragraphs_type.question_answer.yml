@@ -1,0 +1,10 @@
+uuid: 75fce34a-7a22-45df-bf26-b559b6f38823
+langcode: pt-br
+status: true
+dependencies: {  }
+id: question_answer
+label: 'Pergunta e Resposta'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

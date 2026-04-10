@@ -1,0 +1,24 @@
+uuid: 02975493-2f4c-4951-902d-060df9a8c603
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - filter.format.full_html
+    - paragraphs.paragraphs_type.syllabus
+  module:
+    - text
+id: paragraph.syllabus.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: syllabus
+label: Corpo
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text_long

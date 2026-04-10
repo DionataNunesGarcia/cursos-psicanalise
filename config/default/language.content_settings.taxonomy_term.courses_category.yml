@@ -1,0 +1,11 @@
+uuid: 1d16af62-356e-4c5c-b370-be766e363915
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.courses_category
+id: taxonomy_term.courses_category
+target_entity_type_id: taxonomy_term
+target_bundle: courses_category
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,10 @@
+uuid: 83209404-e704-4459-b09d-2b49a860ebdd
+langcode: pt-br
+status: true
+dependencies: {  }
+id: section_testimonials
+label: 'Seção - Testemunhos'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

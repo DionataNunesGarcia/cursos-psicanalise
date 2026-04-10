@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: patreon
+label: 'Patreon'
+hostnames:
+ - 'patreon.com'
+icon: 'patreon'
+icon_style: 'brand'
+color: 'black'

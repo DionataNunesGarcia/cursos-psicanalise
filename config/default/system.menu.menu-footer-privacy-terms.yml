@@ -1,0 +1,8 @@
+uuid: 84350e36-f9ab-41b9-89ec-310e2902cf1c
+langcode: pt-br
+status: true
+dependencies: {  }
+id: menu-footer-privacy-terms
+label: 'Menu Footer Privacidade e Termos'
+description: ''
+locked: false

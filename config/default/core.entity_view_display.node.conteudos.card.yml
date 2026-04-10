@@ -1,0 +1,60 @@
+uuid: 2567f773-89d0-4d07-9206-a4123cd4f524
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.node.conteudos.body
+    - field.field.node.conteudos.field_author
+    - field.field.node.conteudos.field_category
+    - field.field.node.conteudos.field_featured_image
+    - field.field.node.conteudos.field_sections
+    - field.field.node.conteudos.field_tags
+    - field.field.node.conteudos.field_thumbnail_image
+    - node.type.conteudos
+  module:
+    - text
+    - user
+id: node.conteudos.card
+targetEntityType: node
+bundle: conteudos
+mode: card
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_author:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_thumbnail_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_category: true
+  field_featured_image: true
+  field_sections: true
+  langcode: true
+  links: true

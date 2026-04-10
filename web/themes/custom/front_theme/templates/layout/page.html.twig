@@ -1,0 +1,32 @@
+{% include '@front_theme/components/header.html.twig' with {
+  'site_name': site_name,
+  'site_logo': site_logo,
+} %}
+
+<div class="container mx-auto">
+  {{ messages }}
+</div>
+<main id="main-content" class="bg-white text-black min-h-screen">
+
+  <div class="pt-0">
+
+    {% if page.hero %}
+      <section class="mb-16">
+        {{ page.hero }}
+      </section>
+    {% endif %}
+
+    <div class="content">
+      {{ page.content }}
+    </div>
+
+  </div>
+
+</main>
+
+{# Container escondido que o JS vai transformar em Modal #}
+<div id="modal-search-wrapper" style="display:none;">
+  {{ drupal_entity('block', 'front_theme_search_form_narrow') }}
+</div>
+
+{% include '@front_theme/components/footer.html.twig' %}

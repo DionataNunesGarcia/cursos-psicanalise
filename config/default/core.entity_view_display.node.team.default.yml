@@ -1,0 +1,59 @@
+uuid: 49639cb3-0a3b-49c7-b04a-b8694b7474bb
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.field.node.team.field_bio
+    - field.field.node.team.field_prefix
+    - field.field.node.team.field_team_image
+    - field.field.node.team.field_team_role
+    - field.field.node.team.field_user
+    - node.type.team
+  module:
+    - text
+    - user
+id: node.team.default
+targetEntityType: node
+bundle: team
+mode: default
+content:
+  field_bio:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_prefix:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_team_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_team_role:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_user: true
+  langcode: true

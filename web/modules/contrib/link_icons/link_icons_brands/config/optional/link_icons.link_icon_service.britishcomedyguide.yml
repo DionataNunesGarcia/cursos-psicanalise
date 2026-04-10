@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: britishcomedyguide
+label: 'British Comedy Guide'
+hostnames:
+ - 'comedy.co.uk'
+class: 'british-comedy-guide'
+icon: 'crown'
+icon_style: 'solid'
+color: '#FDDA29'

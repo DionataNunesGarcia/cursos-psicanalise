@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+id: ko_fi
+label: 'Ko-fi'
+hostnames:
+ - 'ko-fi.com'
+icon: 'mug'
+icon_style: 'light'
+color: '#202020'

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+id: googlemaps
+label: 'Google Maps'
+hostnames:
+ - 'maps.google.com'
+ - 'maps.google.ca'
+ - 'maps.google.ch'
+ - 'maps.google.co.jp'
+ - 'maps.google.co.uk'
+ - 'maps.google.com.mx'
+ - 'maps.google.es'
+ - 'maps.google.se'
+ - 'maps.app.goo.gl'
+ - 'maps.gstatic.com'
+class: 'google-maps'
+icon: 'location-dot'
+icon_style: 'solid'
+color: '#D2493D'

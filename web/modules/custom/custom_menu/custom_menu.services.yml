@@ -1,0 +1,4 @@
+services:
+  custom_menu.menu_service:
+    class: Drupal\custom_menu\Service\MenuService
+    arguments: ["@menu.link_tree"]

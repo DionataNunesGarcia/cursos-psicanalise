@@ -1,0 +1,32 @@
+uuid: 33c2a89c-cd89-43e2-b54f-05c5953be052
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.highlights_courses.field_text
+    - field.field.paragraph.highlights_courses.field_title
+    - paragraphs.paragraphs_type.highlights_courses
+id: paragraph.highlights_courses.default
+targetEntityType: paragraph
+bundle: highlights_courses
+mode: default
+content:
+  field_text:
+    type: string_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

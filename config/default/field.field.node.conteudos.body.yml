@@ -1,0 +1,24 @@
+uuid: c2258232-c148-4d96-b03e-74797a0152b5
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.conteudos
+  module:
+    - text
+id: node.conteudos.body
+field_name: body
+entity_type: node
+bundle: conteudos
+label: Corpo
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

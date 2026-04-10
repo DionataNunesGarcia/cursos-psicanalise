@@ -1,0 +1,10 @@
+uuid: c51640b3-4bfe-4bbc-a595-b56b616ed44a
+langcode: pt-br
+status: true
+dependencies: {  }
+id: gallery
+label: 'Seção - Galeria'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

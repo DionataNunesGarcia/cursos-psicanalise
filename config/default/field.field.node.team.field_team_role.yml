@@ -1,0 +1,29 @@
+uuid: bd6b0164-2cfc-4b96-829b-ce8f1d2b404c
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_team_role
+    - node.type.team
+    - taxonomy.vocabulary.team_ocupation
+id: node.team.field_team_role
+field_name: field_team_role
+entity_type: node
+bundle: team
+label: 'Cargo de Equipe'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      team_ocupation: team_ocupation
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

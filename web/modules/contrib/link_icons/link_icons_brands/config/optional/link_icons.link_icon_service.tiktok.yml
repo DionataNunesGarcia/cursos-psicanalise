@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+id: tiktok
+label: 'TikTok'
+hostnames:
+ - 'tiktok.com'
+ - 'tiktok.org'
+ - 'tiktokv.com'
+ - 'tiktokcdn.com'
+ - 'tiktokcdn-com.akamaized.net'
+icon: 'tiktok'
+icon_style: 'brand'
+color: 'black'

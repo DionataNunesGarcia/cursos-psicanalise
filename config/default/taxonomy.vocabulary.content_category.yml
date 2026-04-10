@@ -1,0 +1,9 @@
+uuid: 4b3c0a6b-ed7f-491f-bc18-f55011431e19
+langcode: pt-br
+status: true
+dependencies: {  }
+name: 'Categoria de Conteúdos'
+vid: content_category
+description: 'Tipo de categoria para usar em conteúdos.'
+weight: 0
+new_revision: false

@@ -1,0 +1,15 @@
+/* ============================================
+   Badges
+   ============================================ */
+
+.badge {
+  display: inline-flex;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+
+  &--primary {
+    background: hsl(var(--color-primary) / 0.1);
+    color: hsl(var(--color-primary-dark));
+  }
+}
