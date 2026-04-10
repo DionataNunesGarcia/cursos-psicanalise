@@ -7,66 +7,56 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+
+      # 1️⃣ Pega o código do repositório
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
+      # 2️⃣ Configura PHP
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
           extensions: gd, mbstring, xml
 
+      # 3️⃣ Instala dependências via Composer
       - name: Install Composer Dependencies
         run: composer install --no-dev --optimize-autoloader --ignore-platform-reqs
 
-      - name: Setup SSH config
+      # 4️⃣ Configura SSH para Pantheon
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.PANTHEON_SSH_KEY }}
+
+      - name: Configure SSH Host
         run: |
           mkdir -p ~/.ssh
           echo "Host pantheon
             HostName codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in
             User git
             Port 2222
-            IdentityFile ~/.ssh/pantheon
             StrictHostKeyChecking no" > ~/.ssh/config
           chmod 600 ~/.ssh/config
+          ssh-keyscan -p 2222 codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in >> ~/.ssh/known_hosts
 
-      - name: Check SSH Key
-        run: |
-          if [ ! -f ~/.ssh/pantheon ]; then
-            echo "SSH key for Pantheon not found!"
-            exit 1
-          fi
-          chmod 600 ~/.ssh/pantheon
-          ssh -o StrictHostKeyChecking=no -p 2222 git@codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in exit || exit 1
-
+      # 5️⃣ Configura Git para commit
       - name: Configure Git
         run: |
           git config --global user.email "deploy@pantheon.io"
           git config --global user.name "Pantheon Deploy Bot"
-          ssh-keyscan -p 2222 codeserver.dev.5f4cfc0f-9aef-444d-a8f0-d14d742e7bff.drush.in >> ~/.ssh/known_hosts 2>/dev/null || true
 
-      - name: Commit vendor and contrib
-        run: |
-          git add vendor web/modules/contrib
-          if ! git diff-index --quiet HEAD --; then
-            git commit -m "Add vendor and contrib modules for deploy"
-          else
-            echo "No changes in vendor or contrib"
-          fi
-
-      - name: Add remote and push
+      # 6️⃣ Adiciona remote e envia para Pantheon
+      - name: Deploy Code to Pantheon
         run: |
           git remote remove pantheon || true
           git remote add pantheon pantheon:~/repository.git
           git add .
-          if ! git diff-index --quiet HEAD --; then
-            git commit -m "Deploy from GitHub Actions"
-          else
-            echo "No additional changes to commit"
-          fi
-          git push pantheon main:master --force || echo "Push failed. Check SSH key and permissions."
+          git commit -m "Deploy from GitHub Actions" || echo "No changes to commit"
+          git push pantheon main:master --force
 
+      # 7️⃣ Limpa cache via Terminus
       - name: Clear Cache
         run: |
           terminus auth:login --machine-token=${{ secrets.PANTHEON_MACHINE_TOKEN }}
